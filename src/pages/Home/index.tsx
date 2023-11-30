@@ -11,7 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Container, Delete, EyeClosed, EyeOpen, PasswordField } from "./style";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Pagination } from "@mui/material";
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Loading from "../../components/Loading";
 import { toast } from "react-toastify";
@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Home = () => {
   const { id } = useParams();
-  const { user, credentials, loading, getCredentials  } = useAppContext();
+  const { user, credentials, loading, getCredentials } = useAppContext();
 
   const [isCredentialPasswordDisplayed, setIsCredentialPasswordDisplayed] = useState<boolean[]>([]);
   const [deleteCredentialDialog, setDeleteCredentialDialog] = useState<number>(0);
@@ -131,7 +131,7 @@ const Home = () => {
               </Table>
             </TableContainer>
           ) : (
-            <span>Nenhuma Credencial Cadastrada</span>
+            <Alert severity="info">Nenhuma Credencial Foi Cadastrada</Alert>
           )}
         </>
       ) : (

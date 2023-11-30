@@ -2,14 +2,10 @@ import styled from "styled-components";
 import { FaEye, FaEyeSlash, FaTrashAlt } from "react-icons/fa";
 
 export const Container = styled.div`
-  margin: 1rem 28px;
-  padding: 1rem;
-  margin-top: 1rem;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  row-gap: 3rem;
-  background-color: white;
+  align-items: stretch;
 `;
 
 export const PasswordField = styled.span`
