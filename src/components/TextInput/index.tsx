@@ -15,7 +15,7 @@ const TextInput = (props: ITextInputProps) => {
   return (
     <TextInputContainer>
       {props.label && <Label isRequired={!!props.isRequired}>{props.label}:</Label>}
-      <Input type={props.type || "text"} name={props.name} value={props.value} onChange={props.onChange} />
+      <Input type={props.type || "text"} name={props.name} value={props.value} onChange={props.onChange} placeholder={props.placeholder} />
     </TextInputContainer>
   )
 };
