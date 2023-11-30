@@ -3,6 +3,11 @@ type Login = {
   password: string;
 }
 
+type Register = {
+  email: string;
+  password: string;
+}
+
 type ResponseError = {
   error: string;
 }

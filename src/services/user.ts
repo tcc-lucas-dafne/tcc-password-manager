@@ -16,11 +16,21 @@ function getUser() {
     console.error("getUser: ", err);
     throw err;
   }
+};
+
+function createUser(data: Register) {
+  try {
+    return API.post("/user/register", data)
+  } catch (err) {
+    console.error("createUser: ", err);
+    throw err;
+  }
 }
 
 const UserService = {
   login,
-  getUser
+  getUser,
+  createUser
 }
 
 export default UserService;
