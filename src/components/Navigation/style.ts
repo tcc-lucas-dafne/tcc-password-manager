@@ -17,7 +17,7 @@ export const UserIcon = styled(FaUserCircle)`
   font-size: 42px;
 `;
 
-export const NewCredentialButton = styled.button`
+export const NavigationButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 6px;

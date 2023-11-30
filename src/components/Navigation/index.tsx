@@ -1,14 +1,19 @@
 import { Menu, MenuItem } from "@mui/material";
 import { useAppContext } from "../../context";
-import { Header, HeaderWrapper, NewCredentialButton, UserIcon } from "./style";
+import { Header, HeaderWrapper, NavigationButton, UserIcon } from "./style";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 
 const Navigation = () => {
-  const { logout, handleOpenDialog } = useAppContext();
+  const { user, logout, handleOpenDialog } = useAppContext();
   
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const goToCredentialsPage = () => navigate(`/${user.id}`);
   
   const handleClick = (event: any) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
@@ -16,7 +21,8 @@ const Navigation = () => {
   return (
     <Header>
       <HeaderWrapper>
-        <NewCredentialButton onClick={handleOpenDialog}>Cadastrar Nova Credencial</NewCredentialButton>
+        <NavigationButton onClick={goToCredentialsPage}>Credenciais</NavigationButton>
+        <NavigationButton onClick={handleOpenDialog}>Cadastrar Nova Credencial</NavigationButton>
         <UserIcon
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup="true"
@@ -25,7 +31,6 @@ const Navigation = () => {
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{ 'aria-labelledby': 'basic-button' }}>
           <MenuItem onClick={handleClose}>Perfil</MenuItem>
-          <MenuItem onClick={handleClose}>Credenciais</MenuItem>
           <MenuItem onClick={logout}>Sair</MenuItem>
         </Menu>
       </HeaderWrapper>
