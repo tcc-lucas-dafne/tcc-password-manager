@@ -1,4 +1,5 @@
 import './App.css';
+import AppProvider from './context';
 import AppRoutes from './routes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,8 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div className="App">
-      <AppRoutes />
-      <ToastContainer />
+      <AppProvider>
+        <AppRoutes />
+        <ToastContainer />
+      </AppProvider>
     </div>
   );
 }
