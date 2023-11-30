@@ -55,7 +55,7 @@ const NewCredentialDialog = () => {
       }
     } catch (e) {
       const error = e as AxiosError;
-      console.log(error);
+      console.error(error);
       toast.error("Ocorreu um erro ao realizar o cadastro da credencial.");
     }
   };

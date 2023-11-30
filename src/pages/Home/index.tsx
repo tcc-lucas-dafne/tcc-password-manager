@@ -63,7 +63,7 @@ const Home = () => {
       }
     } catch (e) {
       const error = e as AxiosError;
-      console.log(error);
+      console.error(error);
       toast.error("Ocorreu um erro ao deletar a credencial. Tente novamente.")
     } finally {
       closeDeleteCredentialDialog()

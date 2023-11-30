@@ -34,7 +34,7 @@ const AppProvider = ({ children }: { children: any }) => {
       return response;
     } catch (e) {
       const error = e as AxiosError;
-      console.log(error);
+      console.error(error);
       toast.error("Ocorreu um erro ao obter as credenciais. Tente novamente.")
     } finally {
       setLoading(false);
