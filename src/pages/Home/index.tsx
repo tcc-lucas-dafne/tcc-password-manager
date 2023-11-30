@@ -38,10 +38,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Home = () => {
   const { id } = useParams();
-  const { user } = useAppContext();
+  const { user, credentials, loading, getCredentials  } = useAppContext();
 
-  const [loading, setLoading] = useState<boolean>(true);
-  const [credentials, setCredentials] = useState<SiteCredential[]>([]);
   const [isCredentialPasswordDisplayed, setIsCredentialPasswordDisplayed] = useState<boolean[]>([]);
   const [deleteCredentialDialog, setDeleteCredentialDialog] = useState<number>(0);
 
@@ -61,6 +59,7 @@ const Home = () => {
       const response = await ManagerServices.deleteCredential(deleteCredentialDialog);
       if (response.status === 201) {
         toast.success("Credencial Removida com Sucesso!");
+        if (id) getCredentials(id);
       }
     } catch (e) {
       const error = e as AxiosError;
@@ -72,26 +71,14 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const getPasswords = async () => {
-      try {
-        const response = await ManagerServices.getSiteCredentials(id as string);
-        if (response.status === 200) {
-          setCredentials(response.data);
-          setIsCredentialPasswordDisplayed(Array(response.data.length).fill(false));
-        }
-        console.log(response);
-      } catch (e) {
-        const error = e as AxiosError;
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) {
-      getPasswords();
-    }
+    if (id) getCredentials(id);
   }, []);
+
+  useEffect(() => {
+    if (credentials) {
+      setIsCredentialPasswordDisplayed(Array(credentials.length).fill(false));
+    }
+  }, [credentials]);
 
   if (!user) return <Navigate to="/login" replace />;
 

@@ -12,9 +12,12 @@ import { useAppContext } from '../../context';
 import { Button } from '@mui/material';
 import { CredentialFormContainer } from './style';
 import { toast } from 'react-toastify';
+import { useMatch } from 'react-router';
 
 const NewCredentialDialog = () => {
-  const { user, isNewCredentialDialogOpen, handleCloseDialog } = useAppContext();
+  const match = useMatch("/:id");
+
+  const { user, isNewCredentialDialogOpen, handleCloseDialog, getCredentials } = useAppContext();
 
   const [credentialsForm, setCredentialsForm] = useState<SiteCredentials>({});
 
@@ -45,6 +48,10 @@ const NewCredentialDialog = () => {
         toast.success("Credencial cadastrada com sucesso!");
         setCredentialsForm({});
         handleCloseDialog();
+
+        if (match && match.params && match.params.id) {
+          getCredentials(match.params.id);
+        }
       }
     } catch (e) {
       const error = e as AxiosError;
