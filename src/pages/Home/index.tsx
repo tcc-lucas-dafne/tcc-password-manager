@@ -93,6 +93,7 @@ const Home = () => {
                   <StyledTableRow>
                     <StyledTableCell>Site</StyledTableCell>
                     <StyledTableCell>URL</StyledTableCell>
+                    <StyledTableCell>Nome de Usuário</StyledTableCell>
                     <StyledTableCell>Email</StyledTableCell>
                     <StyledTableCell>Senha</StyledTableCell>
                     <StyledTableCell></StyledTableCell>
@@ -107,6 +108,7 @@ const Home = () => {
                         <StyledTableCell>
                           {credential.url ? <a target="_blank" href={credential.url}>{credential.url}</a> : "---"}
                         </StyledTableCell>
+                        <StyledTableCell>{credential.username || '---'}</StyledTableCell>
                         <StyledTableCell>{credential.email}</StyledTableCell>
                         <StyledTableCell>
                           {showPassword ? (
