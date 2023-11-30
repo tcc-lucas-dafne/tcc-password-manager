@@ -14,6 +14,7 @@ import {
 } from "./style";
 import { useAppContext } from "../../context";
 import { Navigate } from "react-router";
+import { Button } from "@mui/material";
 
 const Login = () => {
   const { user } = useAppContext();
@@ -46,6 +47,8 @@ const Login = () => {
         if (errorMessage) {
           toast.error(errorMessage)
         }
+      } else {
+        toast.error("Ocorreu um erro ao realizar o login.");
       }
     }
   }
@@ -56,25 +59,30 @@ const Login = () => {
     <Container>
       <FormContainer>
         <FieldContainer>
-          <Label>Email:</Label>
           <TextInput 
             name="email" 
+            type="email"
+            label="Email"
             placeholder="Insira seu Email"
             value={loginForm.email} 
             onChange={handleLoginForm} 
           />
         </FieldContainer>
         <FieldContainer>
-          <Label>Senha:</Label>
-          <PasswordInput 
-            name="password" 
+          <TextInput 
+            name="password"
+            type="password"
+            label="Senha" 
             placeholder="Insira sua Senha"
             value={loginForm.password} 
             onChange={handleLoginForm} 
           />
         </FieldContainer>
       
-        <ConfirmButton text="Entrar" onClick={loginUser} />
+        <Button variant="contained" color="primary" onClick={loginUser}>
+          Entrar
+        </Button>
+        <a href="/register">Não possui uma conta?</a>
       </FormContainer>
     </Container>
   )
