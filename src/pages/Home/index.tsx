@@ -116,7 +116,7 @@ const Home = () => {
                             </PasswordField>
                           ) : (
                             <PasswordField>
-                              {credential.password.replace(/[a-zA-Z0-9]/g, "#")}
+                              {credential.password.replace(/[a-zA-Z0-9$-/:-?{-~!"^_`\[\]]/g, "#")}
                               <EyeOpen onClick={showCredentialPassword.bind(null, idx)} />
                             </PasswordField>
                           )}
