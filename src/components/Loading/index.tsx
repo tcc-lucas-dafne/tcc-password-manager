@@ -1,12 +1,10 @@
-
-
-import { AiOutlineLoading3Quarters as LoadingSpinner } from "react-icons/ai";
 import { LoadingContainer} from './style';
+import { CircularProgress } from "@mui/material";
 
 const Loading = () => {
   return (
     <LoadingContainer>
-      <LoadingSpinner className="loading" />
+      <CircularProgress />
     </LoadingContainer>
   )
 }
