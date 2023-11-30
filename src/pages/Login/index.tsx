@@ -12,8 +12,12 @@ import {
   Label, 
   FieldContainer
 } from "./style";
+import { useAppContext } from "../../context";
+import { Navigate } from "react-router";
 
 const Login = () => {
+  const { user } = useAppContext();
+
   const [loginForm, setLoginForm] = useState<Login>({ email: "", password: "" });
 
   const handleLoginForm = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +35,11 @@ const Login = () => {
     try {
       const response = await UserService.login(data);
       console.log(response);
+      if (response.status === 200) {
+        const data = response.data;
+        localStorage.setItem("token", data.token);
+        window.location.reload();
+      }
     } catch (e) {
       const error = e as AxiosError;
       if (error.response && error.response.data) {
@@ -41,6 +50,8 @@ const Login = () => {
       }
     }
   }
+
+  if (user && user.id) return <Navigate to="/" replace />
 
   return (
     <Container>

@@ -9,8 +9,18 @@ function login(data: Login) {
   }
 };
 
+function getUser() {
+  try {
+    return API.get("/user")
+  } catch (err) {
+    console.error("getUser: ", err);
+    throw err;
+  }
+}
+
 const UserService = {
-  login
+  login,
+  getUser
 }
 
 export default UserService;
