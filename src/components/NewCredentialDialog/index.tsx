@@ -9,6 +9,9 @@ import ConfirmButton from "../../components/ConfirmButton";
 import ManagerServices from '../../services/manager';
 import { AxiosError } from 'axios';
 import { useAppContext } from '../../context';
+import { Button } from '@mui/material';
+import { CredentialFormContainer } from './style';
+import { toast } from 'react-toastify';
 
 const NewCredentialDialog = () => {
   const { user, isNewCredentialDialogOpen, handleCloseDialog } = useAppContext();
@@ -23,59 +26,89 @@ const NewCredentialDialog = () => {
 
   const createCredential = async () => {
     try {
-      const response = await ManagerServices.storeSiteCredentials({ id: user.id, ...credentialsForm });
+      let url = credentialsForm.url;
+      if (url && !url.startsWith("http://") && !url.startsWith("https://")) {
+        url = "https://" + url;
+      }
+
+      const data: CreateSiteCredential = {
+        id: user.id,
+        url,
+        name: credentialsForm.name,
+        username: credentialsForm.username,
+        email: credentialsForm.email,
+        password: credentialsForm.password
+      };
+
+      const response = await ManagerServices.storeSiteCredentials(data);
+      if (response.status === 201) {
+        toast.success("Credencial cadastrada com sucesso!");
+        setCredentialsForm({});
+        handleCloseDialog();
+      }
     } catch (e) {
       const error = e as AxiosError;
       console.log(error);
+      toast.error("Ocorreu um erro ao realizar o cadastro da credencial.");
     }
-  }
+  };
+
+  const isValid = (): boolean => {
+    return !credentialsForm.name || !(credentialsForm.email || credentialsForm.username) || !credentialsForm.password;
+  };
 
   return (
-    <Dialog open={isNewCredentialDialogOpen} onClose={handleCloseDialog}>
+    <Dialog open={isNewCredentialDialogOpen} onClose={handleCloseDialog} fullWidth maxWidth="sm">
       <DialogTitle>Cadastre um Novo Site</DialogTitle>
       <DialogContent>
-        <TextInput
-          name="name"
-          label="Nome do Site"
-          placeholder="Insira o Nome do Site"
-          value={credentialsForm.name || ""}
-          onChange={handleCredentialsForm}
-        />
-        <TextInput
-          name="username"
-          label="Nome de Usuário"
-          placeholder="Insira o Nome de Usuário"
-          value={credentialsForm.username || ""}
-          onChange={handleCredentialsForm}
-        />
-        <TextInput
-          name="email"
-          label="Email"
-          placeholder="Insira o Email"
-          value={credentialsForm.email || ""}
-          onChange={handleCredentialsForm}
-        />
-        <TextInput
-          name="password"
-          label="Senha"
-          placeholder="Insira a Senha do site"
-          value={credentialsForm.password || ""}
-          onChange={handleCredentialsForm}
-        />
-        <TextInput
-          name="url"
-          label="URL"
-          placeholder="Insira a URL do site"
-          value={credentialsForm.url || ""}
-          onChange={handleCredentialsForm}
-        />
+        <CredentialFormContainer>
+          <TextInput
+            name="name"
+            type="text"
+            label="Nome do Site"
+            placeholder="Insira o Nome do Site"
+            value={credentialsForm.name || ""}
+            onChange={handleCredentialsForm}
+          />
+          <TextInput
+            name="username"
+            type="text"
+            label="Nome de Usuário"
+            placeholder="Insira o Nome de Usuário"
+            value={credentialsForm.username || ""}
+            onChange={handleCredentialsForm}
+          />
+          <TextInput
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="Insira o Email"
+            value={credentialsForm.email || ""}
+            onChange={handleCredentialsForm}
+          />
+          <TextInput
+            name="password"
+            type="password"
+            label="Senha"
+            isRequired
+            placeholder="Insira a Senha do site"
+            value={credentialsForm.password || ""}
+            onChange={handleCredentialsForm}
+          />
+          <TextInput
+            name="url"
+            type="url"
+            label="URL"
+            placeholder="Insira a URL do site"
+            value={credentialsForm.url || ""}
+            onChange={handleCredentialsForm}
+          />
+        </CredentialFormContainer>
       </DialogContent>
       <DialogActions>
-        <ConfirmButton
-          text="Adicionar"
-          onClick={createCredential}
-          disabled={!credentialsForm.name || !(credentialsForm.email || credentialsForm.username) || !credentialsForm.password}
-        />
+        <Button variant="outlined" onClick={createCredential} disabled={isValid()}>
+          Adicionar
+        </Button>
       </DialogActions>
     </Dialog>
   );

@@ -95,7 +95,7 @@ const Home = () => {
                 <StyledTableRow key={idx} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <StyledTableCell component="th" scope="row">{credential.name}</StyledTableCell>
                   <StyledTableCell>
-                    {credential.url ? <a href={credential.url}>{credential.url}</a> : "---"}
+                    {credential.url ? <a target="_blank" href={credential.url}>{credential.url}</a> : "---"}
                   </StyledTableCell>
                   <StyledTableCell>{credential.email}</StyledTableCell>
                   <StyledTableCell>
