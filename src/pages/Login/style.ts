@@ -13,10 +13,9 @@ export const FormContainer = styled.div`
   background-color: #FFF;
   border-radius: 18px;
   padding: 32px;
-
-  &:not(:last-child) {
-    margin-bottom: 0.5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 `;
 
 export const Label = styled.label``;
