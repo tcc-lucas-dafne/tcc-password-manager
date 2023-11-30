@@ -9,6 +9,7 @@ type AppContext = {
   loading: boolean;
   isNewCredentialDialogOpen: boolean;
   credentials: SiteCredential[];
+  logout: () => void;
   handleOpenDialog: () => void;
   handleCloseDialog: () => void;
   getCredentials: (id: string) => void;
@@ -24,6 +25,11 @@ const AppProvider = ({ children }: { children: any }) => {
 
   const handleOpenDialog = () => setIsNewCredentialDialogOpen(true);
   const handleCloseDialog = () => setIsNewCredentialDialogOpen(false);
+
+  const logout = () => {
+    setUser(null);
+    localStorage.clear();
+  }
 
   const getCredentials = async (id: string) => {
     try {
@@ -67,6 +73,7 @@ const AppProvider = ({ children }: { children: any }) => {
         loading,
         credentials,
         isNewCredentialDialogOpen,
+        logout,
         handleOpenDialog,
         handleCloseDialog,
         getCredentials
