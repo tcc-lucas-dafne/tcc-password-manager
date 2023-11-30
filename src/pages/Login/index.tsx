@@ -34,7 +34,6 @@ const Login = () => {
 
     try {
       const response = await UserService.login(data);
-      console.log(response);
       if (response.status === 200) {
         const data = response.data;
         localStorage.setItem("token", data.token);
