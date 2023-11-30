@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaTrashAlt } from "react-icons/fa";
 
 export const Container = styled.div`
   margin: 1rem 28px;
@@ -23,6 +23,11 @@ export const EyeOpen = styled(FaEye)`
 `;
 
 export const EyeClosed = styled(FaEyeSlash)`
+  font-size: 20px;
+  cursor: pointer;
+`;
+
+export const Delete = styled(FaTrashAlt)`
   font-size: 20px;
   cursor: pointer;
 `;

@@ -18,9 +18,19 @@ function storeSiteCredentials(data: CreateSiteCredential) {
   }
 }
 
+function deleteCredential(id: number) {
+  try {
+    return API.delete(`/credential/${id}`);
+  } catch (err) {
+    console.error("deleteCredential: ", err);
+    throw err;
+  }
+}
+
 const ManagerServices = {
   getSiteCredentials,
-  storeSiteCredentials
+  storeSiteCredentials,
+  deleteCredential
 }
 
 export default ManagerServices;

@@ -20,6 +20,7 @@ type CreateSiteCredential = SiteCredentials & {
 }
 
 type SiteCredential = {
+  id: number;
   user_id: number; 
   email: string;
   name: string;

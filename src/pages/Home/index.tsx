@@ -10,9 +10,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container, EyeClosed, EyeOpen, PasswordField } from "./style";
-import { Pagination } from "@mui/material";
+import { Container, Delete, EyeClosed, EyeOpen, PasswordField } from "./style";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Pagination } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import Loading from "../../components/Loading";
+import { toast } from "react-toastify";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,9 +40,10 @@ const Home = () => {
   const { id } = useParams();
   const { user } = useAppContext();
 
+  const [loading, setLoading] = useState<boolean>(true);
   const [credentials, setCredentials] = useState<SiteCredential[]>([]);
-  const [activePage, setActivePage] = useState<number>(1);
   const [isCredentialPasswordDisplayed, setIsCredentialPasswordDisplayed] = useState<boolean[]>([]);
+  const [deleteCredentialDialog, setDeleteCredentialDialog] = useState<number>(0);
 
   const showCredentialPassword = (idx: number) => {
     setIsCredentialPasswordDisplayed(currState => {
@@ -50,9 +53,23 @@ const Home = () => {
     })
   };
 
-  const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setActivePage(value);
-  };
+  const openDeleteCredentialDialog = (id: number) => setDeleteCredentialDialog(id);
+  const closeDeleteCredentialDialog = () => setDeleteCredentialDialog(0);
+
+  const deleteCredential = async () => {
+    try {
+      const response = await ManagerServices.deleteCredential(deleteCredentialDialog);
+      if (response.status === 201) {
+        toast.success("Credencial Removida com Sucesso!");
+      }
+    } catch (e) {
+      const error = e as AxiosError;
+      console.log(error);
+      toast.error("Ocorreu um erro ao deletar a credencial. Tente novamente.")
+    } finally {
+      closeDeleteCredentialDialog()
+    }
+  }
 
   useEffect(() => {
     const getPasswords = async () => {
@@ -66,6 +83,8 @@ const Home = () => {
       } catch (e) {
         const error = e as AxiosError;
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -78,57 +97,72 @@ const Home = () => {
 
   return (
     <Container>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <StyledTableRow>
-              <StyledTableCell>Site</StyledTableCell>
-              <StyledTableCell>URL</StyledTableCell>
-              <StyledTableCell>Email</StyledTableCell>
-              <StyledTableCell>Senha</StyledTableCell>
-            </StyledTableRow>
-          </TableHead>
-          <TableBody>
-            {credentials.length && isCredentialPasswordDisplayed.length && credentials.map((credential: SiteCredential, idx: number) => {
-              let showPassword: boolean = isCredentialPasswordDisplayed[idx];
-              return (
-                <StyledTableRow key={idx} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <StyledTableCell component="th" scope="row">{credential.name}</StyledTableCell>
-                  <StyledTableCell>
-                    {credential.url ? <a target="_blank" href={credential.url}>{credential.url}</a> : "---"}
-                  </StyledTableCell>
-                  <StyledTableCell>{credential.email}</StyledTableCell>
-                  <StyledTableCell>
-                    {showPassword ? (
-                      <PasswordField>
-                        {credential.password}
-                        <EyeClosed onClick={showCredentialPassword.bind(null, idx)} />
-                      </PasswordField>
-                    ) : (
-                      <PasswordField>
-                        #####
-                        <EyeOpen onClick={showCredentialPassword.bind(null, idx)} />
-                      </PasswordField>
-                    )}
-                  </StyledTableCell>
-                </StyledTableRow>
-              )
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {/* <div style={{ backgroundColor: 'white' }}>
-        <Pagination 
-          count={10} 
-          variant="outlined" 
-          color="primary"
-          page={activePage} 
-          onChange={handlePaginationChange}
-        />
-      </div> */}
+      {!loading ? (
+        <>
+          {credentials.length && isCredentialPasswordDisplayed.length ? (
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }}>
+                <TableHead>
+                  <StyledTableRow>
+                    <StyledTableCell>Site</StyledTableCell>
+                    <StyledTableCell>URL</StyledTableCell>
+                    <StyledTableCell>Email</StyledTableCell>
+                    <StyledTableCell>Senha</StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                  </StyledTableRow>
+                </TableHead>
+                <TableBody>
+                  {credentials.map((credential: SiteCredential, idx: number) => {
+                    let showPassword: boolean = isCredentialPasswordDisplayed[idx];
+                    return (
+                      <StyledTableRow key={credential.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        <StyledTableCell component="th" scope="row">{credential.name}</StyledTableCell>
+                        <StyledTableCell>
+                          {credential.url ? <a target="_blank" href={credential.url}>{credential.url}</a> : "---"}
+                        </StyledTableCell>
+                        <StyledTableCell>{credential.email}</StyledTableCell>
+                        <StyledTableCell>
+                          {showPassword ? (
+                            <PasswordField>
+                              {credential.password}
+                              <EyeClosed onClick={showCredentialPassword.bind(null, idx)} />
+                            </PasswordField>
+                          ) : (
+                            <PasswordField>
+                              {credential.password.replace(/[a-zA-Z0-9]/g, "#")}
+                              <EyeOpen onClick={showCredentialPassword.bind(null, idx)} />
+                            </PasswordField>
+                          )}
+                        </StyledTableCell>
+                        <StyledTableCell>
+                          <Delete onClick={openDeleteCredentialDialog.bind(null, credential.id)} />
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <span>Nenhuma Credencial Cadastrada</span>
+          )}
+        </>
+      ) : (
+        <Loading />
+      )}
+      <Dialog open={!!deleteCredentialDialog} onClose={closeDeleteCredentialDialog} fullWidth maxWidth="sm">
+        <DialogTitle>Tem Certeza que Deseja Deletar a Credencial?</DialogTitle>
+        <DialogContent>
+          Não será possível recuperar a credencial depois de removida
+        </DialogContent>
+        <DialogActions>
+          <Button color="error" onClick={deleteCredential}>
+            Remover
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
-
 
 export default Home;
