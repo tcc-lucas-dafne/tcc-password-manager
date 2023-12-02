@@ -18,6 +18,15 @@ export const FormContainer = styled.div`
   row-gap: 1rem;
 `;
 
+export const SiteName = styled.div`
+  text-align: center;
+  font-weight: 800;
+  color: blue;
+  font-size: 2.5rem;
+  margin: 0rem 0rem 3rem 0rem;
+  letter-spacing: 0rem;
+`;
+
 export const Label = styled.label``;
 
 export const FieldContainer = styled.div`

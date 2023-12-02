@@ -1,6 +1,7 @@
 import { useState } from "react";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfirmButton from "../../components/ConfirmButton";
-import TextInput from "../../components/TextInput";
+import LoginInput from "../../components/LoginInput";
 import UserService from "../../services/user";
 import PasswordInput from "../../components/PasswordInput";
 import { AxiosError } from "axios";
@@ -10,7 +11,8 @@ import {
   Container, 
   FormContainer, 
   Label, 
-  FieldContainer
+  FieldContainer,
+  SiteName
 } from "./style";
 import { useAppContext } from "../../context";
 import { Navigate } from "react-router";
@@ -58,8 +60,9 @@ const Login = () => {
   return (
     <Container>
       <FormContainer>
+        <SiteName>Gerenciador de Senhas</SiteName>
         <FieldContainer>
-          <TextInput 
+          <LoginInput 
             name="email" 
             type="email"
             label="Email"
@@ -69,7 +72,7 @@ const Login = () => {
           />
         </FieldContainer>
         <FieldContainer>
-          <TextInput 
+          <LoginInput 
             name="password"
             type="password"
             label="Senha" 

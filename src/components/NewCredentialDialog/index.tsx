@@ -66,7 +66,7 @@ const NewCredentialDialog = () => {
 
   return (
     <Dialog open={isNewCredentialDialogOpen} onClose={handleCloseDialog} fullWidth maxWidth="sm">
-      <DialogTitle>Cadastre um Novo Site</DialogTitle>
+      <DialogTitle>Salve uma nova senha</DialogTitle>
       <DialogContent>
         <CredentialFormContainer>
           <TextInput

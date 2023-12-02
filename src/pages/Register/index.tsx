@@ -3,6 +3,8 @@ import { useState } from "react";
 import { 
   Container, 
   FormContainer, 
+  SiteName,
+  Title,
   Label, 
   FieldContainer
 } from "./style";
@@ -52,6 +54,8 @@ const Register = () => {
   return (
     <Container>
     <FormContainer>
+      <SiteName>Gerenciador de Senhas</SiteName>
+      <Title>Criar conta</Title>
       <FieldContainer>
         <TextInput 
           name="email" 

@@ -7,7 +7,7 @@ interface LabelProps {
 export const Input = styled.input`
   border: 1px solid grey;
   border-radius: 6px;
-  padding: 12px;
+  padding: 22px;
   color: #000;
   outline: none;
   font-size: 18px;
@@ -25,7 +25,7 @@ export const Label = styled.label<LabelProps>`
   `}
 `;
 
-export const TextInputContainer = styled.div`
+export const LoginInputContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 6px;
