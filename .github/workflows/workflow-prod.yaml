@@ -19,4 +19,4 @@ jobs:
         run: |
           npm install
           npm run build
-          npm audit
+          npm audit --force
