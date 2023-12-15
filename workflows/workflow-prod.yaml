@@ -1,0 +1,22 @@
+name: Password Manager CI
+
+on: pull_request
+
+jobs:
+  password-manager-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies and Build
+        run: |
+          npm install
+          npm run build
+          npm audit
