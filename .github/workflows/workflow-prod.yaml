@@ -18,5 +18,5 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install
+          npm audit fix
           npm run build
-          npm start
