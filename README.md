@@ -1,1 +1,0 @@
-# tcc-password-manager
