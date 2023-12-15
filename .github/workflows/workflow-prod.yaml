@@ -15,7 +15,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install Dependencies and Build
-        run: |
-          npm install
+      - name: Install Dependencies 
+        run: npm install
+
+      - name: Run npm audit
+        run: npm audit
+
+      - name: Fix Vulnerabilities
+        run: npm audit fix --force
+
+      - name: Build 
           npm run build
