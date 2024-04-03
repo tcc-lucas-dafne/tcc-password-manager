@@ -1,0 +1,22 @@
+version: '2.24.0'
+
+services:
+  tcc-password-manager:
+    container_name: frontend_password_manager
+    build: .
+    ports:
+      - 3000:3000
+    environment: 
+      PORT: 3000
+    env_file: .env
+    volumes:
+      - ./:/code
+      - node_modules:/code/node_modules
+    networks: 
+      - frontend_password_manager
+
+volumes: 
+  node_modules:
+
+networks: 
+  frontend_password_manager:
