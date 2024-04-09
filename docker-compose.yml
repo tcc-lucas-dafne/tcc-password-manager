@@ -1,4 +1,4 @@
-version: '2.26.1'
+version: '3.8'
 
 services:
   tcc-password-manager:
