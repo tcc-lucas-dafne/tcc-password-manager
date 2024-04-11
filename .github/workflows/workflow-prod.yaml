@@ -13,41 +13,41 @@ jobs:
       - name: Container up
         run: docker-compose up -d
 
-    # TruffleHog OSS (13k estrelas)
+      # TruffleHog OSS (13k estrelas)
 
-    # GoSec Security Checker (7k estrelas)
+      # GoSec Security Checker (7k estrelas)
 
-    # Is WebSite Vulnerable (1.9k estrelas)
+      # Is WebSite Vulnerable (1.9k estrelas)
 
-    # Stelligent CFN NAG (1.2k estrelas)
+      # Stelligent CFN NAG (1.2k estrelas)
 
-    # Snyk (500 estrelas)
+      # Snyk (500 estrelas)
 
-    # Legitify Analize
+      # Legitify Analize
 
-    # SonarCloud Scan
+      # SonarCloud Scan
 
-    # CHECKMARX (46 estrelas)
-    # - uses: actions/checkout@v2
-    # - name: Checkmarx CxFlow Action
-    #   uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9
-    #   with:
-    #     project: ${{ github.repository }}-PR
-    #     team: ${{ secrets.CHECKMARX_TEAMS }}
-    #     checkmarx_url: ${{ secrets.CHECKMARX_URL }}
-    #     checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
-    #     checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
-    #     checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
-    #     scanners: sca
-    #     break_build: true
-    #     sca_api_url: ${{ secrets.SCA_API_URL }}
-    #     sca_app_url: ${{ secrets.SCA_APP_URL }}
-    #     sca_access_control_url: ${{ secrets.SCA_ACCESS_CONTROL_URL }}
-    #     sca_tenant: ${{  secrets.SCA_TENANT }}
-    #     sca_username: ${{ secrets.SCA_USERNAME }}
+      # CHECKMARX (46 estrelas)
+      # - uses: actions/checkout@v2
+      # - name: Checkmarx CxFlow Action
+      #   uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9
+      #   with:
+      #     project: ${{ github.repository }}-PR
+      #     team: ${{ secrets.CHECKMARX_TEAMS }}
+      #     checkmarx_url: ${{ secrets.CHECKMARX_URL }}
+      #     checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
+      #     checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+      #     checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+      #     scanners: sca
+      #     break_build: true
+      #     sca_api_url: ${{ secrets.SCA_API_URL }}
+      #     sca_app_url: ${{ secrets.SCA_APP_URL }}
+      #     sca_access_control_url: ${{ secrets.SCA_ACCESS_CONTROL_URL }}
+      #     sca_tenant: ${{  secrets.SCA_TENANT }}
+      #     sca_username: ${{ secrets.SCA_USERNAME }}
 
-    # OWASP DEPENDENCY CHECK (63 estrelas)
-    - name: Checkout
+      # OWASP DEPENDENCY CHECK (63 estrelas)
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Build project with Maven
         run: mvn clean install
@@ -81,4 +81,3 @@ jobs:
           target: 'https://www.zaproxy.org'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
-
