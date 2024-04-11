@@ -45,7 +45,7 @@ jobs:
       #     sca_access_control_url: ${{ secrets.SCA_ACCESS_CONTROL_URL }}
       #     sca_tenant: ${{  secrets.SCA_TENANT }}
       #     sca_username: ${{ secrets.SCA_USERNAME }}
-
+  
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
@@ -67,10 +67,7 @@ jobs:
            path: ${{github.workspace}}/reports
       
       - name: Move Test Results
-        uses: actions/upload-artifact@v4
-        with:
-           name: Depcheck report
-           path: mv ${{github.workspace}}/reports ./${{github.event.repository.name}}/reports
+        run: mv ${{github.workspace}}/reports ./${{github.event.repository.name}}/reports
 
 
       # # ZAP (290 estrelas)
