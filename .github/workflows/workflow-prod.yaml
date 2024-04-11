@@ -69,8 +69,6 @@ jobs:
       # ZAP (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: master
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
