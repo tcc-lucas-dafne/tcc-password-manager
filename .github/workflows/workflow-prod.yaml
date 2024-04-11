@@ -65,6 +65,13 @@ jobs:
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
+      
+      - name: Move Test Results
+        uses: actions/upload-artifact@v4
+        with:
+           name: Depcheck report
+           path: mv ${{github.workspace}}/reports ./${{github.event.repository.name}}/reports
+
 
       # # ZAP (290 estrelas)
       # - name: Checkout
