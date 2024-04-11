@@ -13,9 +13,130 @@ jobs:
       - name: Container up
         run: docker-compose up -d
 
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
+    # TruffleHog OSS (13k estrelas)
+
+    # GoSec Security Checker (7k estrelas)
+
+    # Is WebSite Vulnerable (1.9k estrelas)
+
+    # Stelligent CFN NAG (1.2k estrelas)
+
+    # Snyk (500 estrelas)
+
+    # Legitify Analize
+
+    # SonarCloud Scan
+
+    # CHECKMARX (46 estrelas)
+    # - uses: actions/checkout@v2
+    # - name: Checkmarx CxFlow Action
+    #   uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9
+    #   with:
+    #     project: ${{ github.repository }}-PR
+    #     team: ${{ secrets.CHECKMARX_TEAMS }}
+    #     checkmarx_url: ${{ secrets.CHECKMARX_URL }}
+    #     checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
+    #     checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+    #     checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+    #     scanners: sca
+    #     break_build: true
+    #     sca_api_url: ${{ secrets.SCA_API_URL }}
+    #     sca_app_url: ${{ secrets.SCA_APP_URL }}
+    #     sca_access_control_url: ${{ secrets.SCA_ACCESS_CONTROL_URL }}
+    #     sca_tenant: ${{  secrets.SCA_TENANT }}
+    #     sca_username: ${{ secrets.SCA_USERNAME }}
+
+    # OWASP DEPENDENCY CHECK (63 estrelas)
+    - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build project with Maven
+        run: mvn clean install
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
+
+      # ZAP (290 estrelas)
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          token: ${{ secrets.TOKEN_GIT }}
+          docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
+          target: 'https://www.zaproxy.org'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
+
+      # SQL MAP
+  #     - name: Prepare environment
+  #     run: |
+  #       echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
+  #       echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+  #       TMP_TARGET="https://blackfox-security.com"
+  #       echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Scan with sqlmap
+  #     uses: thereisnotime/action-sqlmap@master
+  #     with:
+  #       url: ${{ env.TARGET }}
+  #       additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"
+  #   - name: Commit and push changes
+  #     uses: EndBug/add-and-commit@v9
+  #     with:
+  #       author_name: GitHub Actions
+  #       author_email: 41898282+github-actions[bot]@users.noreply.github.com
+  #       message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
+  #       add: "./reports/web/*"
+  #       pull: "--rebase --autostash"
+
+  #   # NIKTO (2 estrelas)
+  #   - name: Prepare environment
+  #     run: |
+  #       echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
+  #       echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+  #       TMP_TARGET="https://blackfox-security.com"
+  #       echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Scan with nikto
+  #     uses: thereisnotime/action-nikto@master
+  #     with:
+  #       url: ${{ env.TARGET }}
+  #       additional_args: "-ssl"
+  #   - name: Commit and push changes
+  #     uses: EndBug/add-and-commit@v9
+  #     with:
+  #       author_name: GitHub Actions
+  #       author_email: 41898282+github-actions[bot]@users.noreply.github.com
+  #       message: "👷 chore(nikto): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
+  #       add: "./reports/web/*"
+  #       pull: "--rebase --autostash"
+
+  # deploy:
+  #   # DEPLOY (HEROKU ou VERCEL)
+  #   needs: [build]
+  #   runs-on: ubuntu-latest
  
-    steps:
-    - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: akhileshns/heroku-deploy@v3.13.15 
+  #       with:
+  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #         heroku_app_name:  ${{secrets.HEROKU_APP_NAME}}
+  #         heroku_email: ${{secrets.HEROKU_EMAIL}}
