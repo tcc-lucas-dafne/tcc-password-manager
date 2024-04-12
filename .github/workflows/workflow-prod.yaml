@@ -69,13 +69,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            name: Depcheck report
-           path: ${{github.event.repository.name}}/reports
+           path:  ${{github.workspace}}/reports
 
       - name: Save Results
         run: |
           git clone "https://x-access-token:${{secrets.API_TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.event.repository.name}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+          cp -R  ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           cd ${{secrets.NAME_REPO_GIT}}
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
