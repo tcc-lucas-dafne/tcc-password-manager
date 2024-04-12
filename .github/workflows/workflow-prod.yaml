@@ -84,6 +84,7 @@ jobs:
       # ZAP (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
@@ -92,3 +93,42 @@ jobs:
           target: 'https://www.zaproxy.org'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
+
+      - name: Upload ZAP Scan report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Zap Report
+          path: ${{github.workspace}}/reports
+      
+      - name: Save Results
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+          cd ${{secrets.NAME_REPO_GIT}}
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push
+
+      # SQL MAP
+      - name: Prepare environment
+      run: |
+        echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
+        echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+        TMP_TARGET="https://blackfox-security.com"
+        echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Scan with sqlmap
+        uses: thereisnotime/action-sqlmap@master
+        with:
+          url: ${{ env.TARGET }}
+          additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Actions
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
+          add: "./reports/web/*"
+          pull: "--rebase --autostash"
