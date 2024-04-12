@@ -71,15 +71,15 @@ jobs:
            name: Depcheck report
            path:  ${{github.workspace}}/reports
 
-      - name: Save Results
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
-          cd ${{secrets.NAME_REPO_GIT}}
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
+      # - name: Save Results
+      #   run: |
+      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+      #     mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+      #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+      #     cd ${{secrets.NAME_REPO_GIT}}
+      #     git add .
+      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+      #     git push
     
       # ZAP (290 estrelas)
       - name: Checkout
@@ -100,8 +100,17 @@ jobs:
           name: Zap Scan report
           path: ${{github.workspace}}/reports
 
-      - name: Save ZAP Scan Results
+      # - name: Save ZAP Scan Results
+      #   run: |
+      #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+      #     cd ${{secrets.NAME_REPO_GIT}}
+      #     git add .
+      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+      #     git push
+        - name: Save Results
         run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
           cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           cd ${{secrets.NAME_REPO_GIT}}
           git add .
