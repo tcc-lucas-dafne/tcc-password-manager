@@ -10,13 +10,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Container up
-        run: docker-compose up -d
-
       - name: Audit packages
         run: npm audit --audit-level moderate
         env:
           CI: true
+
+      - name: Container up
+        run: docker-compose up -d
 
       # TruffleHog OSS (13k estrelas)
 
