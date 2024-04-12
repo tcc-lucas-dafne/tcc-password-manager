@@ -99,8 +99,8 @@ jobs:
         with:
           name: Zap Report
           path: ${{github.workspace}}/reports
-      
-      - name: Save Results
+
+      - name: Save ZAP Scan Results
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
@@ -112,11 +112,11 @@ jobs:
 
       # SQL MAP
       - name: Prepare environment
-      run: |
-        echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
-        echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
-        TMP_TARGET="https://blackfox-security.com"
-        echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
+        run: |
+          echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
+          echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+          TMP_TARGET="https://blackfox-security.com"
+          echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v3
       - name: Scan with sqlmap
