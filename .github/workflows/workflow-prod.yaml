@@ -73,6 +73,7 @@ jobs:
            path: ${{github.event.repository.name}}/reports
 
       - name: Save Results
+      run: |
         git clone "https://x-access-token:${{secrets.API_TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
         mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
         cp -R ${{github.event.repository.name}}/reports ${{secrets.NAME_REPO_GIT}}/reports
