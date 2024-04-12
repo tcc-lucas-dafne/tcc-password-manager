@@ -67,8 +67,7 @@ jobs:
            path: ${{github.workspace}}/reports
       
       - name: Move Test Results
-        run: mv ${{github.workspace}}/reports ./${{github.event.repository.name}}/reports
-
+        run: mv ${{github.workspace}}/reports ${{github.workspace}}/${{github.event.repository.name}}/reports
 
       # # ZAP (290 estrelas)
       # - name: Checkout
