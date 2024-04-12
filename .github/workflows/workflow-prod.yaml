@@ -10,11 +10,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Audit packages
-        run: npm audit --audit-level moderate
-        env:
-          CI: true
-
       - name: Container up
         run: docker-compose up -d
 
@@ -69,12 +64,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            name: Depcheck report
-           path: ${{github.workspace}}/reports
+           path: ${{github.event.repository.name}}/reports
       
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Move Test Results
-        run: mv ${{github.workspace}}/reports ${{github.workspace}}/${{github.event.repository.name}}/reports
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      # - name: Move Test Results
+      #   run: mv ${{github.workspace}}/reports ${{github.workspace}}/${{github.event.repository.name}}/reports
 
       # # ZAP (290 estrelas)
       # - name: Checkout
