@@ -97,13 +97,11 @@ jobs:
       - name: Upload ZAP Scan report
         uses: actions/upload-artifact@v4
         with:
-          name: Zap Report
+          name: Zap Scan report
           path: ${{github.workspace}}/reports
 
       - name: Save ZAP Scan Results
         run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
           cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           cd ${{secrets.NAME_REPO_GIT}}
           git add .
