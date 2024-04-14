@@ -10,8 +10,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # - name: Container up
-      #   run: docker-compose up -d
+      - name: Container up
+        run: docker-compose up -d
 
       # TruffleHog OSS (13k estrelas)
 
@@ -57,7 +57,7 @@ jobs:
       - uses: oke-py/npm-audit-action@v2
         with:
           audit_level: low
-          create_issues: false
+          create_issues: true
           github_token: ${{ secrets.TOKEN_GIT }}
           issue_labels: vulnerability
 
