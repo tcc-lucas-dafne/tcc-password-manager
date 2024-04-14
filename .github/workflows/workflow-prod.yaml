@@ -118,7 +118,7 @@ jobs:
       #     git add .
       #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
       #     git push
-        - name: Save Results
+      - name: Save Results
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
