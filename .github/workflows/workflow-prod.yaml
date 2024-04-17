@@ -53,7 +53,7 @@ jobs:
   
       # NPM AUDIT
       - name: run npm audit
-      - uses: oke-py/npm-audit-action@v2
+        uses: oke-py/npm-audit-action@v2
         with:
           audit_level: low
           create_issues: true
