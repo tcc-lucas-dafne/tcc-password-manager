@@ -71,9 +71,9 @@ jobs:
             ### Security Audit Report
             
             **Vulnerabilities Detected:**
-            - nth-check: High severity vulnerability due to Inefficient Regular Expression Complexity. [Details](https://github.com/advisories/GHSA-rp65-9cf3-cjxr)
-            - svgo: Vulnerable dependencies due to usage of vulnerable versions of nth-check and css-select.
-            - postcss: Moderate severity vulnerability due to a line return parsing error. [Details](https://github.com/advisories/GHSA-7fh5-64p2-3v2j)
+            - **nth-check**: High severity vulnerability due to Inefficient Regular Expression Complexity. [Details](https://github.com/advisories/GHSA-rp65-9cf3-cjxr)
+            - **svgo**: Vulnerable dependencies due to usage of vulnerable versions of nth-check and css-select.
+            - **postcss**: Moderate severity vulnerability due to a line return parsing error. [Details](https://github.com/advisories/GHSA-7fh5-64p2-3v2j)
             
             **Recommended Actions:**
             - To fix all vulnerabilities (including breaking changes), run: \`npm audit fix --force\`
