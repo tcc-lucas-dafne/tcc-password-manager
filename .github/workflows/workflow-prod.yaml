@@ -60,31 +60,31 @@ jobs:
           github_token: ${{ secrets.TOKEN_GIT }}
           issue_labels: vulnerability
 
-    - name: Comment on PR with npm audit report
-      uses: actions/github-script@v5
-      with:
-        github-token: ${{ secrets.TOKEN_GIT }}
-        script: |
-          const { context, github } = require('@actions/github');
+      - name: Comment on PR with npm audit report
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.TOKEN_GIT }}
+          script: |
+            const { context, github } = require('@actions/github');
 
-          const report = `
-          ### Security Audit Report
-          
-          **Vulnerabilities Detected:**
-          - nth-check: High severity vulnerability due to Inefficient Regular Expression Complexity. [Details](https://github.com/advisories/GHSA-rp65-9cf3-cjxr)
-          - svgo: Vulnerable dependencies due to usage of vulnerable versions of nth-check and css-select.
-          - postcss: Moderate severity vulnerability due to a line return parsing error. [Details](https://github.com/advisories/GHSA-7fh5-64p2-3v2j)
-          
-          **Recommended Actions:**
-          - To fix all vulnerabilities (including breaking changes), run: \`npm audit fix --force\`
-          `;
+            const report = `
+            ### Security Audit Report
+            
+            **Vulnerabilities Detected:**
+            - nth-check: High severity vulnerability due to Inefficient Regular Expression Complexity. [Details](https://github.com/advisories/GHSA-rp65-9cf3-cjxr)
+            - svgo: Vulnerable dependencies due to usage of vulnerable versions of nth-check and css-select.
+            - postcss: Moderate severity vulnerability due to a line return parsing error. [Details](https://github.com/advisories/GHSA-7fh5-64p2-3v2j)
+            
+            **Recommended Actions:**
+            - To fix all vulnerabilities (including breaking changes), run: \`npm audit fix --force\`
+            `;
 
-          github.issues.createComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.payload.pull_request.number,
-            body: report
-          });
+            github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: report
+            });
 
       - name: install dependencies
         run: npm ci
