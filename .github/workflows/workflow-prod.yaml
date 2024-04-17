@@ -52,8 +52,7 @@ jobs:
           git config --global user.name "${{secrets.GIT_USER_NAME}}"
   
       # NPM AUDIT
-      - name: install dependencies
-        run: npm ci
+      - name: run npm audit
       - uses: oke-py/npm-audit-action@v2
         with:
           audit_level: low
@@ -61,6 +60,8 @@ jobs:
           github_token: ${{ secrets.TOKEN_GIT }}
           issue_labels: vulnerability
 
+      - name: install dependencies
+        run: npm ci
 
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Checkout
