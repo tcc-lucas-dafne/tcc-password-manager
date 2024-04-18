@@ -61,6 +61,8 @@ jobs:
       #     issue_labels: vulnerability
 
       - name: install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
       # OWASP DEPENDENCY CHECK (63 estrelas)
