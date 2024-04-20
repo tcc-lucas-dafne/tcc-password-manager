@@ -73,7 +73,7 @@ jobs:
         id: Depcheck
         with:
           project: 'tcc-password-manager'
-          path: '.'
+          path: '${{ github.workspace }}'
           format: 'HTML'
           out: 'reports'
           args: >
