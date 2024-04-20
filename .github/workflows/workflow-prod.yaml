@@ -65,6 +65,16 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
+
+      - name: Verificar existência do diretório node_modules
+        run: |
+          if [ -d "node_modules" ]; then
+            echo "O diretório node_modules existe."
+          else
+            echo "O diretório node_modules não existe. Abortando a execução da verificação."
+            exit 1
+          fi
+
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
@@ -73,7 +83,7 @@ jobs:
         id: Depcheck
         with:
           project: 'tcc-password-manager'
-          path: '${{ github.workspace }}'
+          path: '.'
           format: 'HTML'
           out: 'reports'
           args: >
