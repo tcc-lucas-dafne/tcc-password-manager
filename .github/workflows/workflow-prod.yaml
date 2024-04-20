@@ -65,19 +65,19 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      - name: Verificar existência do diretório node_modules
-        run: |
-          NODE_MODULES_PATH=$(npm root)
-          if [ -d "$NODE_MODULES_PATH" ]; then
-            echo "O diretório node_modules existe em: $NODE_MODULES_PATH"
-          else
-            echo "O diretório node_modules não existe. Abortando a execução da verificação."
-            exit 1
-          fi
+      # - name: Verificar existência do diretório node_modules
+      #   run: |
+      #     NODE_MODULES_PATH=$(npm root)
+      #     if [ -d "$NODE_MODULES_PATH" ]; then
+      #       echo "O diretório node_modules existe em: $NODE_MODULES_PATH"
+      #     else
+      #       echo "O diretório node_modules não existe. Abortando a execução da verificação."
+      #       exit 1
+      #     fi
       
-      - name: Verificar existência do diretório node_modules
-        run: |
-          ls .
+      # - name: Verificar existência do diretório node_modules
+      #   run: |
+      #     ls .
 
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Depcheck
