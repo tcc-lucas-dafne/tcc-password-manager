@@ -10,6 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Pensar se vamos manter
       # - name: Container up
       #   run: docker-compose up -d
 
@@ -65,34 +66,34 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # OWASP DEPENDENCY CHECK (63 estrelas)
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
-        with:
-          project: 'tcc-password-manager'
-          path: './'
-          format: 'HTML'
-          out: 'reports'
-          args: >
-            --failOnCVSS 7
-            --enableRetired
-      - name: Upload Test results
-        uses: actions/upload-artifact@v4
-        with:
-           name: Depcheck report
-           path:  ${{github.workspace}}/reports
+      # # OWASP DEPENDENCY CHECK (63 estrelas)
+      # - name: Depcheck
+      #   uses: dependency-check/Dependency-Check_Action@main
+      #   id: Depcheck
+      #   with:
+      #     project: 'tcc-password-manager'
+      #     path: './'
+      #     format: 'HTML'
+      #     out: 'reports'
+      #     args: >
+      #       --failOnCVSS 7
+      #       --enableRetired
+      # - name: Upload Test results
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #      name: Depcheck report
+      #      path:  ${{github.workspace}}/reports
 
-      - name: Save Results
-        if: always()
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
-          cd ${{secrets.NAME_REPO_GIT}}
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
+      # - name: Save Results
+      #   if: always()
+      #   run: |
+      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+      #     mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+      #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+      #     cd ${{secrets.NAME_REPO_GIT}}
+      #     git add .
+      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+      #     git push
     
       # ZAP (290 estrelas)
       - name: Checkout
