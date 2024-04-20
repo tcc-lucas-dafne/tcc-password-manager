@@ -99,9 +99,9 @@ jobs:
       # Gerar um "deploy" para a aplicação e adicionar a URL no target
 
       - name: Iniciar aplicação
-      run: npm start
-      env:
-        PORT: ${{ github.job }} # Define a variável de ambiente PORT para a porta em que a aplicação será executada
+        run: npm start
+        env:
+          PORT: ${{ github.job }} # Define a variável de ambiente PORT para a porta em que a aplicação será executada
     
       # ZAP (290 estrelas)
       - name: Checkout
