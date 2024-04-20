@@ -10,8 +10,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Container up
-        run: docker-compose up -d
+      # - name: Container up
+      #   run: docker-compose up -d
 
       # TruffleHog OSS (13k estrelas)
 
@@ -75,7 +75,7 @@ jobs:
           project: 'tcc-password-manager'
           path: '.'
           format: 'HTML'
-          out: 'reports' # this is the default, no need to specify unless you wish to override it
+          out: 'reports'
           args: >
             --failOnCVSS 7
             --enableRetired
