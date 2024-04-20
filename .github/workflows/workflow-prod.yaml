@@ -68,8 +68,9 @@ jobs:
 
       - name: Verificar existência do diretório node_modules
         run: |
-          if [ -d "node_modules" ]; then
-            echo "O diretório node_modules existe."
+          NODE_MODULES_PATH=$(npm root)
+          if [ -d "$NODE_MODULES_PATH" ]; then
+            echo "O diretório node_modules existe em: $NODE_MODULES_PATH"
           else
             echo "O diretório node_modules não existe. Abortando a execução da verificação."
             exit 1
