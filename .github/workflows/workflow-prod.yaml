@@ -65,20 +65,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # - name: Verificar existência do diretório node_modules
-      #   run: |
-      #     NODE_MODULES_PATH=$(npm root)
-      #     if [ -d "$NODE_MODULES_PATH" ]; then
-      #       echo "O diretório node_modules existe em: $NODE_MODULES_PATH"
-      #     else
-      #       echo "O diretório node_modules não existe. Abortando a execução da verificação."
-      #       exit 1
-      #     fi
-      
-      # - name: Verificar existência do diretório node_modules
-      #   run: |
-      #     ls .
-
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
@@ -97,15 +83,16 @@ jobs:
            name: Depcheck report
            path:  ${{github.workspace}}/reports
 
-      # - name: Save Results
-      #   run: |
-      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-      #     mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-      #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
-      #     cd ${{secrets.NAME_REPO_GIT}}
-      #     git add .
-      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-      #     git push
+      - name: Save Results
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+          cd ${{secrets.NAME_REPO_GIT}}
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push
     
       # ZAP (290 estrelas)
       - name: Checkout
