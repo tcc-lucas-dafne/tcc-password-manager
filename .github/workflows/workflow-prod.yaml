@@ -117,7 +117,7 @@ jobs:
           target: 'http://localhost:${{ env.PORT }}'
           cmd_options: '-a' #indica ataque ativo, onde o zap tenta atuar como um atacante em busca de vulnerabilidades
           volumes:
-            - "$(pwd):/zap/wrk"
+            - '$(pwd):/zap/wrk'
 
       - name: Upload ZAP Scan report
         uses: actions/upload-artifact@v4
