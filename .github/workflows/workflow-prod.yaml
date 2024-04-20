@@ -63,7 +63,7 @@ jobs:
       - name: install dependencies
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm install
+        run: npm ci
 
 
       - name: Verificar existência do diretório node_modules
@@ -90,6 +90,7 @@ jobs:
           args: >
             --failOnCVSS 7
             --enableRetired
+            --disableNodeJS
       - name: Upload Test results
         uses: actions/upload-artifact@v4
         with:
