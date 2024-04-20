@@ -63,7 +63,7 @@ jobs:
       - name: install dependencies
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm ci
+        run: npm install
 
 
       - name: Verificar existência do diretório node_modules
@@ -84,7 +84,7 @@ jobs:
         id: Depcheck
         with:
           project: 'tcc-password-manager'
-          path: '${{ env.NODE_MODULES_PATH }}'
+          path: '.'
           format: 'HTML'
           out: 'reports'
           args: >
