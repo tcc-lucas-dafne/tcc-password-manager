@@ -84,7 +84,7 @@ jobs:
         id: Depcheck
         with:
           project: 'tcc-password-manager'
-          path: '.'
+          path: '${{ env.NODE_MODULES_PATH }}'
           format: 'HTML'
           out: 'reports'
           args: >
