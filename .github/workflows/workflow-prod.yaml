@@ -56,6 +56,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
 
       # CHECKMARX (46 estrelas)
       # - uses: actions/checkout@v2
