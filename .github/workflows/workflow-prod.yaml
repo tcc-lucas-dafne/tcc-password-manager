@@ -126,12 +126,6 @@ jobs:
           target: 'http://localhost:${{ env.PORT }}'
           cmd_options: '-a' #indica ataque ativo, onde o zap tenta atuar como um atacante em busca de vulnerabilidades
 
-      - name: Upload ZAP Scan report
-        uses: actions/upload-artifacs@v4
-        with:
-          name: Zap Scan report
-          path: ${{github.workspace}}/reports
-
       # - name: Save ZAP Scan Results
       #   run: |
       #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
