@@ -129,7 +129,7 @@ jobs:
       - name: Deploy Project Artifacts
         run: |
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-          VERCEL_URL=$(echo "$VERCEL_DEPLOY_OUTPUT" | awk '/> Preview ready/{print $NF}')
+          VERCEL_URL=$(echo "$VERCEL_DEPLOY_OUTPUT" | awk -F ' ' '/https:\/\/.*\.vercel\.app/{print $NF}')
           echo "VERCEL_URL=$VERCEL_URL" >> $GITHUB_ENV
 
       - name: See URL
