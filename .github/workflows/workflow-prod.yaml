@@ -53,9 +53,9 @@ jobs:
       
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       # CHECKMARX (46 estrelas)
       # - uses: actions/checkout@v2
