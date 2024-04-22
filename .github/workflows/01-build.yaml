@@ -116,7 +116,7 @@ jobs:
         env:
           PORT: ${{ github.job }} # Define a variável de ambiente PORT para a porta em que a aplicação será executada
     
-            # Gerar um "deploy" para a aplicação e adicionar a URL no target
+      # Gerar um "deploy" para a aplicação e adicionar a URL no target
       - name: Install Vercel CLI
         run: npm install --global vercel
 
@@ -127,13 +127,17 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts
-        run: |
-        vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-        export VERCEL_URL=$(vercel deploy --json | jq -r '.url')
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
       # ZAP (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Set Vercel URL
+        run: |
+          VERCEL_DEPLOY_OUTPUT=$(vercel --json)
+          VERCEL_URL=$(echo "$VERCEL_DEPLOY_OUTPUT" | jq -r '.url')
+          echo "VERCEL_URL=$VERCEL_URL" >> $GITHUB_ENV
 
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.12.0
@@ -150,6 +154,7 @@ jobs:
       #     git add .
       #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
       #     git push
+      
       - name: Save Results
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
