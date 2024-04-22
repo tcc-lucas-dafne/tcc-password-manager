@@ -132,6 +132,9 @@ jobs:
           VERCEL_URL=$(echo "$VERCEL_DEPLOY_OUTPUT" | awk '/> Preview ready/{print $NF}')
           echo "VERCEL_URL=$VERCEL_URL" >> $GITHUB_ENV
 
+      - name: See URL
+        run: echo "VERCEL_URL=$VERCEL_URL"
+
       # ZAP (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
