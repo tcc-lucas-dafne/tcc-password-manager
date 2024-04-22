@@ -46,7 +46,16 @@ jobs:
       # Legitify Analize
 
       # SonarCloud Scan
-
+      - name: SonarCloud
+        uses: actions/checkout@v3
+          with:
+            fetch-depth: 0 
+      
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+          env:
+            GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       # CHECKMARX (46 estrelas)
       # - uses: actions/checkout@v2
@@ -120,7 +129,7 @@ jobs:
             - '$(pwd):/zap/wrk'
 
       - name: Upload ZAP Scan report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifacs@v4
         with:
           name: Zap Scan report
           path: ${{github.workspace}}/reports
