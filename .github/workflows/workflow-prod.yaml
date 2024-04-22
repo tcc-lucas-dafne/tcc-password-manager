@@ -118,16 +118,16 @@ jobs:
     
             # Gerar um "deploy" para a aplicação e adicionar a URL no target
       - name: Install Vercel CLI
-      run: npm install --global vercel
+        run: npm install --global vercel
 
       - name: Pull Vercel Environment Information
-      run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-      run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts
-      run: |
+        run: |
         vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
         export VERCEL_URL=$(vercel deploy --json | jq -r '.url')
 
