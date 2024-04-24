@@ -144,7 +144,7 @@ jobs:
           cmd_options: '-a' #indica ataque ativo, onde o zap tenta atuar como um atacante em busca de vulnerabilidades
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: zap_scan
           path: ${{ github.workspace }}/reports
