@@ -143,6 +143,22 @@ jobs:
           target: 'https://tcc-password-manager.vercel.app/'
           cmd_options: '-a' #indica ataque ativo, onde o zap tenta atuar como um atacante em busca de vulnerabilidades
 
+      - name: Upload Test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Depcheck report
+          path:  ${{github.workspace}}/reports
+
+      - name: Save Results
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+          cd ${{secrets.NAME_REPO_GIT}}
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push
+
       # SQL MAP
       - name: Prepare environment
         run: |
@@ -160,11 +176,38 @@ jobs:
           url: ${{ env.TARGET }}
           additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"
 
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v9
+      # - name: Commit and push changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: GitHub Actions
+      #     author_email: 41898282+github-actions[bot]@users.noreply.github.com
+      #     message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
+      #     add: "./reports/web/*"
+      #     pull: "--rebase --autostash"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Upload Test results
+        uses: actions/upload-artifact@v4
         with:
-          author_name: GitHub Actions
-          author_email: 41898282+github-actions[bot]@users.noreply.github.com
-          message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
-          add: "./reports/web/*"
-          pull: "--rebase --autostash"
+          name: Depcheck report
+          path:  ${{github.workspace}}/reports
+
+      - name: Save Results
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+          cd ${{secrets.NAME_REPO_GIT}}
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push
+
+      # SQL MAP
+      - name: Prepare environment
+        run: |
+          echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
+          echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
+          TMP_TARGET="https://tcc-password-manager.vercel.app/"
+          echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
