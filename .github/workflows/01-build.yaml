@@ -143,11 +143,16 @@ jobs:
           target: 'https://tcc-password-manager.vercel.app/'
           cmd_options: '-a' #indica ataque ativo, onde o zap tenta atuar como um atacante em busca de vulnerabilidades
 
-      - name: Upload Test results
-        uses: actions/upload-artifact@v4
+      - name: Copy report to directory
+        run: |
+          mkdir -p ${{ github.workspace }}/reports
+          cp -r /zap/wrk/* ${{ github.workspace }}/reports
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: Depcheck report
-          path:  ${{github.workspace}}/reports
+          name: zap-reports
+          path: ${{ github.workspace }}/reports
 
       - name: Save Results
         run: |
