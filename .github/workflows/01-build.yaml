@@ -154,6 +154,7 @@ jobs:
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
           cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           cd ${{secrets.NAME_REPO_GIT}}
+          git checkout main
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push
