@@ -17,18 +17,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm ci
-      
-      - name: Iniciar aplicação
-        run: |
-          npm start &
-          sleep 10 
-        env:
-          PORT: ${{ github.job }} # Define a variável de ambiente PORT para a porta em que a aplicação será executada
-    
       - name: Install Vercel CLI
         run: npm install --global vercel
 
