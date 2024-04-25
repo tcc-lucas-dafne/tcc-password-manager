@@ -60,17 +60,6 @@ jobs:
           name: zap_scan
           path: ${{ github.workspace }}/reports
 
-      - name: Save Results
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
-          cd ${{secrets.NAME_REPO_GIT}}
-          git checkout main
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
-
       # SQL MAP
       - name: Prepare environment
         run: |
@@ -97,22 +86,11 @@ jobs:
           add: "./reports"
           pull: "--rebase --autostash"
 
-      # - name: Checkout
-      #   uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       
-      # - name: Upload Test results
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Depcheck report
-      #     path:  ${{github.workspace}}/reports
-
-      # - name: Save Results
-      #   run: |
-      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-      #     mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-      #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
-      #     cd ${{secrets.NAME_REPO_GIT}}
-      #     git checkout main
-      #     git add .
-      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-      #     git push
+      - name: Upload Test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Depcheck report
+          path:  ${{github.workspace}}/reports
