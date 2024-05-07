@@ -46,6 +46,8 @@ jobs:
 
       # Legitify Analize
 
+      # Ferramentas SAST
+
       # SonarCloud Scan
       # - name: SonarCloud
       #   uses: actions/checkout@v3
@@ -79,6 +81,8 @@ jobs:
       #     sca_access_control_url: ${{ secrets.SCA_ACCESS_CONTROL_URL }}
       #     sca_tenant: ${{  secrets.SCA_TENANT }}
       #     sca_username: ${{ secrets.SCA_USERNAME }}
+
+      # Ferramentas SCA
 
       # # OWASP DEPENDENCY CHECK (63 estrelas)
       # - name: Depcheck

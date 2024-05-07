@@ -30,6 +30,8 @@ jobs:
         run: |
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
+     # Ferramentas DAST
+
      #ZAP (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
