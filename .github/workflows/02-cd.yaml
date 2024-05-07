@@ -1,7 +1,9 @@
 name: CD
 
 # Alterar depois pra branch main
-on: pull_request
+on: 
+  push:
+    branches: [8-testar-workflow-ci-cd]
 
 defaults:
   run:
