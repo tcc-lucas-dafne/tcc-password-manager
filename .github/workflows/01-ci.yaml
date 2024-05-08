@@ -36,7 +36,7 @@ jobs:
       - name: install dependencies
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm ci
+        run: npm install
 
       # TruffleHog OSS (13k estrelas)
 
