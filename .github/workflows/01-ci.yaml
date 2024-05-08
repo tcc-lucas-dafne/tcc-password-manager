@@ -39,6 +39,7 @@ jobs:
         run: npm install
 
       # TruffleHog OSS (13k estrelas)
+      # Action
 
       # GoSec Security Checker (7k estrelas)
 
