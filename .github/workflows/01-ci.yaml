@@ -116,4 +116,4 @@ jobs:
           cd ${{secrets.NAME_REPO_GIT}}
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
+          git push origin develop
