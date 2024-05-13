@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v2
 
       # Pensar se vamos manter
-      # - name: Container up
-      #   run: docker-compose up -d
+      - name: Build
+        run: docker-compose build 
 
       - name: Config GitHub
         run: |
@@ -33,10 +33,10 @@ jobs:
       #     github_token: ${{ secrets.TOKEN_GIT }}
       #     issue_labels: vulnerability
 
-      - name: install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm install
+      # - name: install dependencies
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
+      #   run: npm ci
 
       # TruffleHog OSS (13k estrelas)
       # Action
