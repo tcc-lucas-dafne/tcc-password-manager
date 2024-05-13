@@ -15,10 +15,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Pensar se vamos manter
-      # - name: Build
-      #   run: docker-compose build 
-
       - name: Config GitHub
         run: |
           git config --global user.email "${{secrets.GIT_USER_EMAIL}}"
@@ -33,7 +29,16 @@ jobs:
       #     github_token: ${{ secrets.TOKEN_GIT }}
       #     issue_labels: vulnerability
 
+      # Pensar se vamos manter
+      # - name: Build
+      #   run: docker-compose build 
+
       - name: install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
+        run: npm install
+
+      - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
