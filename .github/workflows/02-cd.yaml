@@ -87,6 +87,9 @@ jobs:
             ${{ github.workspace }}/report_html.html
             ${{ github.workspace }}/report_json.html
             ${{ github.workspace }}/report_md.html
+      
+      - name: Debugging - List files in workspace
+        run: ls -l ${{github.workspace}}
 
       - name: Save Results
         if: always()
