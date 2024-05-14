@@ -90,6 +90,7 @@ jobs:
 
       - name: Copiar arquivos para pasta
         run: |
+          mkdir -p ${{ github.workspace }}/zap_full_scan
           cp ${{ github.workspace }}/report_html.html $${{ github.workspace }}/zap_full_scan/report_html.html
           cp ${{ github.workspace }}/report_json.json $${{ github.workspace }}/zap_full_scan/report_json.json
           cp ${{ github.workspace }}/report_md.md $$${{ github.workspace }}/zap_full_scan/report_md.md
