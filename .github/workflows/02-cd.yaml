@@ -92,9 +92,7 @@ jobs:
         if: always()
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-        #  mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan_reports
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
-        #  cp -R ${{github.workspace}}/zap_baseline_scan/* ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan_reports
           cp -R ${{github.workspace}}/zap_full_scan/* ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
           cd ${{secrets.NAME_REPO_GIT}}
           git add .
