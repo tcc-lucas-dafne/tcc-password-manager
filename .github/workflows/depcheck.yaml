@@ -46,14 +46,28 @@ jobs:
            name: Depcheck report
            path:  ${{github.workspace}}
 
-      - name: Save Results
+      - name: Save Results Branch to Analyze
         if: always()
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/owasp_dependency_check/${current_date} && mkdir -p reports/owasp_dependency_check${current_date}
+          cp -R ${{github.workspace}}/reports reports/owasp_dependency_check/${current_date}
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push
+      
+      - name: Save Results Develop
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/owasp_dependency_check/${current_date} && mkdir -p reports/owasp_dependency_check${current_date}
+          cp -R ${{github.workspace}}/reports reports/owasp_dependency_check/${current_date}
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
