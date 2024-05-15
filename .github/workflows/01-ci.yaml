@@ -39,18 +39,12 @@ jobs:
       - name: install npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm install
+        run: npm install --package-lock
 
       - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
-
-      - name: Upload Package-Json results
-        uses: actions/upload-artifact@v4
-        with:
-           name: package-lock.json
-           path:  ${{github.workspace}}/package-lock.json
 
       # TruffleHog OSS (13k estrelas)
       # Action
