@@ -59,7 +59,7 @@ jobs:
         with:
           name: zap_baseline_scan
           path: |
-            ${{ github.workspace }}/zap_baseline_scan
+            ${{ github.workspace }}/zap_baseline_scan.zip
 
       - name: Save Results
         if: always()
@@ -68,7 +68,7 @@ jobs:
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan
-          unzip ${{ github.workspace }}/zap_baseline_scan.zip -d ${{ github.workspace }}/reports/zap_baseline_scan
+          unzip ${{ github.workspace }}/zap_baseline_scan.zip -d ${{ github.workspace }}/zap_baseline_scan
           cp -R ${{github.workspace}}/zap_baseline_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
