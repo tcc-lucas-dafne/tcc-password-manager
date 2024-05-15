@@ -36,18 +36,12 @@ jobs:
       # - name: Build
       #   run: docker-compose build 
 
-      - name: Limpar Cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm # Substitua pelo caminho do cache que deseja limpar
-          action: delete
-
       - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # TruffleHog OSS (13k estrelas)
+      # TruffleHog OSS (13k estrelas)ss
       # Action
 
       # GoSec Security Checker (7k estrelas)
@@ -63,16 +57,16 @@ jobs:
       # Ferramentas SAST
 
       # SonarCloud Scan
-      - name: SonarCloud
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 
+      # - name: SonarCloud
+      #   uses: actions/checkout@v3
+      #   with:
+      #     fetch-depth: 0 
       
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       # Ferramentas SCA
 
