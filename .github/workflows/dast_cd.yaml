@@ -189,7 +189,6 @@ jobs:
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app"
-          additional_args: "-ssl"
       
       - name: Save Results
         if: always()
