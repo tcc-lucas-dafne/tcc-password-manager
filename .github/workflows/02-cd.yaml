@@ -82,6 +82,7 @@ jobs:
           cp -R ${{github.workspace}}/report_html.html ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
           cp -R ${{github.workspace}}/report_md.md ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
           cp -R ${{github.workspace}}/report_json.json ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
+          git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
 
