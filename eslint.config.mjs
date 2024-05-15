@@ -9,6 +9,7 @@ export default [
     parser: ["@typescript-eslint/parser"],
     plugins: ["@typescript-eslint"],
     extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    files: ["src/**/*.js"],
     rules: {
       "react/tsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
       "react/prop-types": "off",
