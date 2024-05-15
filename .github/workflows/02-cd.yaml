@@ -67,9 +67,7 @@ jobs:
         with:
           name: zap_baseline_scan
           path: |
-            ${{ github.workspace }}/report_html.html
-            ${{ github.workspace }}/report_json.json
-            ${{ github.workspace }}/report_md.md
+            ${{ github.workspace }}/zap_baseline_scan/
 
       - name: Save Results
         if: always()
@@ -79,9 +77,7 @@ jobs:
           git checkout develop
           current_date=$(date +%Y-%m-%d)
           rm -rf ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date} && mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}
-          cp -R ${{github.workspace}}/report_html.html ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
-          cp -R ${{github.workspace}}/report_md.md ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
-          cp -R ${{github.workspace}}/report_json.json ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
+          cp -R ${{github.workspace}}/zap_baseline_scan/ ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
@@ -122,14 +118,15 @@ jobs:
       - name: Save Results
         if: always()
         run: |
-          mkdir -p ${{ github.workspace }}/zap_full_scan
-          mv ${{ github.workspace }}/report_html.html ${{ github.workspace }}/zap_full_scan/report_html.html
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
-          cp -R ${{github.workspace}}/zap_full_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
           cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date} && mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date}
+          cp -R ${{github.workspace}}/zap_full_scan/ ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date}/
+          git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
+          git push origin develop
 
       # SQL MAP
       - name: Prepare environment
