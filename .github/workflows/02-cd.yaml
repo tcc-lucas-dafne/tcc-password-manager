@@ -86,6 +86,13 @@ jobs:
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
 
+          
+      - name: Remove reports 
+        run: |
+          rm report_html.html
+          rm report_md.md
+          rm report_json.json
+
       #ZAP FULL SCAN (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
@@ -135,6 +142,12 @@ jobs:
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
+
+      - name: Remove reports 
+        run: |
+          rm report_html.html
+          rm report_md.md
+          rm report_json.json
 
       # SQL MAP
       - name: Prepare environment
