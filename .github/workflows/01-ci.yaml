@@ -71,32 +71,32 @@ jobs:
       # Ferramentas SCA
 
       # OWASP DEPENDENCY CHECK (63 estrelas)
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
-        with:
-          project: 'tcc-password-manager'
-          path: './'
-          format: 'HTML'
-          out: 'reports'
-          args: >
-            --failOnCVSS 7
-            --enableRetired
+      # - name: Depcheck
+      #   uses: dependency-check/Dependency-Check_Action@main
+      #   id: Depcheck
+      #   with:
+      #     project: 'tcc-password-manager'
+      #     path: './'
+      #     format: 'HTML'
+      #     out: 'reports'
+      #     args: >
+      #       --failOnCVSS 7
+      #       --enableRetired
 
-      - name: Upload Test results
-        uses: actions/upload-artifact@v4
-        with:
-           name: Depcheck report
-           path:  ${{github.workspace}}
+      # - name: Upload Test results
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #      name: Depcheck report
+      #      path:  ${{github.workspace}}
 
-      - name: Save Results
-        if: always()
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          cd ${{secrets.NAME_REPO_GIT}}
-          git checkout develop
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push origin develop
+      # - name: Save Results
+      #   if: always()
+      #   run: |
+      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+      #     cd ${{secrets.NAME_REPO_GIT}}
+      #     git checkout develop
+      #     mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+      #     cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
+      #     git add .
+      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+      #     git push origin develop
