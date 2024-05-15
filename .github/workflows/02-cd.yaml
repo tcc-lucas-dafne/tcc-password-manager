@@ -79,6 +79,9 @@ jobs:
           #fail_action: 'true'
           artifact_name: 'zap_full_scan'
       
+      - name: Checkout
+        uses: actions/checkout@v3
+        
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -96,6 +99,9 @@ jobs:
           mv ${{ github.workspace }}/report_json.json ${{ github.workspace }}/zap_full_scan/report_json.json
           mv ${{ github.workspace }}/report_md.md ${{ github.workspace }}/zap_full_scan/report_md.md
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
+          cp -R ${{github.workspace}}/zap_full_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
+          cd ${{secrets.NAME_REPO_GIT}}
 
       # SQL MAP
       - name: Prepare environment
