@@ -36,14 +36,6 @@ jobs:
       # - name: Build
       #   run: docker-compose build 
 
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: install npm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm install
-
       - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
@@ -104,10 +96,10 @@ jobs:
         if: always()
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
-          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
+          cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
