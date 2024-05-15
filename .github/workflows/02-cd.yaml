@@ -53,13 +53,21 @@ jobs:
           allow_issue_writing: 'true'
           #fail_action: 'true'
           artifact_name: 'zap_baseline_scan'
+      
+      - name: Teste
+        run: |
+          ls 
+
+      - name: Caminho arquivo
+        run: |
+          find . -type f -name "zap_baseline_scan"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: zap_baseline_scan
           path: |
-            ${{ github.workspace }}/zap_baseline_scan.zip
+            ${{ github.workspace }}/zap_baseline_scan
 
       - name: Save Results
         if: always()
@@ -88,6 +96,14 @@ jobs:
           allow_issue_writing: 'true'
           #fail_action: 'true'
           artifact_name: 'zap_full_scan'
+
+      - name: Teste
+        run: |
+          ls 
+
+      - name: Caminho arquivo
+        run: |
+          find . -type f -name "zap_full_scan"
       
       - name: Checkout
         uses: actions/checkout@v3

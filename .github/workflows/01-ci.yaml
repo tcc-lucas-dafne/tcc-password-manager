@@ -63,7 +63,7 @@ jobs:
       # Legitify Analize
 
       - name: ESLint check
-        run: npx eslint ./src --ext .js
+        run: npx eslint ./src --ext .ts
 
       # Ferramentas SAST
 
