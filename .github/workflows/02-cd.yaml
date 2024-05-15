@@ -124,6 +124,7 @@ jobs:
       - name: Save Results
         if: always()
         run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
           current_date=$(date +%Y-%m-%d)
