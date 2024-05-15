@@ -31,7 +31,7 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: CI=true vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts
         run: |
@@ -67,7 +67,7 @@ jobs:
         with:
           name: zap_baseline_scan
           path: |
-            ${{ github.workspace }}/zap_baseline_scan
+            ${{ github.workspace }}/zap_baseline_scan/
 
       - name: Save Results
         if: always()
@@ -113,7 +113,7 @@ jobs:
         with:
           name: zap_full_scan
           path: |
-            ${{ github.workspace }}/zap_full_scan
+            ${{ github.workspace }}/zap_full_scan/
 
       - name: Save Results
         if: always()

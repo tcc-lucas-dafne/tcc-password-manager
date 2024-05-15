@@ -36,10 +36,21 @@ jobs:
       # - name: Build
       #   run: docker-compose build 
 
+      - name: install npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
+        run: npm install
+
       - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
+
+      - name: Upload Package-Json results
+        uses: actions/upload-artifact@v4
+        with:
+           name: package-lock.json
+           path:  ${{github.workspace}}/package-lock.json
 
       # TruffleHog OSS (13k estrelas)
       # Action
@@ -90,7 +101,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            name: Depcheck report
-           path:  ${{github.workspace}}/reports
+           path:  ${{github.workspace}}
 
       - name: Save Results
         if: always()
