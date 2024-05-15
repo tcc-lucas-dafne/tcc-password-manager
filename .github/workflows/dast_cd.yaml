@@ -53,14 +53,6 @@ jobs:
           allow_issue_writing: 'true'
           #fail_action: 'true'
           artifact_name: 'zap_baseline_scan'
-      
-      - name: Teste
-        run: |
-          ls 
-
-      - name: Caminho arquivo
-        run: |
-          find . -type f -name "zap_baseline_scan"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -108,14 +100,6 @@ jobs:
           #fail_action: 'true'
           artifact_name: 'zap_full_scan'
 
-      - name: Teste
-        run: |
-          ls 
-
-      - name: Caminho arquivo
-        run: |
-          find . -type f -name "zap_full_scan"
-        
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -188,7 +172,11 @@ jobs:
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
-          url: "https://hml-tcc-password-manager.vercel.app"
+          url: "https://homolog-password-manager-api-e0f4d2b888e5.herokuapp.com/"
+        
+      - name: Teste
+        run: |
+          ls 
       
       - name: Save Results
         if: always()
