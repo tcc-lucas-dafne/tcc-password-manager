@@ -151,7 +151,7 @@ jobs:
         run: |
           echo "START_DATE=$(date +'%d-%m-%YT%H-%M-%S-%Z')" >> $GITHUB_ENV
           echo "START_TIMESTAMP=$(date +'%s')" >> $GITHUB_ENV
-          TMP_TARGET="https://hml-tcc-password-manager.vercel.app"
+          TMP_TARGET="https://hml-tcc-password-manager.vercel.app/login"
           echo "TARGET=$TMP_TARGET" >> $GITHUB_ENV
 
       - name: Checkout
@@ -163,14 +163,27 @@ jobs:
           url: ${{ env.TARGET }}
           additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"
 
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: GitHub Actions
-          author_email: 41898282+github-actions[bot]@users.noreply.github.com
-          message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
-          add: "./reports"
-          pull: "--rebase --autostash"
+      # - name: Commit and push changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: GitHub Actions
+      #     author_email: 41898282+github-actions[bot]@users.noreply.github.com
+      #     message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
+      #     add: "./reports"
+      #     pull: "--rebase --autostash"
+
+      - name: Save Results
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/sql_map/${current_date} && mkdir -p reports/sql_map/${current_date}
+          cp -R ${{github.workspace}}/result.json reports/sql_map/${current_date}/
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push origin develop
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -180,3 +193,22 @@ jobs:
         with:
           name: Depcheck report
           path:  ${{github.workspace}}/reports
+
+      - name: Scan with nikto
+        uses: thereisnotime/action-nikto@master
+        with:
+          url: "https://hml-tcc-password-manager.vercel.app"
+          additional_args: "-ssl"
+      
+      - name: Save Results
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/nikto/${current_date} && mkdir -p reports/nikto/${current_date}
+          cp -R ${{github.workspace}}/result.json reports/nikto/${current_date}/
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push origin develop
