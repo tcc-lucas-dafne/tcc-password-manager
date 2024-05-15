@@ -132,10 +132,10 @@ jobs:
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
           current_date=$(date +%Y-%m-%d)
-          rm -rf ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date} && mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date}
-          cp -R ${{github.workspace}}/report_html.html ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date}/
-          cp -R ${{github.workspace}}/report_json.json ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date}/
-          cp -R ${{github.workspace}}/report_md.md ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan/${current_date}/
+          rm -rf reports/zap_full_scan/${current_date} && mkdir -p reports/zap_full_scan/${current_date}
+          cp -R ${{github.workspace}}/report_html.html reports/zap_full_scan/${current_date}/
+          cp -R ${{github.workspace}}/report_json.json reports/zap_full_scan/${current_date}/
+          cp -R ${{github.workspace}}/report_md.md reports/zap_full_scan/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
