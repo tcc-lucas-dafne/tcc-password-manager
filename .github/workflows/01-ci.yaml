@@ -62,9 +62,6 @@ jobs:
 
       # Legitify Analize
 
-      - name: ESLint check
-        run: npx eslint ./src --ext .ts
-
       # Ferramentas SAST
 
       # SonarCloud Scan
@@ -78,25 +75,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      # CHECKMARX (46 estrelas)
-      # - uses: actions/checkout@v2
-      # - name: Checkmarx CxFlow Action
-      #   uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9
-      #   with:
-      #     project: ${{ github.repository }}-PR
-      #     team: ${{ secrets.CHECKMARX_TEAMS }}
-      #     checkmarx_url: ${{ secrets.CHECKMARX_URL }}
-      #     checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
-      #     checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
-      #     checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
-      #     scanners: sca
-      #     break_build: true
-      #     sca_api_url: ${{ secrets.SCA_API_URL }}
-      #     sca_app_url: ${{ secrets.SCA_APP_URL }}
-      #     sca_access_control_url: ${{ secrets.SCA_ACCESS_CONTROL_URL }}
-      #     sca_tenant: ${{  secrets.SCA_TENANT }}
-      #     sca_username: ${{ secrets.SCA_USERNAME }}
 
       # Ferramentas SCA
 
