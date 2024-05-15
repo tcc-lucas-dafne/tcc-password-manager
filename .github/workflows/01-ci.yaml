@@ -36,6 +36,9 @@ jobs:
       # - name: Build
       #   run: docker-compose build 
 
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
       - name: install dependencies
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
@@ -96,6 +99,9 @@ jobs:
       #     sca_username: ${{ secrets.SCA_USERNAME }}
 
       # Ferramentas SCA
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Depcheck
