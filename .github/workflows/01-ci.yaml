@@ -62,6 +62,9 @@ jobs:
 
       # Legitify Analize
 
+    - name: ESLint check
+      run: npx eslint ./src --ext .js
+
       # Ferramentas SAST
 
       # SonarCloud Scan
@@ -126,6 +129,7 @@ jobs:
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports
           cp -R ${{github.workspace}}/reports ${{secrets.NAME_REPO_GIT}}/reports
           cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop

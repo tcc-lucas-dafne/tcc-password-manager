@@ -64,13 +64,13 @@ jobs:
       - name: Save Results
         if: always()
         run: |
-          mkdir -p ${{ github.workspace }}/zap_full_scan
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
-          cp -R ${{github.workspace}}/zap_full_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
           cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan
+          cp -R ${{github.workspace}}/zap_baseline_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_baseline_scan
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
+          git push origin develop
 
 
       #ZAP FULL SCAN (290 estrelas)
