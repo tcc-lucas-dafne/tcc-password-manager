@@ -21,7 +21,7 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
 | Cross-Domain Misconfiguration | Medium | 7 |
-| Missing Anti-clickjacking Header | Medium | 2 |
+| Missing Anti-clickjacking Header | Medium | 1 |
 | Permissions Policy Header Not Set | Low | 3 |
 | Timestamp Disclosure - Unix | Low | 1 |
 | X-Content-Type-Options Header Missing | Low | 7 |
@@ -174,12 +174,6 @@ Configure the "Access-Control-Allow-Origin" HTTP header to a more restrictive se
 
 The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
 
-* URL: https://hml-tcc-password-manager.vercel.app
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
 * URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
   * Method: `GET`
   * Parameter: `x-frame-options`
@@ -187,7 +181,7 @@ The response does not include either Content-Security-Policy with 'frame-ancesto
   * Evidence: ``
   * Other Info: ``
 
-Instances: 2
+Instances: 1
 
 ### Solution
 
