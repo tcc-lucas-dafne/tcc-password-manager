@@ -88,16 +88,13 @@ jobs:
             ${{ github.workspace }}/report_json.html
             ${{ github.workspace }}/report_md.html
 
-      - name: Copiar arquivos para pasta
-        run: |
-          mkdir -p ${{ github.workspace }}/zap_full_scan
-          cp ${{ github.workspace }}/report_html.html $${{ github.workspace }}/zap_full_scan/report_html.html
-          cp ${{ github.workspace }}/report_json.json $${{ github.workspace }}/zap_full_scan/report_json.json
-          cp ${{ github.workspace }}/report_md.md $$${{ github.workspace }}/zap_full_scan/report_md.md
-
       - name: Save Results
         if: always()
         run: |
+          mkdir -p ${{ github.workspace }}/zap_full_scan
+          mv ${{ github.workspace }}/report_html.html ${{ github.workspace }}/zap_full_scan/report_html.html
+          mv ${{ github.workspace }}/report_json.json ${{ github.workspace }}/zap_full_scan/report_json.json
+          mv ${{ github.workspace }}/report_md.md ${{ github.workspace }}/zap_full_scan/report_md.md
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
           cp -R ${{github.workspace}}/zap_full_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
