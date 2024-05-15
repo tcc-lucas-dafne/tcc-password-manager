@@ -39,11 +39,6 @@ jobs:
       # - name: Checkout Repository
       #   uses: actions/checkout@v3
 
-      - name: install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm install
-
       - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
