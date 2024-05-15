@@ -147,6 +147,15 @@ jobs:
           url: ${{ env.TARGET }}
           additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"
 
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Actions
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: "👷 chore(sqlmap): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
+          add: "./reports/sqlmap/*"
+          pull: "--rebase --autostash"
+
       # - name: Save Results
       #   if: always()
       #   run: |

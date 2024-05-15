@@ -53,8 +53,8 @@ jobs:
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
           current_date=$(date +%Y-%m-%d)
-          rm -rf reports/owasp_dependency_check/${current_date} && mkdir -p reports/owasp_dependency_check${current_date}
-          cp -R ${{github.workspace}}/reports reports/owasp_dependency_check/${current_date}
+          rm -rf reports/owasp_dependency_check/${current_date}/ && mkdir -p ./reports/owasp_dependency_check/${current_date}/
+          cp -R ${{github.workspace}}/reports ./reports/owasp_dependency_check/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push
