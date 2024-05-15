@@ -100,9 +100,6 @@ jobs:
 
       # Ferramentas SCA
 
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
       # OWASP DEPENDENCY CHECK (63 estrelas)
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main

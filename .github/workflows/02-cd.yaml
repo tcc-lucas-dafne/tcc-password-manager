@@ -43,7 +43,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: ZAP Scan
+      - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
           token: ${{ secrets.TOKEN_GIT }}
@@ -59,16 +59,25 @@ jobs:
         with:
           name: zap_baseline_scan
           path: |
-            ${{ github.workspace }}/report_html.html
-            ${{ github.workspace }}/report_json.html
-            ${{ github.workspace }}/report_md.html
-            
+            ${{ github.workspace }}/zap_baseline_scan
+
+      - name: Save Results
+        if: always()
+        run: |
+          mkdir -p ${{ github.workspace }}/zap_full_scan
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          mkdir -p ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
+          cp -R ${{github.workspace}}/zap_full_scan ${{secrets.NAME_REPO_GIT}}/reports/zap_full_scan_reports
+          cd ${{secrets.NAME_REPO_GIT}}
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push
+
 
       #ZAP FULL SCAN (290 estrelas)
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: ZAP Scan
+      - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.10.0
         with:
           token: ${{ secrets.TOKEN_GIT }}
