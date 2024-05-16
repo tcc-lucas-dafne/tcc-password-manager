@@ -197,7 +197,7 @@ jobs:
 
       - name: Find nikto conf
         run: |
-          find / -iname "nikto.conf.default"
+          sudo find / -iname "nikto.conf.default"
 
       - name: Set FAILURES variable in nikto.conf.default
         run: |
