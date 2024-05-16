@@ -185,7 +185,8 @@ jobs:
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
-          url: "https://homolog-password-manager-api-e0f4d2b888e5.herokuapp.com/"
+          url: "https://hml-tcc-password-manager.vercel.app/"
+          additional_args: "-o out.json"
 
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v9
