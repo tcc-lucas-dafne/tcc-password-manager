@@ -145,7 +145,11 @@ jobs:
         uses: thereisnotime/action-sqlmap@master
         with:
           url: ${{ env.TARGET }}
-          additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"
+          additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3"    
+              
+      - name: Teste
+        run: |
+          ls 
 
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v9
@@ -193,6 +197,7 @@ jobs:
           pull: "--rebase --autostash"
         
       - name: Teste
+        if: always()
         run: |
           ls 
       
