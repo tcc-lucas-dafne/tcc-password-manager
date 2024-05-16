@@ -191,9 +191,9 @@ jobs:
           touch nikto_out.json
 
       - name: Install Nikto
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y nikto
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nikto
 
       - name: Set FAILURES variable in nikto.conf.default
         run: |
