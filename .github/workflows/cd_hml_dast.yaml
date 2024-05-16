@@ -145,11 +145,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Scan with sqlmap
-        uses: thereisnotime/action-sqlmap@master
-        with:
-          url: ${{ env.TARGET }}
-          additional_args: "--batch --random-agent --level=5 --risk=3 > sqlmap_out.txt"    
+      # - name: Scan with sqlmap
+      #   uses: thereisnotime/action-sqlmap@master
+      #   with:
+      #     url: ${{ env.TARGET }}
+      #     additional_args: "--batch --random-agent --level=5 --risk=3 > sqlmap_out.txt"    
 
       - name: Teste
         run: |
