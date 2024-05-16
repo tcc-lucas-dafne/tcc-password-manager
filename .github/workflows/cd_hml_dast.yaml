@@ -145,8 +145,10 @@ jobs:
         uses: thereisnotime/action-sqlmap@master
         with:
           url: ${{ env.TARGET }}
-          additional_args: "--batch --crawl=2 --random-agent --forms --level=5 --risk=3 --data="email=email@email.com&password=senha123" --output-format=html -o sqlmap_out.html"    
-              
+          additional_args: |
+          "--batch --crawl=2 --random-agent --forms --level=5 --risk=3 --data='email=email@email.com&password=senha123' --output-format=html -o sqlmap_out.html"    
+          "--batch --crawl=2 --random-agent --forms --level=5 --risk=2 --data='email=email@email.com&password=senha123' --output-format=html -o sqlmap_out1.html"
+
       - name: Teste
         run: |
           ls 
