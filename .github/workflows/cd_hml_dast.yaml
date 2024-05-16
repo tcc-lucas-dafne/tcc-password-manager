@@ -190,6 +190,12 @@ jobs:
         run: |
           touch nikto_out.json
 
+      - name: Set FAILURES variable in nikto.conf.default
+        run: |
+          FAILURE_NUMBER=30
+          NIKTO_CONF_PATH="var/lib/nikto/nikto.conf.default"
+          sed -i "s/^FAILURES.*/FAILURES=$FAILURE_NUMBER/" $NIKTO_CONF_PATH
+
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
