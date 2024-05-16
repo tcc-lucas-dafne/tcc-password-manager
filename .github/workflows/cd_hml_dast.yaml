@@ -214,7 +214,7 @@ jobs:
           git checkout develop
           current_date=$(date +%Y-%m-%d)
           rm -rf reports/nikto/${current_date} && mkdir -p reports/nikto/${current_date}
-          cp -R ${{github.workspace}}/result.json reports/nikto/${current_date}/
+          cp -R ${{github.workspace}}/out.json reports/nikto/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
           git push origin develop
