@@ -140,7 +140,7 @@ jobs:
             
       - name: Create empty sqlmap report file
         run: |
-          touch sqlmap_out.json
+          touch sqlmap_out.txt
 
       - name: Checkout
         uses: actions/checkout@v3
