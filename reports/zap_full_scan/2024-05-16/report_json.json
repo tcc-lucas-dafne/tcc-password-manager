@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Thu, 16 May 2024 13:44:01",
+	"@generated": "Thu, 16 May 2024 18:44:41",
 	"site":[ 
 		{
 			"@name": "https://hml-tcc-password-manager.vercel.app",
@@ -34,7 +34,7 @@
 					"reference": "<p>https://www.nginx.com/blog/trust-no-one-perils-of-trusting-user-input/</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "719"
+					"sourceid": "671"
 				},
 				{
 					"pluginid": "40040",
@@ -50,7 +50,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -58,7 +58,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -66,7 +66,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -74,7 +74,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/logo192.png",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -82,7 +82,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -90,7 +90,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -98,7 +98,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/static",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -106,7 +106,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -114,7 +114,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.2954b224.js",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://W9DOSghU.com",
+							"attack": "origin: https://WaHNJ8Lf.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -125,7 +125,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "1441"
+					"sourceid": "1397"
 				},
 				{
 					"pluginid": "10038",
@@ -401,7 +401,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7231#section-5.1.2</p>",
 					"cweid": "200",
 					"wascid": "45",
-					"sourceid": "1378"
+					"sourceid": "1328"
 				},
 				{
 					"pluginid": "10063",
@@ -479,7 +479,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "19"
+					"sourceid": "20"
 				},
 				{
 					"pluginid": "10021",
@@ -589,7 +589,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "19"
+					"sourceid": "20"
 				},
 				{
 					"pluginid": "10109",
@@ -700,7 +700,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 31",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -708,7 +708,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 24",
+							"evidence": "Age: 28",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -716,7 +716,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 31",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -724,7 +724,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 30",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -732,7 +732,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 30",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -740,7 +740,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 30",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -748,7 +748,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 55",
+							"evidence": "Age: 30",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -756,7 +756,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 30",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -764,7 +764,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 26",
+							"evidence": "Age: 30",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -787,14 +787,6 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -811,7 +803,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -819,13 +811,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -838,14 +830,6 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -862,7 +846,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -870,13 +854,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -889,14 +873,6 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -913,7 +889,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -921,13 +897,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -940,14 +916,6 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -964,7 +932,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -972,13 +940,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1013,7 +981,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "16"
+					"sourceid": "17"
 				},
 				{
 					"pluginid": "10049",
