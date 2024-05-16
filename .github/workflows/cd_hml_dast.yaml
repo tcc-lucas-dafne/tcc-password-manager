@@ -181,6 +181,10 @@ jobs:
         with:
           name: Depcheck report
           path:  ${{github.workspace}}/reports
+      
+      - name: Create nikto report file
+        run: |
+          touch out.json
 
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
