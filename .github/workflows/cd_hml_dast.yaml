@@ -164,18 +164,18 @@ jobs:
       #     add: "./reports/*"
       #     pull: "--rebase --autostash"
 
-      - name: Save Results
-        if: always()
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          cd ${{secrets.NAME_REPO_GIT}}
-          git checkout develop
-          current_date=$(date +%Y-%m-%d)
-          rm -rf reports/sql_map/${current_date} && mkdir -p reports/sql_map/${current_date}
-          cp -R ${{github.workspace}}/sqlmap_out.txt reports/sql_map/${current_date}/
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push origin develop
+      # - name: Save Results
+      #   if: always()
+      #   run: |
+      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+      #     cd ${{secrets.NAME_REPO_GIT}}
+      #     git checkout develop
+      #     current_date=$(date +%Y-%m-%d)
+      #     rm -rf reports/sql_map/${current_date} && mkdir -p reports/sql_map/${current_date}
+      #     cp -R ${{github.workspace}}/sqlmap_out.txt reports/sql_map/${current_date}/
+      #     git add .
+      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+      #     git push origin develop
 
       - name: Checkout
         uses: actions/checkout@v2
