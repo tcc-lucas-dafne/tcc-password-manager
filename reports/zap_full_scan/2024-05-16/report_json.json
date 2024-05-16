@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Thu, 16 May 2024 12:36:24",
+	"@generated": "Thu, 16 May 2024 12:48:27",
 	"site":[ 
 		{
 			"@name": "https://hml-tcc-password-manager.vercel.app",
@@ -34,7 +34,7 @@
 					"reference": "<p>https://www.nginx.com/blog/trust-no-one-perils-of-trusting-user-input/</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "724"
+					"sourceid": "688"
 				},
 				{
 					"pluginid": "40040",
@@ -50,7 +50,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -58,7 +58,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -66,7 +66,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -74,7 +74,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/logo192.png",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -82,7 +82,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -90,7 +90,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -98,7 +98,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/static",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -106,7 +106,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -114,7 +114,7 @@
 							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.2954b224.js",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: https://fPcZwyGn.com",
+							"attack": "origin: https://wHBhEb81.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -125,7 +125,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "1444"
+					"sourceid": "1412"
 				},
 				{
 					"pluginid": "10038",
@@ -401,7 +401,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7231#section-5.1.2</p>",
 					"cweid": "200",
 					"wascid": "45",
-					"sourceid": "1378"
+					"sourceid": "1337"
 				},
 				{
 					"pluginid": "10063",
@@ -700,7 +700,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://hml-tcc-password-manager.vercel.app/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 24",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -712,19 +720,11 @@
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 28",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -732,7 +732,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -740,7 +740,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -748,7 +748,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -756,7 +756,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -764,7 +764,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 28",
+							"evidence": "Age: 26",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -803,6 +803,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -811,7 +819,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -846,6 +854,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -854,7 +870,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -889,6 +905,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -897,7 +921,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -932,6 +956,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://hml-tcc-password-manager.vercel.app/favicon.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -940,7 +972,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -981,7 +1013,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "15"
+					"sourceid": "16"
 				},
 				{
 					"pluginid": "10049",
