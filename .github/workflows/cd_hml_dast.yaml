@@ -209,7 +209,7 @@ jobs:
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-o /tmp/nikto_out.json"
+          additional_args: "-ignore-ssl -o /tmp/nikto_out.json"
 
       # - name: Commit and push changes
       #   uses: EndBug/add-and-commit@v9
