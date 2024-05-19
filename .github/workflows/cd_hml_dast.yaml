@@ -149,12 +149,22 @@ jobs:
           fi
           sudo sed -i "s/^FAILURES.*/FAILURES=$FAILURE_NUMBER/" "$NIKTO_CONF_PATH"
 
-      - name: Scan with nikto
-        uses: thereisnotime/action-nikto@master
+      # - name: Scan with nikto
+      #   uses: thereisnotime/action-nikto@master
+      #   with:
+      #     url: "https://hml-tcc-password-manager.vercel.app/"
+      #     additional_args: "-o /tmp/nikto_out.json -Format json"
+      #     # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
+
+      - name: Scan with Nikto
+        run: |
+          sudo nikto -h https://hml-tcc-password-manager.vercel.app/ -o /tmp/nikto_out.json -Format json
+
+      - name: Upload Nikto Report
+        uses: actions/upload-artifact@v2
         with:
-          url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=0 -o /tmp/nikto_out.json -Format json"
-          # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
+          name: nikto-report
+          path: /tmp/nikto_out.json
 
       # - name: Commit and push changes
       #   uses: EndBug/add-and-commit@v9

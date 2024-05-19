@@ -6,26 +6,17 @@ import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 
 export default [
   {
-    parser: tsparser,
-    plugins: ["@typescript-eslint", "react"],
-    extends: [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:react/recommended"
-    ],
-    files: ["src/**/*.ts", "src/**/*.tsx"],
+    parser: ["@typescript-eslint/parser"],
+    plugins: ["@typescript-eslint"],
+    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    files: ["src/**/*.js"],
     rules: {
-      "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+      "react/tsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
       "react/prop-types": "off",
       "react/button-has-type": "off",
       "react/react-in-tsx-scope": "off",
       "no-underscore-dangle": "off",
       "react/no-array-index-key": "off"
-    },
-    settings: {
-      react: {
-        version: "detect"
-      }
     }
   }
 ];
