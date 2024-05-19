@@ -141,7 +141,7 @@ jobs:
           
       - name: Find and set FAILURES variable in nikto.conf.default
         run: |
-          FAILURE_NUMBER=30
+          FAILURE_NUMBER=0
           NIKTO_CONF_PATH=$(sudo find / -type f -name "nikto.conf.default" 2>/dev/null | head -n 1)
           if [ -z "$NIKTO_CONF_PATH" ]; then
             echo "nikto.conf.default not found"
@@ -153,7 +153,7 @@ jobs:
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=0 -o /tmp/nikto_out.json"
+          additional_args: "-Option FAILURES=0 -o /tmp/nikto_out.json -Format json"
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       # - name: Commit and push changes
