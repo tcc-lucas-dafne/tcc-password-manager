@@ -141,14 +141,14 @@ jobs:
 
       - name: Criando diretório para output nikto
         run: |
-          mkdir -p ${{ runner.temp }}/nikto_reports
-          chmod 777 ${{ runner.temp }}/nikto_reports  
+          mkdir -p ${{ runner.workspace }}/nikto_reports
+          chmod 777 ${{ runner.workspace }}/nikto_reports  
 
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=5 -o ${{ runner.temp }}/nikto_reports/nikto_out.json -Format json"
+          additional_args: "-Option FAILURES=5 -o ${{ runner.workspace }}/nikto_reports/nikto_out.json -Format json"
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       - name: Upload Nikto Report
