@@ -154,10 +154,7 @@ jobs:
         run: |
           # Encontra o caminho absoluto do arquivo nikto_out.json
           file_path=$(realpath nikto_out.json)
-          echo "::set-output name=file_path::$file_path"
-
-      - name: Set file path as environment variable
-        run: echo "FILE_PATH=${{ steps.find_file_path.outputs.file_path }}" >> $GITHUB_ENV
+          echo "FILE_PATH=$file_path" >> $GITHUB_ENV
 
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
