@@ -1,12 +1,8 @@
 name: CI_SCA
 
-# on:
-#   pull_request:
-#     branches: [develop]
-
 on:
-  push:
-    branches: [8-testar-workflow-ci-cd]
+  pull_request:
+    branches: [develop]
 
 jobs:
   sca_depcheck:
@@ -60,12 +56,6 @@ jobs:
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin ${GITHUB_REF#refs/heads/}
-      
-      - name: Update local repository
-        if: always()
-        run: |
-          git fetch origin
-          git reset --hard origin/${GITHUB_REF#refs/heads/}
       
       - name: Save Depcheck Report on Develop
         if: always()
