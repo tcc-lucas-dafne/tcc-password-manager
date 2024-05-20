@@ -130,22 +130,21 @@ jobs:
     #       rm report_md.md
     #       rm report_json.json
 
-      # - name: Create nikto report file
-      #   run: |
-      #     touch ${{ github.workspace }}/nikto_out.json
-      #     chmod 777 ${{ github.workspace }}/nikto_out.json
+      - name: Create nikto report file
+        run: |
+          touch ${{ github.workspace }}/nikto_out.json
 
-      # - name: Create nikto report file
-      #   run: |
-      #     pwd nikto_out.json
+      - name: Verificar permissões do diretório
+        run: ls -la ${{ github.workspace }}
 
-
+      - name: Verificar permissões do arquivo
+        run: ls -la ${{ github.workspace }}/nikto_out.json
+        
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-root ./ -Option FAILURES=5 -o ${{ github.workspace }}/nikto_out.json -Format json"
-          token: ${{ secrets.TOKEN_GIT }}
+          additional_args: "-Option FAILURES=5 -o ${{ github.workspace }}/nikto_out.json -Format json"
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       - name: Upload Nikto Report
