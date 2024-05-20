@@ -57,6 +57,12 @@ jobs:
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin ${GITHUB_REF#refs/heads/}
       
+      - name: Update local repository
+        if: always()
+        run: |
+          git fetch origin
+          git reset --hard origin/${GITHUB_REF#refs/heads/}
+      
       - name: Save Depcheck Report on Develop
         if: always()
         run: |
