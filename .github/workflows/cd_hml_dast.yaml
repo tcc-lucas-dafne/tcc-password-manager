@@ -144,7 +144,7 @@ jobs:
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-root -Option FAILURES=5 -o /tmp/nikto_out.json -Format json -o /tmp/nikto_out.json"
+          additional_args: "-root ./ -Option FAILURES=5 -o /tmp/nikto_out.json -Format json"
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       - name: Upload Nikto Report
