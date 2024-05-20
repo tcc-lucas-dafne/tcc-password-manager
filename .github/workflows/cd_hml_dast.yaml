@@ -130,17 +130,17 @@ jobs:
     #       rm report_md.md
     #       rm report_json.json
 
-      - name: Verificar permissões do diretório
-        run: |
-          chmod o+w ${{ github.workspace }}
-          chmod g+w ${{ github.workspace }}
-          ls -la ${{ github.workspace }}
-
       - name: Create nikto report file
         run: |
           touch ${{ github.workspace }}/nikto_out.json
           chmod o+w ${{ github.workspace }}/nikto_out.json
           chmod g+w ${{ github.workspace }}/nikto_out.json
+
+      - name: Verificar permissões do diretório
+        run: |
+          chmod o+w ${{ github.workspace }}
+          chmod g+w ${{ github.workspace }}
+          ls -la ${{ github.workspace }}
 
       - name: Verificar permissões do arquivo
         run: ls -la ${{ github.workspace }}/nikto_out.json
@@ -149,11 +149,21 @@ jobs:
         run: |
           sudo chown -R runner:runner ${{ github.workspace }}
 
+      - name: Find absolute path of nikto_out.json
+        id: find_file_path
+        run: |
+          # Encontra o caminho absoluto do arquivo nikto_out.json
+          file_path=$(realpath nikto_out.json)
+          echo "::set-output name=file_path::$file_path"
+
+      - name: Set file path as environment variable
+        run: echo "FILE_PATH=${{ steps.find_file_path.outputs.file_path }}" >> $GITHUB_ENV
+
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=5 -o ${{ github.workspace }}/nikto_out.json -Format json"
+          additional_args: "-Option FAILURES=5 -o $FILE_PATH -Format json"
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       - name: Upload Nikto Report
