@@ -1,8 +1,8 @@
 name: CI_SCA
 
 on:
-  pull_request:
-    branches: [develop]
+  push:
+    branches: [8-testar-workflow-ci-cd]
 
 jobs:
   sca_depcheck:
