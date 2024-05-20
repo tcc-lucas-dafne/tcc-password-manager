@@ -145,6 +145,7 @@ jobs:
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
           additional_args: "-root ./ -Option FAILURES=5 -o ${{ github.workspace }}/nikto_out.json -Format json"
+          token: ${{ secrets.TOKEN_GIT }}
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       - name: Upload Nikto Report
