@@ -147,7 +147,7 @@ jobs:
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=5 -o $FILE_PATH -Format json"
+          additional_args: "-Option FAILURES=0 -o $FILE_PATH -Format json"
 
       - name: Upload Nikto Report to Action
         uses: actions/upload-artifact@v4
