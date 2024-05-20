@@ -44,20 +44,20 @@ jobs:
            name: Depcheck report
            path:  ${{github.workspace}}
 
-      - name: Save Results Branch to Analyze
+      - name: Save Deṕcheck Report on Branch
         if: always()
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           cd ${{secrets.NAME_REPO_GIT}}
-          git checkout develop
+          git checkout ${GITHUB_REF#refs/heads/}
           current_date=$(date +%Y-%m-%d)
           rm -rf reports/owasp_dependency_check/${current_date}/ && mkdir -p ./reports/owasp_dependency_check/${current_date}/
           cp -R ${{github.workspace}}/reports ./reports/owasp_dependency_check/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-          git push
+          git push origin ${GITHUB_REF#refs/heads/}
       
-      - name: Save Results Develop
+      - name: Save Depcheck Report on Develop
         if: always()
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
