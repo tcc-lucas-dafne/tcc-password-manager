@@ -60,7 +60,9 @@ jobs:
       - name: Save Depcheck Report on Develop
         if: always()
         run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          if [ ! -d "${{secrets.NAME_REPO_GIT}}" ]; then
+            git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          fi
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
           current_date=$(date +%Y-%m-%d)
