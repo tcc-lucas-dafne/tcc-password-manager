@@ -134,31 +134,31 @@ jobs:
         run: |
           touch nikto_out.json
 
-      - name: Install Nikto
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nikto
+      # - name: Install Nikto
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y nikto
           
-      - name: Find and set FAILURES variable in nikto.conf.default
-        run: |
-          FAILURE_NUMBER=0
-          NIKTO_CONF_PATH=$(sudo find / -type f -name "nikto.conf.default" 2>/dev/null | head -n 1)
-          if [ -z "$NIKTO_CONF_PATH" ]; then
-            echo "nikto.conf.default not found"
-            exit 1
-          fi
-          sudo sed -i "s/^FAILURES.*/FAILURES=$FAILURE_NUMBER/" "$NIKTO_CONF_PATH"
+      # - name: Find and set FAILURES variable in nikto.conf.default
+      #   run: |
+      #     FAILURE_NUMBER=0
+      #     NIKTO_CONF_PATH=$(sudo find / -type f -name "nikto.conf.default" 2>/dev/null | head -n 1)
+      #     if [ -z "$NIKTO_CONF_PATH" ]; then
+      #       echo "nikto.conf.default not found"
+      #       exit 1
+      #     fi
+      #     sudo sed -i "s/^FAILURES.*/FAILURES=$FAILURE_NUMBER/" "$NIKTO_CONF_PATH"
 
-      # - name: Scan with nikto
-      #   uses: thereisnotime/action-nikto@master
-      #   with:
-      #     url: "https://hml-tcc-password-manager.vercel.app/"
-      #     additional_args: "-o /tmp/nikto_out.json -Format json"
-      #     # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
+      - name: Scan with nikto
+        uses: thereisnotime/action-nikto@master
+        with:
+          url: "https://hml-tcc-password-manager.vercel.app/"
+          additional_args: "-Option FAILURES=0 -o /tmp/nikto_out.json -Format json"
+          # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
-      - name: Scan with Nikto
-        run: |
-          sudo nikto -h https://hml-tcc-password-manager.vercel.app/ -o /tmp/nikto_out.json -Format json
+      # - name: Scan with Nikto
+      #   run: |
+      #     sudo nikto -h https://hml-tcc-password-manager.vercel.app/ -o /tmp/nikto_out.json -Format json
 
       - name: Upload Nikto Report
         uses: actions/upload-artifact@v2
