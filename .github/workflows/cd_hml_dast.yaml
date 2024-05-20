@@ -133,6 +133,8 @@ jobs:
       - name: Create nikto report file
         run: |
           touch ${{ github.workspace }}/nikto_out.json
+          chmod o+w ${{ github.workspace }}/nikto_out.json
+          chmod g+w ${{ github.workspace }}/nikto_out.json
 
       # - name: Verificar permissões do diretório
       #   run: |
