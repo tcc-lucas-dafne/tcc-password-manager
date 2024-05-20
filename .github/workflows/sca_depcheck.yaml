@@ -8,7 +8,8 @@ on:
     branches: [8-testar-workflow-ci-cd]
 
 jobs:
-  build:
+  sca_depcheck:
+    name: 'SCA Owasp Dependency Check'
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +26,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # Ferramentas SCA
-
-      # OWASP DEPENDENCY CHECK (63 estrelas)
+      # SCA
+      
+      # OWASP DEPENDENCY CHECK
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck

@@ -10,9 +10,9 @@ defaults:
     shell: bash
 
 jobs:
-  deploy_homolog:
+  deploy_homolog_and_dast:
     environment: homolog
-    name: 'Deploy to homolog'
+    name: 'Deploy to homolog and DAST tests'
     runs-on: ubuntu-latest
 
     steps:
@@ -37,117 +37,104 @@ jobs:
         run: |
           vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-     # Ferramentas DAST
+      # DAST
 
-    #  #ZAP BASELINE SCAN (290 estrelas)
-    #   - name: Checkout
-    #     uses: actions/checkout@v2
+      #ZAP BASELINE SCAN
+      - name: Checkout
+        uses: actions/checkout@v2
       
-    #   - name: ZAP Baseline Scan
-    #     uses: zaproxy/action-baseline@v0.12.0
-    #     with:
-    #       token: ${{ secrets.TOKEN_GIT }}
-    #       docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
-    #       target: 'https://hml-tcc-password-manager.vercel.app'
-    #       cmd_options: '-a' #indica ataque ativo, onde o zap tenta atuar como um atacante em busca de vulnerabilidades
-    #       allow_issue_writing: 'true'
-    #       #fail_action: 'true'
-    #       artifact_name: 'zap_baseline_scan'
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          token: ${{ secrets.TOKEN_GIT }}
+          docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
+          target: 'https://hml-tcc-password-manager.vercel.app'
+          cmd_options: '-a'
+          allow_issue_writing: 'true'
+          fail_action: 'true'
+          artifact_name: 'zap_baseline_scan'
 
-    #   - name: Upload artifact
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: zap_baseline_scan
-    #       path: |
-    #         ${{ github.workspace }}/report_html.html
-    #         ${{ github.workspace }}/report_md.md
-    #         ${{ github.workspace }}/report_json.json
+      - name: Upload Zap Baseline Scan Report to Action
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap_baseline_scan
+          path: |
+            ${{ github.workspace }}/report_html.html
+            ${{ github.workspace }}/report_md.md
+            ${{ github.workspace }}/report_json.json
 
-    #   - name: Save Results
-    #     if: always()
-    #     run: |
-    #       git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-    #       cd ${{secrets.NAME_REPO_GIT}}
-    #       git checkout develop
-    #       current_date=$(date +%Y-%m-%d)
-    #       rm -rf reports/zap_baseline_scan/${current_date} && mkdir -p reports/zap_baseline_scan/${current_date}
-    #       cp -R ${{github.workspace}}/report_html.html reports/zap_baseline_scan/${current_date}/
-    #       cp -R ${{github.workspace}}/report_json.json reports/zap_baseline_scan/${current_date}/
-    #       cp -R ${{github.workspace}}/report_md.md reports/zap_baseline_scan/${current_date}/
-    #       git add .
-    #       git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-    #       git push origin develop
-
+      - name: Save ZAP Baseline Scan Reports
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/zap_baseline_scan/${current_date} && mkdir -p reports/zap_baseline_scan/${current_date}
+          cp -R ${{github.workspace}}/report_html.html reports/zap_baseline_scan/${current_date}/
+          cp -R ${{github.workspace}}/report_json.json reports/zap_baseline_scan/${current_date}/
+          cp -R ${{github.workspace}}/report_md.md reports/zap_baseline_scan/${current_date}/
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push origin develop
           
-    #   - name: Remove reports 
-    #     run: |
-    #       rm report_html.html
-    #       rm report_md.md
-    #       rm report_json.json
+      - name: Remove ZAP Baseline Reports 
+        run: |
+          rm report_html.html
+          rm report_md.md
+          rm report_json.json
 
-    #   #ZAP FULL SCAN (290 estrelas)
-    #   - name: Checkout
-    #     uses: actions/checkout@v2
+      #ZAP FULL SCAN
+      - name: Checkout
+        uses: actions/checkout@v2
       
-    #   - name: ZAP Full Scan
-    #     uses: zaproxy/action-full-scan@v0.10.0
-    #     with:
-    #       token: ${{ secrets.TOKEN_GIT }}
-    #       docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
-    #       target: 'https://hml-tcc-password-manager.vercel.app'
-    #       cmd_options: '-a'
-    #       allow_issue_writing: 'true'
-    #       #fail_action: 'true'
-    #       artifact_name: 'zap_full_scan'
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.10.0
+        with:
+          token: ${{ secrets.TOKEN_GIT }}
+          docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
+          target: 'https://hml-tcc-password-manager.vercel.app'
+          cmd_options: '-a'
+          allow_issue_writing: 'true'
+          fail_action: 'true'
+          artifact_name: 'zap_full_scan'
 
-    #   - name: Upload artifact
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: zap_full_scan
-    #       path: |
-    #         ${{ github.workspace }}/report_html.html
-    #         ${{ github.workspace }}/report_md.md
-    #         ${{ github.workspace }}/report_json.json
+      - name: Upload Zap Full Scan Report to Action
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap_full_scan
+          path: |
+            ${{ github.workspace }}/report_html.html
+            ${{ github.workspace }}/report_md.md
+            ${{ github.workspace }}/report_json.json
 
-    #   - name: Save Results
-    #     if: always()
-    #     run: |
-    #       git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-    #       cd ${{secrets.NAME_REPO_GIT}}
-    #       git checkout develop
-    #       current_date=$(date +%Y-%m-%d)
-    #       rm -rf reports/zap_full_scan/${current_date} && mkdir -p reports/zap_full_scan/${current_date}
-    #       cp -R ${{github.workspace}}/report_html.html reports/zap_full_scan/${current_date}/
-    #       cp -R ${{github.workspace}}/report_json.json reports/zap_full_scan/${current_date}/
-    #       cp -R ${{github.workspace}}/report_md.md reports/zap_full_scan/${current_date}/
-    #       git add .
-    #       git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
-    #       git push origin develop
+      - name: Save ZAP Full Scan Reports
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/zap_full_scan/${current_date} && mkdir -p reports/zap_full_scan/${current_date}
+          cp -R ${{github.workspace}}/report_html.html reports/zap_full_scan/${current_date}/
+          cp -R ${{github.workspace}}/report_json.json reports/zap_full_scan/${current_date}/
+          cp -R ${{github.workspace}}/report_md.md reports/zap_full_scan/${current_date}/
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }}"
+          git push origin develop
 
-    #   - name: Remove reports 
-    #     run: |
-    #       rm report_html.html
-    #       rm report_md.md
-    #       rm report_json.json
+      - name: Remove ZAP Full Scan Reports 
+        run: |
+          rm report_html.html
+          rm report_md.md
+          rm report_json.json
 
+      # NIKTO
       - name: Create nikto report file
         run: |
           touch ${{ github.workspace }}/nikto_out.json
           chmod o+w ${{ github.workspace }}/nikto_out.json
           chmod g+w ${{ github.workspace }}/nikto_out.json
-
-      # - name: Verificar permissões do diretório
-      #   run: |
-      #     chmod o+w ${{ github.workspace }}
-      #     chmod g+w ${{ github.workspace }}
-      #     ls -la ${{ github.workspace }}
-
-      # - name: Verificar permissões do arquivo
-      #   run: ls -la ${{ github.workspace }}/nikto_out.json
-
-      # - name: Set permissions
-      #   run: |
-      #     sudo chown -R runner:runner ${{ github.workspace }}
 
       - name: Find absolute path of nikto_out.json
         id: find_file_path
@@ -161,29 +148,14 @@ jobs:
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
           additional_args: "-Option FAILURES=5 -o $FILE_PATH -Format json"
-          # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
-      - name: Upload Nikto Report
-        uses: actions/upload-artifact@v2
+      - name: Upload Nikto Report to Action
+        uses: actions/upload-artifact@v4
         with:
           name: nikto-report
           path: ${{ runner.temp }}/nikto_out.json
-
-      # - name: Commit and push changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: GitHub Actions
-      #     author_email: 41898282+github-actions[bot]@users.noreply.github.com
-      #     message: "👷 chore(nikto): add report for ${{ env.TARGET }}-${{ env.START_DATE }}-${{ env.START_TIMESTAMP }}"
-      #     add: "./reports/*"
-      #     pull: "--rebase --autostash"
-        
-      - name: Teste
-        if: always()
-        run: |
-          ls 
       
-      - name: Save Results
+      - name: Save Nikto Report
         if: always()
         run: |
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}

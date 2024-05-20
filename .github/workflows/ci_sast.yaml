@@ -8,7 +8,8 @@ on:
     branches: [8-testar-workflow-ci-cd]
 
 jobs:
-  build:
+  build_and_sca:
+    name: 'Build and SAST'
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +21,7 @@ jobs:
           git config --global user.email "${{secrets.GIT_USER_EMAIL}}"
           git config --global user.name "${{secrets.GIT_USER_NAME}}"
   
-      NPM AUDIT
+      # NPM AUDIT
       - name: run npm audit
         uses: oke-py/npm-audit-action@v2
         with:
@@ -34,22 +35,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # TruffleHog OSS (13k estrelas)ss
-      # Action
-
-      # GoSec Security Checker (7k estrelas)
-
-      # Is WebSite Vulnerable (1.9k estrelas)
-
-      # Stelligent CFN NAG (1.2k estrelas)
-
-      # Snyk (500 estrelas)
-
-      # Legitify Analize
-
-      # Ferramentas SAST
-
-      SonarCloud Scan
+      # SonarCloud Scan
       - name: SonarCloud
         uses: actions/checkout@v3
         with:
