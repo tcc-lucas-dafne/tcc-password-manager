@@ -1,11 +1,8 @@
-name: CI
-
-# Alterar depois pra branch main
-# on: pull_request
+name: CI_BUILD_SAST
 
 on:
-  push:
-    branches: [8-testar-workflow-ci-cd]
+  pull_request:
+    branches: [develop]
 
 jobs:
   build_and_sca:
