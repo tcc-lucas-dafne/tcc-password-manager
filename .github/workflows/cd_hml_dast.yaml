@@ -132,24 +132,24 @@ jobs:
 
       - name: Create nikto report file
         run: |
-          touch nikto_out.json
+          touch ${{ runner.workspace }}/nikto_out.json
 
       - name: Create nikto report file
         run: |
-          pwd ${{ runner.temp }}/nikto_out.json
+          pwd nikto_out.json
 
       - name: Scan with nikto
         uses: thereisnotime/action-nikto@master
         with:
           url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=5 -o ${{ runner.temp }}/nikto_out.json -Format json"
+          additional_args: "-Option FAILURES=5 -o ${{ runner.workspace }}/nikto_out.json -Format json"
           # DEMAIS CONFIGURAÇÕES: https://github.com/sullo/nikto/wiki/Annotated-Option-List
 
       - name: Upload Nikto Report
         uses: actions/upload-artifact@v2
         with:
           name: nikto-report
-          path: ${{ runner.temp }}/nikto_out.json
+          path: ${{ runner.workspace }}/nikto_out.json
 
       # - name: Commit and push changes
       #   uses: EndBug/add-and-commit@v9
