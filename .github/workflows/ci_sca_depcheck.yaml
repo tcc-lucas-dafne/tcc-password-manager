@@ -6,7 +6,7 @@ on:
 
 jobs:
   sca_depcheck:
-    name: 'SCA Owasp Dependency Check'
+    name: 'SCA - Owasp Dependency Check'
     runs-on: ubuntu-latest
 
     steps:
