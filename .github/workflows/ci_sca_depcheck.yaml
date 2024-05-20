@@ -23,7 +23,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # SCA
+      # SC
       
       # OWASP DEPENDENCY CHECK
       - name: Depcheck
