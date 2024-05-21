@@ -1,5 +1,8 @@
 
 name: CD_PROD
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_PROD }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_PROD }}
 
 on: 
   push:
@@ -35,4 +38,4 @@ jobs:
 
       - name: Deploy Project Artifacts
         run: |
-          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --project=${{ secrets.VERCEL_PROJECT_ID_PROD }} --org=${{ secrets.VERCEL_ORG_ID_PROD }}
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
