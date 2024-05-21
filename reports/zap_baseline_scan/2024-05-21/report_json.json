@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Tue, 21 May 2024 13:07:50",
+	"@generated": "Tue, 21 May 2024 14:03:16",
 	"site":[ 
 		{
 			"@name": "https://hml-tcc-password-manager.vercel.app",
@@ -103,7 +103,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -181,7 +181,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -208,7 +208,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -222,7 +222,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "18"
+					"sourceid": "15"
 				},
 				{
 					"pluginid": "10021",
@@ -283,7 +283,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -297,7 +297,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -310,7 +310,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -324,7 +324,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "18"
+					"sourceid": "15"
 				},
 				{
 					"pluginid": "10109",
@@ -341,7 +341,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script defer=\"defer\" src=\"/static/js/main.90e45b63.js\"></script>",
+							"evidence": "<script defer=\"defer\" src=\"/static/js/main.31d4f4df.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -349,7 +349,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script defer=\"defer\" src=\"/static/js/main.90e45b63.js\"></script>",
+							"evidence": "<script defer=\"defer\" src=\"/static/js/main.31d4f4df.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -359,7 +359,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -419,7 +419,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 59",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -427,7 +427,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 58",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -459,15 +459,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 59",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 59",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -506,7 +506,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -549,7 +549,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -592,7 +592,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -635,7 +635,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -670,7 +670,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js",
+							"uri": "https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -684,7 +684,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "14"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "10049",
@@ -743,7 +743,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				}
 			]
 		}

@@ -137,7 +137,7 @@ Web browser data loading may be possible, due to a Cross Origin Resource Sharing
   * Attack: ``
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -229,7 +229,7 @@ Permissions Policy Header is an added layer of security that helps to restrict f
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -269,7 +269,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 A timestamp was disclosed by the application/web server - Unix
 
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -347,7 +347,7 @@ At "High" threshold this scan rule will not alert on client or server error resp
   * Evidence: ``
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: `x-content-type-options`
   * Attack: ``
@@ -386,7 +386,7 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.
 
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -424,13 +424,13 @@ The application appears to be a modern web application. If you need to explore i
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `<script defer="defer" src="/static/js/main.90e45b63.js"></script>`
+  * Evidence: `<script defer="defer" src="/static/js/main.31d4f4df.js"></script>`
   * Other Info: `No links have been found while there are scripts, which is an indication that this is a modern web application.`
 * URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `<script defer="defer" src="/static/js/main.90e45b63.js"></script>`
+  * Evidence: `<script defer="defer" src="/static/js/main.31d4f4df.js"></script>`
   * Other Info: `No links have been found while there are scripts, which is an indication that this is a modern web application.`
 
 Instances: 2
@@ -510,13 +510,13 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 59`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 58`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/logo192.png
   * Method: `GET`
@@ -540,13 +540,13 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 59`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 59`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 
 Instances: 7
@@ -592,7 +592,7 @@ Specifies how and where the data would be used. For instance, if the value is au
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
@@ -640,7 +640,7 @@ Allows to differentiate between requests for navigating between HTML pages and r
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
@@ -688,7 +688,7 @@ Specifies the relationship between request initiator's origin and target's origi
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
@@ -736,7 +736,7 @@ Specifies if a navigation request was initiated by a user.
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
@@ -778,7 +778,7 @@ The response contents are storable by caching components such as proxy servers, 
   * Attack: ``
   * Evidence: `s-maxage=31536000`
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.90e45b63.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
