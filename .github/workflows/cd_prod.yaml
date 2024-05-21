@@ -35,4 +35,4 @@ jobs:
 
       - name: Deploy Project Artifacts
         run: |
-          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --project=${{ secrets.VERCEL_PROJECT_ID_PROD }} --org=${{ secrets.VERCEL_ORG_ID_PROD }}
