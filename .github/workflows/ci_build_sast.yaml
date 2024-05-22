@@ -23,9 +23,9 @@ jobs:
         uses: oke-py/npm-audit-action@v2
         with:
           audit_level: moderate
+          github_token: ${{ secrets.TOKEN_GIT }}
           create_issues: true
           create_pr_comments: true
-          github_token: ${{ secrets.TOKEN_GIT }}
           issue_labels: vulnerability
 
       - name: install npm ci

@@ -33,7 +33,7 @@ jobs:
           project: 'tcc-password-manager'
           path: './'
           format: 'HTML'
-          out: '${{github.workspace}}'
+          out: '.'
           args: >
             --failOnCVSS 7
             --enableRetired
