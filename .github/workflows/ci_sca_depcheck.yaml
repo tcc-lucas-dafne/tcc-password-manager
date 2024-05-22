@@ -43,22 +43,6 @@ jobs:
         with:
            name: Depcheck report
            path:  ${{github.workspace}}
-      
-      - name: Comment on PR with OWASP Dependency Check results
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const { context, github } = require('@actions/github');
-
-            const report = fs.readFileSync('./reports/dependency-check-report.html', 'utf8');
-
-            github.issues.createComment({
-              ...context.repo,
-              issue_number: context.issue.number,
-              body: '## OWASP Dependency Check Results\n\n' + report,
-            });
 
       - name: Save Deṕcheck Report on Branch
         if: always()
@@ -87,3 +71,19 @@ jobs:
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin develop
+      
+      - name: Comment on PR with OWASP Dependency Check results
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const { context, github } = require('@actions/github');
+
+            const report = fs.readFileSync('./reports/dependency-check-report.html', 'utf8');
+
+            github.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body: '## OWASP Dependency Check Results\n\n' + report,
+            });
