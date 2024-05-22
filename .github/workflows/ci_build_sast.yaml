@@ -26,3 +26,21 @@ jobs:
           create_issues: true
           github_token: ${{ secrets.TOKEN_GIT }}
           issue_labels: vulnerability
+
+      - name: install npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
+        run: npm ci
+
+      # SonarCloud Scan
+      - name: SonarCloud
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+      
+      - name: SonarCloud Scan
+        if: always()
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }} 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
