@@ -21,7 +21,7 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
 | Cross-Domain Misconfiguration | Medium | 7 |
-| Missing Anti-clickjacking Header | Medium | 2 |
+| Missing Anti-clickjacking Header | Medium | 1 |
 | Permissions Policy Header Not Set | Low | 3 |
 | Timestamp Disclosure - Unix | Low | 1 |
 | X-Content-Type-Options Header Missing | Low | 7 |
@@ -174,12 +174,6 @@ Configure the "Access-Control-Allow-Origin" HTTP header to a more restrictive se
 
 The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
 
-* URL: https://hml-tcc-password-manager.vercel.app
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
 * URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
   * Method: `GET`
   * Parameter: `x-frame-options`
@@ -187,7 +181,7 @@ The response does not include either Content-Security-Policy with 'frame-ancesto
   * Evidence: ``
   * Other Info: ``
 
-Instances: 2
+Instances: 1
 
 ### Solution
 
@@ -510,13 +504,13 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 49`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 47`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/logo192.png
   * Method: `GET`
@@ -540,13 +534,13 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 48`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/static/js/main.31d4f4df.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 0`
+  * Evidence: `Age: 48`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 
 Instances: 7
@@ -586,13 +580,13 @@ Specifies how and where the data would be used. For instance, if the value is au
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-Dest`
   * Attack: ``
@@ -634,13 +628,13 @@ Allows to differentiate between requests for navigating between HTML pages and r
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-Mode`
   * Attack: ``
@@ -682,13 +676,13 @@ Specifies the relationship between request initiator's origin and target's origi
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-Site`
   * Attack: ``
@@ -730,13 +724,13 @@ Specifies if a navigation request was initiated by a user.
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+* URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
   * Method: `GET`
   * Parameter: `Sec-Fetch-User`
   * Attack: ``
