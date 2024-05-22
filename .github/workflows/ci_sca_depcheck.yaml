@@ -37,23 +37,9 @@ jobs:
           args: >
             --failOnCVSS 7
             --enableRetired
-      
-      - name: Comment on PR with OWASP Dependency Check results
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const { context, github } = require('@actions/github');
 
-            const report = fs.readFileSync('./reports/dependency-check-report.html', 'utf8');
-
-            github.issues.createComment({
-              ...context.repo,
-              issue_number: context.issue.number,
-              body: '## OWASP Dependency Check Results\n\n' + report,
-            });
-
+      - name: Check
+        run: ls
 
       - name: Upload Test results
         uses: actions/upload-artifact@v4
