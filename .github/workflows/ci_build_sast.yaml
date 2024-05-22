@@ -1,4 +1,4 @@
-name: CI_BUILD_SAST
+name: Build and SAST Tests
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_and_sca:
-    name: 'Build and SAST'
+    name: 'Build'
     runs-on: ubuntu-latest
 
     steps:

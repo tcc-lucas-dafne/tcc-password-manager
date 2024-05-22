@@ -1,4 +1,4 @@
-name: CI_SCA
+name: SCA Tests
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   sca_depcheck:
-    name: 'SCA - Owasp Dependency Check'
+    name: 'Owasp Dependency Check'
     runs-on: ubuntu-latest
 
     steps:
@@ -43,6 +43,22 @@ jobs:
         with:
            name: Depcheck report
            path:  ${{github.workspace}}
+      
+      - name: Comment on PR with OWASP Dependency Check results
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const { context, github } = require('@actions/github');
+
+            const report = fs.readFileSync('./reports/dependency-check-report.html', 'utf8');
+
+            github.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body: '## OWASP Dependency Check Results\n\n' + report,
+            });
 
       - name: Save Deṕcheck Report on Branch
         if: always()
