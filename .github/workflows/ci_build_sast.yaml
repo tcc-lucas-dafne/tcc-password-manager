@@ -1,7 +1,7 @@
 name: CI_BUILD_SAST
 
 on:
-  pull_request:
+  push:
     branches: [19-add-snyk]
 
 jobs:

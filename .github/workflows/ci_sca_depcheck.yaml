@@ -1,7 +1,7 @@
 name: SCA Tests
 
 on:
-  pull_request:
+  push:
     branches: [19-add-snyk]
 
 jobs:
