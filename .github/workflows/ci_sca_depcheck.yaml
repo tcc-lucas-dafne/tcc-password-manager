@@ -2,7 +2,7 @@ name: SCA Tests
 
 on:
   pull_request:
-    branches: [develop]
+    branches: [19-add-snyk]
 
 jobs:
   sca_depcheck:
@@ -24,6 +24,12 @@ jobs:
         run: npm ci
 
       # SCA
+
+      # SNYK
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       
       # OWASP DEPENDENCY CHECK
       - name: Depcheck
