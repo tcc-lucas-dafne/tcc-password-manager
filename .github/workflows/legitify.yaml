@@ -1,0 +1,17 @@
+name: Legitify Analyze
+
+on:
+  push:
+    branches: [19-add-snyk]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Legitify Action
+        uses: Legit-Labs/legitify@main
+        with:
+          github_token: ${{ secrets.PAT_FOR_LEGITIFY }}
+          ignore-policies: |
+             non_admins_can_create_public_repositories
+             requires_status_checks
