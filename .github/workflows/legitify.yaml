@@ -7,6 +7,10 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - name: Legitify Action
         uses: Legit-Labs/legitify@main
