@@ -1,5 +1,6 @@
-const { Octokit } = require('@octokit/core');
-require('dotenv').config();
+import { Octokit } from '@octokit/core';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const { TOKEN, RELEASE_MAJOR, RELEASE_MINOR, RELEASE_PATCH } = process.env;
 const octokit = new Octokit({ auth: TOKEN });
