@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/core";
 import 'dotenv/config' 
 
 const { TOKEN, RELEASE_MAJOR, RELEASE_MINOR, RELEASE_PATCH } = process.env;
-const { REPO, OWNER } = require('./consts.js');
+import { REPO, OWNER } from './consts.js';
 const octokit = new Octokit({ auth: TOKEN });
 
 const now = new Date();
