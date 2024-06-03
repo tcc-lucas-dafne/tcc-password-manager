@@ -1,7 +1,2 @@
-const REPO = process.env.NAME_REPO_GIT;
-const OWNER = 'tcc-lucas-dafne';
-
-module.exports = {
-  REPO,
-  OWNER
-}
+export const REPO = process.env.NAME_REPO_GIT;
+export const OWNER = 'tcc-lucas-dafne';
