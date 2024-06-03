@@ -1,2 +1,2 @@
-export const REPO = process.env.NAME_REPO_GIT;
+export const REPO = 'tcc-password-manager';
 export const OWNER = 'tcc-lucas-dafne';
