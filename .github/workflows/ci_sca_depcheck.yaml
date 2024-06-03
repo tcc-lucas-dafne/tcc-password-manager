@@ -8,6 +8,8 @@ jobs:
   sca_depcheck:
     name: 'Owasp Dependency Check'
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
 
     steps:
       - name: Checkout Repository
@@ -41,9 +43,10 @@ jobs:
           sarif: true
 
       - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
+          category: my-analysis-tool
       
       # OWASP DEPENDENCY CHECK
       - name: Depcheck
