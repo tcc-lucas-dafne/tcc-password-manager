@@ -3,15 +3,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const { TOKEN, RELEASE_MAJOR, RELEASE_MINOR, RELEASE_PATCH } = process.env;
+const { REPO, OWNER } = require('./consts.js');
 const octokit = new Octokit({ auth: TOKEN });
 
 const now = new Date();
-const year = now.getFullYear().toString();
-const month = (now.getMonth() + 1).toString().padStart(2, '0');
-const day = now.getDate().toString().padStart(2, '0');
-const hours = now.getHours().toString().padStart(2, '0');
-const minutes = now.getMinutes().toString().padStart(2, '0');
-const seconds = now.getSeconds().toString().padStart(2, '0');
 
 const getLatestRelease = async () => {
   const releases = await octokit.request('GET /repos/{owner}/{repo}/releases', {
@@ -25,8 +20,8 @@ const getLatestRelease = async () => {
 };
 
 const newTagName = async () => {
-  let oldTag = await getLatestRelease();
-  oldTag = oldTag.split('.');
+  let res: string = await getLatestRelease();
+  let oldTag: string[] = res.split('.');
 
   if (RELEASE_MAJOR === 'true') {
     const majorTagNum = parseInt(oldTag[0]) + 1;
