@@ -1,4 +1,4 @@
-**Issue:** resolves tcc-lucas-dafne/tcc-passworrd-manager#X
+**Issue:** resolves tcc-lucas-dafne/tcc-password-manager#X
 
 <!-- OBSERVAÇÕES:
   - X é o número da issue
