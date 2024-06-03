@@ -1,5 +1,5 @@
-const { Octokit } = require('@octokit/core');
-require('dotenv').config();
+import { Octokit } from "@octokit/core";
+import 'dotenv/config' 
 
 const { TOKEN, RELEASE_MAJOR, RELEASE_MINOR, RELEASE_PATCH } = process.env;
 const { REPO, OWNER } = require('./consts.js');
