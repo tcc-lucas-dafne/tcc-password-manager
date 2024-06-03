@@ -15,7 +15,7 @@ const getLatestRelease = async () => {
   if (releases?.data.length > 0) {
     return releases?.data?.[0]?.tag_name;
   }
-  return '0.0.0';
+  return 'v0.0.0';
 };
 
 const newTagName = async () => {
@@ -24,18 +24,18 @@ const newTagName = async () => {
 
   if (RELEASE_MAJOR === 'true') {
     const majorTagNum = parseInt(oldTag[0]) + 1;
-    return `${majorTagNum}.0.0`;
+    return `v${majorTagNum}.0.0`;
   }
   if (RELEASE_MINOR === 'true') {
     const minorTagNum = parseInt(oldTag[1]) + 1;
-    return `${oldTag[0]}.${minorTagNum}.0`;
+    return `v${oldTag[0]}.${minorTagNum}.0`;
   }
   if (RELEASE_PATCH === 'true') {
     const fixTagNum = parseInt(oldTag[2]) + 1;
-    return `${oldTag[0]}.${oldTag[1]}.${fixTagNum}`;
+    return `v${oldTag[0]}.${oldTag[1]}.${fixTagNum}`;
   }
   const fixTagNum = parseInt(oldTag[2]) + 1;
-  return `${oldTag[0]}.${oldTag[1]}.${fixTagNum}`;
+  return `v${oldTag[0]}.${oldTag[1]}.${fixTagNum}`;
 };
 
 const createRelease = async () => {
