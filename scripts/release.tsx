@@ -19,8 +19,8 @@ const getLatestRelease = async () => {
 };
 
 const newTagName = async () => {
-  let res: string = await getLatestRelease();
-  let oldTag: string[] = res.split('.');
+  let res = await getLatestRelease();
+  let oldTag = res.split('.');
 
   if (RELEASE_MAJOR === 'true') {
     const majorTagNum = parseInt(oldTag[0]) + 1;
