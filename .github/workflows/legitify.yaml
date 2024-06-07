@@ -1,7 +1,7 @@
 name: Legitify Analyze
 
 on:
-  push:
+  pull_request:
     branches: [develop]
 
 jobs:

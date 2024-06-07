@@ -24,6 +24,20 @@ jobs:
         run: npm ci
 
       # SCA
+      # SNYK
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --sarif-file-output=snyk.sarif
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
+          category: my-analysis-tool
       
       # OWASP DEPENDENCY CHECK
       - name: Depcheck
