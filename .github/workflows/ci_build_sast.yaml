@@ -1,4 +1,4 @@
-name: CI_BUILD_SAST
+name: Build and SAST Tests
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_and_sca:
-    name: 'Build and SAST'
+    name: 'Build'
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +22,10 @@ jobs:
       - name: run npm audit
         uses: oke-py/npm-audit-action@v2
         with:
-          audit_level: low
-          create_issues: true
+          audit_level: moderate
           github_token: ${{ secrets.TOKEN_GIT }}
+          create_issues: true
+          create_pr_comments: true
           issue_labels: vulnerability
 
       - name: install npm ci
