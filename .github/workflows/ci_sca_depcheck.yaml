@@ -39,9 +39,6 @@ jobs:
       #     sarif_file: snyk.sarif
       #     category: my-analysis-tool
       
-      - name: Create depcheck
-        run: mkdir -p depcheck
-      
       # OWASP DEPENDENCY CHECK
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
@@ -50,20 +47,20 @@ jobs:
           project: 'tcc-password-manager'
           path: './'
           format: 'ALL'
-          out: 'depcheck'
+          out: '.'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
 
-      - name: Zip report
-        run: |
-          zip -r depcheck.zip depcheck
+      # - name: Zip report
+      #   run: |
+      #     zip -r depcheck.zip depcheck
 
       - name: Upload Test results
         uses: actions/upload-artifact@v4
         with:
            name: Depcheck report
-           path:  ${{github.workspace}}/depcheck.zip
+           path:  ${{github.workspace}}
 
       # - name: Save Deṕcheck Report on Branch
       #   if: always()
