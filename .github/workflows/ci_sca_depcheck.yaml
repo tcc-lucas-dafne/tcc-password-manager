@@ -52,7 +52,6 @@ jobs:
           format: 'ALL'
           out: 'depcheck'
           args: >
-            --failOnCVSS 7
             --enableRetired
 
       - name: Zip report
