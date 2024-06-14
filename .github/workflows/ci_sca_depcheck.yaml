@@ -1,8 +1,8 @@
 name: SCA Tests
 
 on:
-  pull_request:
-    branches: [develop]
+  push:
+    branches: [17-analyze-reports]
 
 jobs:
   sca_depcheck:
