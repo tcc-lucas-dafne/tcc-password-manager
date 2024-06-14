@@ -47,7 +47,7 @@ jobs:
           project: 'tcc-password-manager'
           path: './'
           format: 'ALL'
-          out: '.'
+          out: 'depcheck'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            name: Depcheck report
-           path:  ${{github.workspace}}
+           path:  ${{github.workspace}}/depcheck
 
       # - name: Save Deṕcheck Report on Branch
       #   if: always()
