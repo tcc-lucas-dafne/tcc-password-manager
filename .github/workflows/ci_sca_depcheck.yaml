@@ -39,6 +39,9 @@ jobs:
           sarif_file: snyk.sarif
           category: my-analysis-tool
       
+      - name: Create depcheck
+        run: mkdir -p depcheck
+      
       # OWASP DEPENDENCY CHECK
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
@@ -46,45 +49,37 @@ jobs:
         with:
           project: 'tcc-password-manager'
           path: './'
-          format: 'HTML'
-          out: '.'
+          format: 'ALL'
+          out: 'depcheck'
           args: >
             --failOnCVSS 7
             --enableRetired
 
-      - name: Check
-        run: ls
+      - name: Zip report
+        run: |
+          zip -r depcheck.zip depcheck
 
       - name: Upload Test results
         uses: actions/upload-artifact@v4
         with:
            name: Depcheck report
-           path:  ${{github.workspace}}
+           path:  ${{github.workspace}}/depcheck.zip
 
-      - name: Save Deṕcheck Report on Branch
-        if: always()
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          cd ${{secrets.NAME_REPO_GIT}}
-          git fetch && git checkout ${GITHUB_REF#refs/heads/}
-          current_date=$(date +%Y-%m-%d)
-          rm -rf reports/owasp_dependency_check/${current_date} && mkdir -p reports/owasp_dependency_check/${current_date}
-          cp -R ${{github.workspace}}/dependency-check-report.html reports/owasp_dependency_check/${current_date}
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
-          git push origin ${GITHUB_REF#refs/heads/}
-      
-      - name: Save Depcheck Report on Develop
-        if: always()
-        run: |
-          if [ ! -d "${{secrets.NAME_REPO_GIT}}" ]; then
-            git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          fi
-          cd ${{secrets.NAME_REPO_GIT}}
-          git checkout develop
-          current_date=$(date +%Y-%m-%d)
-          rm -rf reports/owasp_dependency_check/${current_date} && mkdir -p reports/owasp_dependency_check/${current_date}
-          cp -R ${{github.workspace}}/dependency-check-report.html reports/owasp_dependency_check/${current_date}
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
-          git push origin develop
+      # - name: Save Deṕcheck Report on Branch
+      #   if: always()
+      #   run: |
+      #     git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+      #     cd ${{secrets.NAME_REPO_GIT}}
+      #     git fetch && git checkout ${GITHUB_REF#refs/heads/}
+      #     current_date=$(date +%Y-%m-%d)
+      #     rm -rf reports/owasp_dependency_check/${current_date} && mkdir -p reports/owasp_dependency_check/${current_date}
+      #     cp -R ${{github.workspace}}/dependency-check-report.html reports/owasp_dependency_check/${current_date}
+      #     git add .
+      #     git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
+      #     git push origin ${GITHUB_REF#refs/heads/}
+
+
+      - name: PR comment with file
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          filePath: depcheck.zip
