@@ -53,7 +53,7 @@ jobs:
           target: 'https://hml-tcc-password-manager.vercel.app'
           cmd_options: '-a'
           allow_issue_writing: 'true'
-          # fail_action: 'true'
+          fail_action: 'true'
           artifact_name: 'zap_baseline_scan'
 
       - name: Upload Zap Baseline Scan Report to Action
@@ -98,7 +98,7 @@ jobs:
           target: 'https://hml-tcc-password-manager.vercel.app'
           cmd_options: '-a'
           allow_issue_writing: 'true'
-          # fail_action: 'true'
+          fail_action: 'true'
           artifact_name: 'zap_full_scan'
 
       - name: Upload Zap Full Scan Report to Action
