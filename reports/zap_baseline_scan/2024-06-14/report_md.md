@@ -21,12 +21,12 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
 | Cross-Domain Misconfiguration | Medium | 8 |
-| Missing Anti-clickjacking Header | Medium | 2 |
+| Missing Anti-clickjacking Header | Medium | 1 |
 | Permissions Policy Header Not Set | Low | 3 |
 | X-Content-Type-Options Header Missing | Low | 8 |
 | Information Disclosure - Suspicious Comments | Informational | 1 |
 | Modern Web Application | Informational | 2 |
-| Re-examine Cache-control Directives | Informational | 4 |
+| Re-examine Cache-control Directives | Informational | 3 |
 | Retrieved from Cache | Informational | 8 |
 | Storable and Cacheable Content | Informational | 2 |
 | Storable but Non-Cacheable Content | Informational | 6 |
@@ -181,14 +181,8 @@ The response does not include either Content-Security-Policy with 'frame-ancesto
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
 
-Instances: 2
+Instances: 1
 
 ### Solution
 
@@ -440,12 +434,6 @@ The cache-control header has not been set properly or is missing, allowing the b
   * Attack: ``
   * Evidence: `public, max-age=0, must-revalidate`
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
-  * Method: `GET`
-  * Parameter: `cache-control`
-  * Attack: ``
-  * Evidence: `public, max-age=0, must-revalidate`
-  * Other Info: ``
 * URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
   * Method: `GET`
   * Parameter: `cache-control`
@@ -453,7 +441,7 @@ The cache-control header has not been set properly or is missing, allowing the b
   * Evidence: `s-maxage=0`
   * Other Info: ``
 
-Instances: 4
+Instances: 3
 
 ### Solution
 
