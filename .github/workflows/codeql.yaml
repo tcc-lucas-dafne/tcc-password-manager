@@ -1,8 +1,8 @@
 name: "CodeQL"
 
 on:
-  pull_request:
-    branches: [develop]
+  push:
+    branches: [17-analyze-reports]
 
 jobs:
   analyze:
