@@ -53,6 +53,7 @@ jobs:
           out: 'depcheck'
           args: >
             --enableRetired
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
 
       - name: Zip report
         run: |
