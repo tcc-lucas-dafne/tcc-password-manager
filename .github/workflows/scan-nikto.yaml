@@ -1,0 +1,21 @@
+name: Nikto
+
+on:
+  push:
+    branches: [8-testar-workflow-ci-cd]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  scan_sqlmap:
+    runs-on: ubuntu-latest
+    name: SQLMAP2
+    steps:
+      - name: Scan with sqlmap
+        uses: thereisnotime/action-sqlmap@master
+        with:
+          url: "https://prod-password-manager-api-127ca2fc4701.herokuapp.com/api/v1/user/login"
+          # url: "http://localhost:3001/api/v1/user/login"
+          additional_args: "--data=\"email=email@email.com&password=123456\" --level 5 --risk 3 -f --banner --dbms=postgres --technique=B"

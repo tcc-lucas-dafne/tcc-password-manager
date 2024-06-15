@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   min-width: 500px;
   background-color: #FFF;
   border-radius: 18px;

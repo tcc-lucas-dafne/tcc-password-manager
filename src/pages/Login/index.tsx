@@ -29,8 +29,7 @@ const Login = () => {
     })
   }
 
-  const loginUser = async (event: any) => {
-    event.preventDefault();
+  const loginUser = async () => {
     const data: Login = {
       email: loginForm.email,
       password: loginForm.password
@@ -56,11 +55,11 @@ const Login = () => {
     }
   }
 
-  if (user?.id) return <Navigate to="/" replace />
+  if (user && user.id) return <Navigate to="/" replace />
 
   return (
     <Container>
-      <FormContainer onSubmit={loginUser}>
+      <FormContainer>
         <SiteName>Gerenciador de Senhas</SiteName>
         <FieldContainer>
           <LoginInput 
@@ -83,7 +82,7 @@ const Login = () => {
           />
         </FieldContainer>
       
-        <Button variant="contained" color="primary" type="submit" disabled={!loginForm.email || !loginForm.password}>
+        <Button variant="contained" color="primary" onClick={loginUser}>
           Entrar
         </Button>
         <a href="/register">Não possui uma conta?</a>
