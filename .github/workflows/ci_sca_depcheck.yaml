@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       security-events: write
+      pull-requests: write
 
     steps:
       - name: Checkout Repository
