@@ -73,5 +73,5 @@ jobs:
         with:
           message: |
             Hello World!
-          filePath: Depcheck report.zip
+          filePath: depcheck
           pr_number: $PR_NUMBER
