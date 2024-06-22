@@ -1,4 +1,4 @@
-name: HOMOLOG
+name: HOMOLOG_AND_DAST
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -14,7 +14,7 @@ defaults:
 jobs:
   deploy_homolog:
     environment: homolog
-    name: 'Deploy to homolog'
+    name: 'deploy to homolog'
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +39,6 @@ jobs:
         run: |
           vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
   
-  call-workflow-dast:
+  dast:
     needs: deploy_homolog
     uses: ./.github/workflows/dast.yaml
