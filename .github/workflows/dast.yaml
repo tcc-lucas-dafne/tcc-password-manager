@@ -1,10 +1,6 @@
 name: DAST
 
-on:
-  workflow_run:
-    workflows: [CD_HOMOLOG]
-    types:
-      - completed
+on: workflow_call
 
 defaults:
   run:
