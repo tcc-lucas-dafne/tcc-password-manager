@@ -70,14 +70,11 @@ jobs:
           git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
           cd ${{secrets.NAME_REPO_GIT}}
           git checkout develop
-
           current_date=$(date +%Y-%m-%d)
           mkdir -p reports/zap_baseline_scan/${current_date}
-          
           export TZ=America/Sao_Paulo
           hour=$(date +'%Y-%m-%d_%H-%M-%S')
           mv ${{github.workspace}}/report_json.json ${{github.workspace}}/report_json_${hour}.json
-
           cp -R ${{github.workspace}}/report_json_${hour}.json reports/zap_baseline_scan/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
@@ -127,7 +124,7 @@ jobs:
           git checkout develop
           current_date=$(date +%Y-%m-%d)
           rm -rf reports/zap_full_scan/${current_date} && mkdir -p reports/zap_full_scan/${current_date}
-          cp -R ${{github.workspace}}/report_json.json reports/zap_full_scan/${current_date}/
+          cp ${{github.workspace}}/report_json.json reports/zap_full_scan/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin develop
