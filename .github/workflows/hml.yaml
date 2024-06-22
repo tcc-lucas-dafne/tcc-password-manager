@@ -43,5 +43,5 @@ jobs:
     needs: deploy_homolog
     uses: ./.github/workflows/dast.yaml
     with:
-      token_git: ${{ secrets.TOKEN_GIT }}
+      token_git: "${{ secrets.TOKEN_GIT }}"
       
