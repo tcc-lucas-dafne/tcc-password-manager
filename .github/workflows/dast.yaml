@@ -2,7 +2,7 @@ name: DAST
 
 on:
   workflow_run:
-    workflows: ["HOMOLOG"]
+    workflows: [HOMOLOG]
     branches: [develop]
     types: 
       - completed
