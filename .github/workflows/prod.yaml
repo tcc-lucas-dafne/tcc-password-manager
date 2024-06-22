@@ -1,5 +1,5 @@
 
-name: CD_PROD
+name: PROD
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_PROD }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_PROD }}

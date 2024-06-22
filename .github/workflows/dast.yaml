@@ -1,6 +1,11 @@
 name: DAST
 
-on: workflow_call
+on:
+  workflow_run:
+    workflows: ["HOMOLOG"]
+    branches: [develop]
+    types: 
+      - completed
 
 defaults:
   run:
