@@ -21,9 +21,6 @@ jobs:
           git config --global user.name "${{secrets.GIT_USER_NAME}}"
 
       - name: Cache Git Config
-        run: find ~ -name ".gitconfig"
-
-      - name: Cache Git Config
         uses: actions/cache@v4
         with:
           path: /home/runner/.gitconfig
@@ -75,6 +72,7 @@ jobs:
           git checkout develop
           current_date=$(date +%Y-%m-%d)
           rm -rf reports/zap_baseline_scan/${current_date} && mkdir -p reports/zap_baseline_scan/${current_date}
+          export TZ=America/Sao_Paulo
           hour=$(date +'%Y-%m-%d_%H-%M-%S')
           mv ${{github.workspace}}/report_json.json ${{github.workspace}}/report_json_${hour}.json
           cp -R ${{github.workspace}}/report_json_${hour}.json reports/zap_baseline_scan/${current_date}/
@@ -82,19 +80,26 @@ jobs:
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin develop
           
-      - name: Remove ZAP Baseline Reports 
-        run: |
-          rm report_html.html
-          rm report_md.md
-          rm report_json.json
+      # - name: Remove ZAP Baseline Reports 
+      #   run: |
+      #     rm report_html.html
+      #     rm report_md.md
+      #     rm report_json.json
 
   zap_full_scan:    
     name: 'zap_full_scan'
     runs-on: ubuntu-latest
+    needs: config_git
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Restore Git Config
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/.gitconfig
+          key: git-config
   
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.10.0
@@ -139,8 +144,15 @@ jobs:
   nikto:
     name: 'nikto'
     runs-on: ubuntu-latest
+    needs: config_git
 
     steps:
+      - name: Restore Git Config
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/.gitconfig
+          key: git-config
+
       - name: Create nikto report file
         run: |
           touch ${{ github.workspace }}/nikto_out.json
