@@ -19,4 +19,5 @@ cp $github_workspace/$REPORT_NAME_$hour.$REPORT_FORMAT reports/$TOOL_NAME/$curre
 git add reports/$TOOL_NAME/$current_date/$REPORT_NAME_$hour.$REPORT_FORMAT
 git add .
 git commit -m "Adicionando relatório no repositório $repository_name $ref_name [skip ci]"
+git pull origin develop
 git push origin develop
