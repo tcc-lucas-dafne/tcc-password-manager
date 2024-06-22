@@ -38,6 +38,7 @@ jobs:
       - name: Deploy Project Artifacts
         run: |
           vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Run dast
-        uses: ./.github/workflows/dast.yaml
+    
+  dast:
+    uses: ./.github/workflows/dast.yml
+    secrets: inherit
