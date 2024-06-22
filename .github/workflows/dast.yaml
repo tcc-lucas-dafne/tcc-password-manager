@@ -76,7 +76,7 @@ jobs:
           hour=$(date +'%d-%m-%Y_%H-%M-%S')
           mv ${{github.workspace}}/report_json.json ${{github.workspace}}/report_json_${hour}.json
           cp ${{github.workspace}}/report_json_${hour}.json reports/zap_baseline_scan/${current_date}/
-          git add reports/zap_full_scan/${current_date}/report_json_${hour}.json
+          git add reports/zap_baseline_scan/${current_date}/report_json_${hour}.json
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin develop
