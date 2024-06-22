@@ -7,8 +7,8 @@ defaults:
     shell: bash
 
 jobs:
-  zap:
-    name: 'DAST tests'
+  zap_baseline:
+    name: 'zap_baseline_scan'
     runs-on: ubuntu-latest
 
     steps:
@@ -58,9 +58,14 @@ jobs:
           rm report_md.md
           rm report_json.json
 
+  zap_full_scan:    
+    name: 'zap_full_scan'
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
-      
+  
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.10.0
         with:
@@ -104,7 +109,7 @@ jobs:
           rm report_json.json
     
   nikto:
-    name: 'DAST tests'
+    name: 'nikto'
     runs-on: ubuntu-latest
 
     steps:
