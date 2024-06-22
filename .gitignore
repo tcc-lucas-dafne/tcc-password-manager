@@ -11,9 +11,6 @@
 # production
 /build
 
-#dast reports
-reports/
-
 # misc
 .DS_Store
 .env.local
