@@ -44,6 +44,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /home/runner/.gitconfig
+          key: git-config
 
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
