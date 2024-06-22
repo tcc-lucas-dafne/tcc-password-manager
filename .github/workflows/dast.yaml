@@ -21,7 +21,10 @@ jobs:
         git config --global user.name "${{secrets.GIT_USER_NAME}}"
 
     - name: Cache Git Config
-      uses: actions/cache@v2
+      run: find ~ -name ".gitconfig"
+
+    - name: Cache Git Config
+      uses: actions/cache@v4
       with:
         path: ~/.gitconfig
         key: git-config
