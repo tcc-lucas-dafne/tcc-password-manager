@@ -20,7 +20,7 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
-| Cross-Domain Misconfiguration | Medium | 6 |
+| Cross-Domain Misconfiguration | Medium | 7 |
 | Missing Anti-clickjacking Header | Medium | 2 |
 | Permissions Policy Header Not Set | Low | 3 |
 | Timestamp Disclosure - Unix | Low | 1 |
@@ -103,6 +103,12 @@ Web browser data loading may be possible, due to a Cross Origin Resource Sharing
   * Attack: ``
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
+* URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Access-Control-Allow-Origin: *`
+  * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
 * URL: https://hml-tcc-password-manager.vercel.app/logo192.png
   * Method: `GET`
   * Parameter: ``
@@ -134,7 +140,7 @@ Web browser data loading may be possible, due to a Cross Origin Resource Sharing
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
 
-Instances: 6
+Instances: 7
 
 ### Solution
 
@@ -500,13 +506,13 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 53`
+  * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/favicon.ico
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 53`
+  * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/logo192.png
   * Method: `GET`
@@ -530,13 +536,13 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 53`
+  * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `Age: 53`
+  * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 
 Instances: 7
