@@ -40,16 +40,10 @@ jobs:
         with:
           ref: develop
 
-      - name: Restore Git Config from Cache
+      - name: Restore Git Config
         uses: actions/cache@v4
         with:
           path: /home/runner/.gitconfig
-          key: git-config
-      
-      # - name: Config GitHub
-      #   run: |
-      #     git config --global user.email "${{secrets.GIT_USER_EMAIL}}"
-      #     git config --global user.name "${{secrets.GIT_USER_NAME}}"
 
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
