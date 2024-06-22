@@ -103,44 +103,44 @@ jobs:
           rm report_md.md
           rm report_json.json
     
-    nikto:
-      name: 'DAST tests'
-      runs-on: ubuntu-latest
+  nikto:
+    name: 'DAST tests'
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Create nikto report file
-          run: |
-            touch ${{ github.workspace }}/nikto_out.json
-            chmod o+w ${{ github.workspace }}/nikto_out.json
-            chmod g+w ${{ github.workspace }}/nikto_out.json
+    steps:
+      - name: Create nikto report file
+        run: |
+          touch ${{ github.workspace }}/nikto_out.json
+          chmod o+w ${{ github.workspace }}/nikto_out.json
+          chmod g+w ${{ github.workspace }}/nikto_out.json
 
-        - name: Find absolute path of nikto_out.json
-          id: find_file_path
-          run: |
-            file_path=$(realpath nikto_out.json)
-            echo "FILE_PATH=$file_path" >> $GITHUB_ENV
+      - name: Find absolute path of nikto_out.json
+        id: find_file_path
+        run: |
+          file_path=$(realpath nikto_out.json)
+          echo "FILE_PATH=$file_path" >> $GITHUB_ENV
 
-        - name: Scan with nikto
-          uses: thereisnotime/action-nikto@master
-          with:
-            url: "https://hml-tcc-password-manager.vercel.app/"
-            additional_args: "-Option FAILURES=0 -o $FILE_PATH -Format json"
+      - name: Scan with nikto
+        uses: thereisnotime/action-nikto@master
+        with:
+          url: "https://hml-tcc-password-manager.vercel.app/"
+          additional_args: "-Option FAILURES=0 -o $FILE_PATH -Format json"
 
-        - name: Upload Nikto Report to Action
-          uses: actions/upload-artifact@v4
-          with:
-            name: nikto-report
-            path: ${{ runner.temp }}/nikto_out.json
-        
-        - name: Save Nikto Report
-          if: always()
-          run: |
-            git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-            cd ${{secrets.NAME_REPO_GIT}}
-            git checkout develop
-            current_date=$(date +%Y-%m-%d)
-            rm -rf reports/nikto/${current_date} && mkdir -p reports/nikto/${current_date}
-            cp -R ${{github.workspace}}/nikto_out.json reports/nikto/${current_date}/
-            git add .
-            git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
-            git push origin develop
+      - name: Upload Nikto Report to Action
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikto-report
+          path: ${{ runner.temp }}/nikto_out.json
+      
+      - name: Save Nikto Report
+        if: always()
+        run: |
+          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+          cd ${{secrets.NAME_REPO_GIT}}
+          git checkout develop
+          current_date=$(date +%Y-%m-%d)
+          rm -rf reports/nikto/${current_date} && mkdir -p reports/nikto/${current_date}
+          cp -R ${{github.workspace}}/nikto_out.json reports/nikto/${current_date}/
+          git add .
+          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
+          git push origin develop
