@@ -39,6 +39,6 @@ jobs:
         run: |
           vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
   
-  # call-workflow-dast:
-  #   needs: deploy_homolog
-  #   uses: ./.github/workflows/dast.yaml
+  call-workflow-dast:
+    needs: deploy_homolog
+    uses: ./.github/workflows/dast.yaml
