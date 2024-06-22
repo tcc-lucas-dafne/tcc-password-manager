@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sat, 22 Jun 2024 15:34:53",
+	"@generated": "Sat, 22 Jun 2024 18:52:58",
 	"site":[ 
 		{
 			"@name": "https://hml-tcc-password-manager.vercel.app",
@@ -42,7 +42,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10098",
@@ -144,9 +144,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
@@ -278,7 +286,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -408,7 +416,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 51",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -416,7 +424,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 29",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -424,7 +432,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 28",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -432,7 +440,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 19",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -440,7 +448,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 29",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -448,7 +456,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 11",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -456,7 +464,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 19",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -464,7 +472,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 19",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -475,178 +483,6 @@
 					"cweid": "-1",
 					"wascid": "-1",
 					"sourceid": "6"
-				},
-				{
-					"pluginid": "90005",
-					"alertRef": "90005-3",
-					"alert": "Sec-Fetch-Dest Header is Missing",
-					"name": "Sec-Fetch-Dest Header is Missing",
-					"riskcode": "0",
-					"confidence": "3",
-					"riskdesc": "Informational (High)",
-					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
-					"instances":[ 
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90005",
-					"alertRef": "90005-2",
-					"alert": "Sec-Fetch-Mode Header is Missing",
-					"name": "Sec-Fetch-Mode Header is Missing",
-					"riskcode": "0",
-					"confidence": "3",
-					"riskdesc": "Informational (High)",
-					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
-					"instances":[ 
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90005",
-					"alertRef": "90005-1",
-					"alert": "Sec-Fetch-Site Header is Missing",
-					"name": "Sec-Fetch-Site Header is Missing",
-					"riskcode": "0",
-					"confidence": "3",
-					"riskdesc": "Informational (High)",
-					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
-					"instances":[ 
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90005",
-					"alertRef": "90005-4",
-					"alert": "Sec-Fetch-User Header is Missing",
-					"name": "Sec-Fetch-User Header is Missing",
-					"riskcode": "0",
-					"confidence": "3",
-					"riskdesc": "Informational (High)",
-					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
-					"instances":[ 
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://hml-tcc-password-manager.vercel.app/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
