@@ -9,14 +9,14 @@ cd $NAME_REPO_GIT
 git checkout develop
 
 current_date=$(date +%d-%m-%Y)
-mkdir -p reports/zap_full_scan/$current_date
+mkdir -p reports/$TOOL_NAME/$current_date
 
 export TZ=America/Sao_Paulo
 hour=$(date +'%d-%m-%Y_%H-%M-%S')
 mv $github_workspace/report_json.json $github_workspace/report_json_$hour.json
-cp $github_workspace/report_json_$hour.json reports/zap_full_scan/$current_date/
+cp $github_workspace/report_json_$hour.json reports/$TOOL_NAME/$current_date/
 
-git add reports/zap_full_scan/$current_date/report_json_$hour.json
+git add reports/$TOOL_NAME/$current_date/report_json_$hour.json
 git add .
 git commit -m "Adicionando relatório no repositório $repository_name $ref_name [skip ci]"
 git push origin develop
