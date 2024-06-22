@@ -119,26 +119,13 @@ jobs:
 
       - name: Save ZAP Full Scan Reports
         if: always()
+        env:
+          TOKEN_GIT: ${{ secrets.TOKEN_GIT }}
+          NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
         run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          cd ${{secrets.NAME_REPO_GIT}}
-          git checkout develop
-          current_date=$(date +%d-%m-%Y)
-          mkdir -p reports/zap_full_scan/${current_date}
-          export TZ=America/Sao_Paulo
-          hour=$(date +'%d-%m-%Y_%H-%M-%S')
-          mv ${{github.workspace}}/report_json.json ${{github.workspace}}/report_json_${hour}.json
-          cp ${{github.workspace}}/report_json_${hour}.json reports/zap_full_scan/${current_date}/
-          git add reports/zap_full_scan/${current_date}/report_json_${hour}.json
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
-          git push origin develop
-
-      - name: Remove ZAP Full Scan Reports 
-        run: |
-          rm report_html.html
-          rm report_md.md
-          rm report_json.json
+          cd scripts
+          chmod +x save_report.sh
+          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}"
     
   nikto:
     name: 'nikto'
