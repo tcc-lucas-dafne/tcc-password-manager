@@ -9,8 +9,8 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | --- | --- |
 | High | 0 |
 | Medium | 3 |
-| Low | 3 |
-| Informational | 6 |
+| Low | 2 |
+| Informational | 10 |
 
 
 
@@ -20,17 +20,20 @@ ZAP is supported by the [Crash Override Open Source Fellowship](https://crashove
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
-| Cross-Domain Misconfiguration | Medium | 7 |
-| Missing Anti-clickjacking Header | Medium | 2 |
+| Cross-Domain Misconfiguration | Medium | 8 |
+| Missing Anti-clickjacking Header | Medium | 1 |
 | Permissions Policy Header Not Set | Low | 3 |
-| Timestamp Disclosure - Unix | Low | 1 |
-| X-Content-Type-Options Header Missing | Low | 7 |
+| X-Content-Type-Options Header Missing | Low | 8 |
 | Information Disclosure - Suspicious Comments | Informational | 1 |
 | Modern Web Application | Informational | 2 |
-| Re-examine Cache-control Directives | Informational | 3 |
-| Retrieved from Cache | Informational | 7 |
+| Re-examine Cache-control Directives | Informational | 4 |
+| Retrieved from Cache | Informational | 8 |
+| Sec-Fetch-Dest Header is Missing | Informational | 3 |
+| Sec-Fetch-Mode Header is Missing | Informational | 3 |
+| Sec-Fetch-Site Header is Missing | Informational | 3 |
+| Sec-Fetch-User Header is Missing | Informational | 3 |
 | Storable and Cacheable Content | Informational | 2 |
-| Storable but Non-Cacheable Content | Informational | 5 |
+| Storable but Non-Cacheable Content | Informational | 6 |
 
 
 
@@ -115,6 +118,12 @@ Web browser data loading may be possible, due to a Cross Origin Resource Sharing
   * Attack: ``
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
+* URL: https://hml-tcc-password-manager.vercel.app/manifest.json
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Access-Control-Allow-Origin: *`
+  * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
 * URL: https://hml-tcc-password-manager.vercel.app/robots.txt
   * Method: `GET`
   * Parameter: ``
@@ -127,20 +136,20 @@ Web browser data loading may be possible, due to a Cross Origin Resource Sharing
   * Attack: ``
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Access-Control-Allow-Origin: *`
   * Other Info: `The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.`
 
-Instances: 7
+Instances: 8
 
 ### Solution
 
@@ -176,14 +185,8 @@ The response does not include either Content-Security-Policy with 'frame-ancesto
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
 
-Instances: 2
+Instances: 1
 
 ### Solution
 
@@ -225,7 +228,7 @@ Permissions Policy Header is an added layer of security that helps to restrict f
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -252,42 +255,6 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 
 #### WASC Id: 15
-
-#### Source ID: 3
-
-### [ Timestamp Disclosure - Unix ](https://www.zaproxy.org/docs/alerts/10096/)
-
-
-
-##### Low (Low)
-
-### Description
-
-A timestamp was disclosed by the application/web server - Unix
-
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1540483477`
-  * Other Info: `1540483477, which evaluates to: 2018-10-25 16:04:37`
-
-Instances: 1
-
-### Solution
-
-Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.
-
-### Reference
-
-
-* [ https://cwe.mitre.org/data/definitions/200.html ](https://cwe.mitre.org/data/definitions/200.html)
-
-
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
-
-
-#### WASC Id: 13
 
 #### Source ID: 3
 
@@ -322,6 +289,13 @@ At "High" threshold this scan rule will not alert on client or server error resp
   * Evidence: ``
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
+* URL: https://hml-tcc-password-manager.vercel.app/manifest.json
+  * Method: `GET`
+  * Parameter: `x-content-type-options`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At "High" threshold this scan rule will not alert on client or server error responses.`
 * URL: https://hml-tcc-password-manager.vercel.app/robots.txt
   * Method: `GET`
   * Parameter: `x-content-type-options`
@@ -336,14 +310,14 @@ At "High" threshold this scan rule will not alert on client or server error resp
   * Evidence: ``
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css
   * Method: `GET`
   * Parameter: `x-content-type-options`
   * Attack: ``
   * Evidence: ``
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js
   * Method: `GET`
   * Parameter: `x-content-type-options`
   * Attack: ``
@@ -351,7 +325,7 @@ At "High" threshold this scan rule will not alert on client or server error resp
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
 
-Instances: 7
+Instances: 8
 
 ### Solution
 
@@ -382,12 +356,12 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.
 
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `user`
-  * Other Info: `The following pattern was used: \bUSER\b and was detected in the element starting with: "(()=>{var e={5513:(e,t,n)=>{"use strict";n.d(t,{A:()=>oe});var r=function(){function e(e){var t=this;this._insertTag=function(e)", see evidence field for the suspicious comment/snippet.`
+  * Evidence: `select`
+  * Other Info: `The following pattern was used: \bSELECT\b and was detected in the element starting with: "(()=>{"use strict";var e={730:(e,n,t)=>{var r=t(43),l=t(853);function a(e){for(var n="https://reactjs.org/docs/error-decoder.htm", see evidence field for the suspicious comment/snippet.`
 
 Instances: 1
 
@@ -420,13 +394,13 @@ The application appears to be a modern web application. If you need to explore i
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `<script defer="defer" src="/static/js/main.376ba3b9.js"></script>`
+  * Evidence: `<script defer="defer" src="/static/js/main.9d8f87e7.js"></script>`
   * Other Info: `No links have been found while there are scripts, which is an indication that this is a modern web application.`
 * URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `<script defer="defer" src="/static/js/main.376ba3b9.js"></script>`
+  * Evidence: `<script defer="defer" src="/static/js/main.9d8f87e7.js"></script>`
   * Other Info: `No links have been found while there are scripts, which is an indication that this is a modern web application.`
 
 Instances: 2
@@ -458,6 +432,12 @@ The cache-control header has not been set properly or is missing, allowing the b
   * Attack: ``
   * Evidence: `public, max-age=0, must-revalidate`
   * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/manifest.json
+  * Method: `GET`
+  * Parameter: `cache-control`
+  * Attack: ``
+  * Evidence: `public, max-age=0, must-revalidate`
+  * Other Info: ``
 * URL: https://hml-tcc-password-manager.vercel.app/robots.txt
   * Method: `GET`
   * Parameter: `cache-control`
@@ -471,7 +451,7 @@ The cache-control header has not been set properly or is missing, allowing the b
   * Evidence: `s-maxage=0`
   * Other Info: ``
 
-Instances: 3
+Instances: 4
 
 ### Solution
 
@@ -520,6 +500,12 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Attack: ``
   * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
+* URL: https://hml-tcc-password-manager.vercel.app/manifest.json
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Age: 0`
+  * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 * URL: https://hml-tcc-password-manager.vercel.app/robots.txt
   * Method: `GET`
   * Parameter: ``
@@ -532,20 +518,20 @@ The content was retrieved from a shared cache. If the response data is sensitive
   * Attack: ``
   * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `Age: 0`
   * Other Info: `The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.`
 
-Instances: 7
+Instances: 8
 
 ### Solution
 
@@ -566,6 +552,198 @@ This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers 
 
 #### Source ID: 3
 
+### [ Sec-Fetch-Dest Header is Missing ](https://www.zaproxy.org/docs/alerts/90005/)
+
+
+
+##### Informational (High)
+
+### Description
+
+Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.
+
+* URL: https://hml-tcc-password-manager.vercel.app
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Dest`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Dest`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Dest`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+
+Instances: 3
+
+### Solution
+
+Ensure that Sec-Fetch-Dest header is included in request headers.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest)
+
+
+#### CWE Id: [ 352 ](https://cwe.mitre.org/data/definitions/352.html)
+
+
+#### WASC Id: 9
+
+#### Source ID: 3
+
+### [ Sec-Fetch-Mode Header is Missing ](https://www.zaproxy.org/docs/alerts/90005/)
+
+
+
+##### Informational (High)
+
+### Description
+
+Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.
+
+* URL: https://hml-tcc-password-manager.vercel.app
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Mode`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Mode`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Mode`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+
+Instances: 3
+
+### Solution
+
+Ensure that Sec-Fetch-Mode header is included in request headers.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode)
+
+
+#### CWE Id: [ 352 ](https://cwe.mitre.org/data/definitions/352.html)
+
+
+#### WASC Id: 9
+
+#### Source ID: 3
+
+### [ Sec-Fetch-Site Header is Missing ](https://www.zaproxy.org/docs/alerts/90005/)
+
+
+
+##### Informational (High)
+
+### Description
+
+Specifies the relationship between request initiator's origin and target's origin.
+
+* URL: https://hml-tcc-password-manager.vercel.app
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Site`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Site`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-Site`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+
+Instances: 3
+
+### Solution
+
+Ensure that Sec-Fetch-Site header is included in request headers.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site)
+
+
+#### CWE Id: [ 352 ](https://cwe.mitre.org/data/definitions/352.html)
+
+
+#### WASC Id: 9
+
+#### Source ID: 3
+
+### [ Sec-Fetch-User Header is Missing ](https://www.zaproxy.org/docs/alerts/90005/)
+
+
+
+##### Informational (High)
+
+### Description
+
+Specifies if a navigation request was initiated by a user.
+
+* URL: https://hml-tcc-password-manager.vercel.app
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-User`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/robots.txt
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-User`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/sitemap.xml
+  * Method: `GET`
+  * Parameter: `Sec-Fetch-User`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+
+Instances: 3
+
+### Solution
+
+Ensure that Sec-Fetch-User header is included in user initiated requests.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User)
+
+
+#### CWE Id: [ 352 ](https://cwe.mitre.org/data/definitions/352.html)
+
+
+#### WASC Id: 9
+
+#### Source ID: 3
+
 ### [ Storable and Cacheable Content ](https://www.zaproxy.org/docs/alerts/10049/)
 
 
@@ -576,13 +754,13 @@ This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers 
 
 The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
 
-* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css
+* URL: https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `s-maxage=31536000`
   * Other Info: ``
-* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js
+* URL: https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -642,6 +820,12 @@ The response contents are storable by caching components such as proxy servers, 
   * Attack: ``
   * Evidence: `max-age=0`
   * Other Info: ``
+* URL: https://hml-tcc-password-manager.vercel.app/manifest.json
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `max-age=0`
+  * Other Info: ``
 * URL: https://hml-tcc-password-manager.vercel.app/robots.txt
   * Method: `GET`
   * Parameter: ``
@@ -655,7 +839,7 @@ The response contents are storable by caching components such as proxy servers, 
   * Evidence: `s-maxage=0`
   * Other Info: ``
 
-Instances: 5
+Instances: 6
 
 ### Solution
 

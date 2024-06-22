@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sat, 22 Jun 2024 01:47:16
+		Generated on Sat, 22 Jun 2024 15:34:52
 	</h3>
 
 	<h3>
@@ -169,7 +169,7 @@ td {
 					<div>Low</div>
 				</td>
 				<td align="center">
-					<div>3</div>
+					<div>2</div>
 				</td>
 			</tr>
 			<tr>
@@ -177,7 +177,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>6</div>
+					<div>10</div>
 				</td>
 			</tr>
 			<tr>
@@ -210,12 +210,12 @@ td {
 			<tr>
 				<td><a href="#10098">Cross-Domain Misconfiguration</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">7</td>
+				<td align="center">8</td>
 			</tr>
 			<tr>
 				<td><a href="#10020">Missing Anti-clickjacking Header</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
@@ -223,14 +223,9 @@ td {
 				<td align="center">3</td>
 			</tr>
 			<tr>
-				<td><a href="#10096">Timestamp Disclosure - Unix</a></td>
-				<td align="center" class="risk-1">Low</td>
-				<td align="center">1</td>
-			</tr>
-			<tr>
 				<td><a href="#10021">X-Content-Type-Options Header Missing</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">7</td>
+				<td align="center">8</td>
 			</tr>
 			<tr>
 				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
@@ -245,12 +240,32 @@ td {
 			<tr>
 				<td><a href="#10015">Re-examine Cache-control Directives</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">3</td>
+				<td align="center">4</td>
 			</tr>
 			<tr>
 				<td><a href="#10050">Retrieved from Cache</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">7</td>
+				<td align="center">8</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-Dest Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">3</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-Mode Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">3</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-Site Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">3</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-User Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10049">Storable and Cacheable Content</a></td>
@@ -260,7 +275,7 @@ td {
 			<tr>
 				<td><a href="#10049">Storable but Non-Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">5</td>
+				<td align="center">6</td>
 			</tr>
 		</table>
 		<div class="spacer-lg"></div>
@@ -516,6 +531,37 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/manifest.json">https://hml-tcc-password-manager.vercel.app/manifest.json</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Access-Control-Allow-Origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
 					</tr>
 					<tr>
@@ -578,7 +624,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css">https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css">https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -609,7 +655,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js">https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -639,7 +685,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -724,40 +770,9 @@ td {
 						<td width="80%"></td>
 					</tr>
 				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/sitemap.xml">https://hml-tcc-password-manager.vercel.app/sitemap.xml</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-frame-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">1</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -876,7 +891,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js">https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -947,90 +962,6 @@ td {
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10063/">10063</a></td>
-				</tr>
-			</table>
-			<div class="spacer"></div>
-		
-			<table class="results">
-				<tr height="24">
-					<th width="20%" class="risk-1"><a
-						id="10096"></a>
-						<div>Low</div></th>
-					<th class="risk-1">Timestamp Disclosure - Unix</th>
-				</tr>
-				<tr>
-					<td width="20%">Description</td>
-					<td width="80%">
-							<div>A timestamp was disclosed by the application/web server - Unix</div>
-							
-						</td>
-				</tr>
-				<TR vAlign="top">
-					<TD colspan="2"></TD>
-				</TR>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">1540483477</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">1540483477, which evaluates to: 2018-10-25 16:04:37</td>
-					</tr>
-				
-				<tr>
-					<td width="20%">Instances</td>
-					<td width="80%">1</td>
-				</tr>
-				<tr>
-					<td width="20%">Solution</td>
-					<td width="80%">
-							<div>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</div>
-							
-						</td>
-				</tr>
-				<tr>
-					<td width="20%">Reference</td>
-					<td width="80%">
-							<a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a>
-							
-						</td>
-				</tr>
-				<tr>
-					<td width="20%">CWE Id</td>
-					<td width="80%"><a
-						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
-				</tr>
-				<tr>
-					<td width="20%">WASC Id</td>
-					<td width="80%">13</td>
-				</tr>
-				<tr>
-					<td width="20%">Plugin Id</td>
-					<td width="80%"><a
-						href="https://www.zaproxy.org/docs/alerts/10096/">10096</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
@@ -1152,6 +1083,38 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/manifest.json">https://hml-tcc-password-manager.vercel.app/manifest.json</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
 					</tr>
 					<tr>
@@ -1216,7 +1179,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css">https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css">https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1248,7 +1211,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js">https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1279,7 +1242,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1339,7 +1302,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js">https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1359,12 +1322,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">user</td>
+						<td width="80%">select</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;(()=&gt;{var e={5513:(e,t,n)=&gt;{&quot;use strict&quot;;n.d(t,{A:()=&gt;oe});var r=function(){function e(e){var t=this;this._insertTag=function(e)&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bSELECT\b and was detected in the element starting with: &quot;(()=&gt;{&quot;use strict&quot;;var e={730:(e,n,t)=&gt;{var r=t(43),l=t(853);function a(e){for(var n=&quot;https://reactjs.org/docs/error-decoder.htm&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 				<tr>
@@ -1440,7 +1403,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">&lt;script defer=&quot;defer&quot; src=&quot;/static/js/main.376ba3b9.js&quot;&gt;&lt;/script&gt;</td>
+						<td width="80%">&lt;script defer=&quot;defer&quot; src=&quot;/static/js/main.9d8f87e7.js&quot;&gt;&lt;/script&gt;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1471,7 +1434,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">&lt;script defer=&quot;defer&quot; src=&quot;/static/js/main.376ba3b9.js&quot;&gt;&lt;/script&gt;</td>
+						<td width="80%">&lt;script defer=&quot;defer&quot; src=&quot;/static/js/main.9d8f87e7.js&quot;&gt;&lt;/script&gt;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1532,6 +1495,37 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app">https://hml-tcc-password-manager.vercel.app</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">public, max-age=0, must-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/manifest.json">https://hml-tcc-password-manager.vercel.app/manifest.json</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1623,7 +1617,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">3</td>
+					<td width="80%">4</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1776,6 +1770,37 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/manifest.json">https://hml-tcc-password-manager.vercel.app/manifest.json</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Age: 0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
 					</tr>
 					<tr>
@@ -1838,7 +1863,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css">https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css">https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1869,7 +1894,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js">https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1899,7 +1924,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1952,6 +1977,590 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 			<table class="results">
 				<tr height="24">
 					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-Dest Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app">https://hml-tcc-password-manager.vercel.app</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Dest</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Dest</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/sitemap.xml">https://hml-tcc-password-manager.vercel.app/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Dest</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-Dest header is included in request headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-Mode Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app">https://hml-tcc-password-manager.vercel.app</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Mode</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Mode</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/sitemap.xml">https://hml-tcc-password-manager.vercel.app/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Mode</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-Mode header is included in request headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-Site Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Specifies the relationship between request initiator&#39;s origin and target&#39;s origin.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app">https://hml-tcc-password-manager.vercel.app</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Site</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Site</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/sitemap.xml">https://hml-tcc-password-manager.vercel.app/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Site</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-Site header is included in request headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-User Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Specifies if a navigation request was initiated by a user.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app">https://hml-tcc-password-manager.vercel.app</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-User</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-User</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/sitemap.xml">https://hml-tcc-password-manager.vercel.app/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-User</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-User header is included in user initiated requests.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
 						id="10049"></a>
 						<div>Informational</div></th>
 					<th class="risk-0">Storable and Cacheable Content</th>
@@ -1970,7 +2579,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css">https://hml-tcc-password-manager.vercel.app/static/css/main.adbe63a6.css</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css">https://hml-tcc-password-manager.vercel.app/static/css/main.f855e6bc.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2001,7 +2610,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js">https://hml-tcc-password-manager.vercel.app/static/js/main.376ba3b9.js</a></td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js">https://hml-tcc-password-manager.vercel.app/static/js/main.9d8f87e7.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2196,6 +2805,37 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/manifest.json">https://hml-tcc-password-manager.vercel.app/manifest.json</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://hml-tcc-password-manager.vercel.app/robots.txt">https://hml-tcc-password-manager.vercel.app/robots.txt</a></td>
 					</tr>
 					<tr>
@@ -2257,7 +2897,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">6</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
