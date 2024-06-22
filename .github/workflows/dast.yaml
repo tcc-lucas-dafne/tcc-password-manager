@@ -1,47 +1,21 @@
-name: CD_HOMOLOG
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+name: DAST
 
 on:
-  push:
-    branches: [develop]
+  workflow_run:
+    workflows: ["CD_HOMOLOG"]
+    types:
+      - completed
 
 defaults:
   run:
     shell: bash
 
 jobs:
-  deploy_homolog_and_dast:
-    environment: homolog
-    name: 'Deploy to homolog and DAST tests'
+  zap:
+    name: 'DAST tests'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Config GitHub
-        run: |
-          git config --global user.email "${{secrets.GIT_USER_EMAIL}}"
-          git config --global user.name "${{secrets.GIT_USER_NAME}}"
-  
-      - name: Install Vercel CLI
-        run: npm install --global vercel
-
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy Project Artifacts
-        run: |
-          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      # DAST
-
-      #ZAP BASELINE SCAN
       - name: Checkout
         uses: actions/checkout@v2
       
@@ -52,7 +26,7 @@ jobs:
           docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
           target: 'https://hml-tcc-password-manager.vercel.app'
           cmd_options: >
-            - addoninstall accessControl
+            - j
             - a
           allow_issue_writing: 'true'
           artifact_name: 'zap_baseline_scan'
@@ -65,6 +39,7 @@ jobs:
             ${{ github.workspace }}/report_html.html
             ${{ github.workspace }}/report_md.md
             ${{ github.workspace }}/report_json.json
+            ${{ github.workspace }}/report_sarif.sarif
 
       - name: Save ZAP Baseline Scan Reports
         if: always()
@@ -87,7 +62,6 @@ jobs:
           rm report_md.md
           rm report_json.json
 
-      #ZAP FULL SCAN
       - name: Checkout
         uses: actions/checkout@v2
       
@@ -98,7 +72,7 @@ jobs:
           docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
           target: 'https://hml-tcc-password-manager.vercel.app'
           cmd_options: >
-            - addoninstall accessControl
+            - j 
             - a
           allow_issue_writing: 'true'
           artifact_name: 'zap_full_scan'
@@ -132,42 +106,45 @@ jobs:
           rm report_html.html
           rm report_md.md
           rm report_json.json
+    
+    nikto:
+      name: 'DAST tests'
+      runs-on: ubuntu-latest
 
-      # NIKTO
-      - name: Create nikto report file
-        run: |
-          touch ${{ github.workspace }}/nikto_out.json
-          chmod o+w ${{ github.workspace }}/nikto_out.json
-          chmod g+w ${{ github.workspace }}/nikto_out.json
+      steps:
+        - name: Create nikto report file
+          run: |
+            touch ${{ github.workspace }}/nikto_out.json
+            chmod o+w ${{ github.workspace }}/nikto_out.json
+            chmod g+w ${{ github.workspace }}/nikto_out.json
 
-      - name: Find absolute path of nikto_out.json
-        id: find_file_path
-        run: |
-          # Encontra o caminho absoluto do arquivo nikto_out.json
-          file_path=$(realpath nikto_out.json)
-          echo "FILE_PATH=$file_path" >> $GITHUB_ENV
+        - name: Find absolute path of nikto_out.json
+          id: find_file_path
+          run: |
+            file_path=$(realpath nikto_out.json)
+            echo "FILE_PATH=$file_path" >> $GITHUB_ENV
 
-      - name: Scan with nikto
-        uses: thereisnotime/action-nikto@master
-        with:
-          url: "https://hml-tcc-password-manager.vercel.app/"
-          additional_args: "-Option FAILURES=0 -o $FILE_PATH -Format json"
+        - name: Scan with nikto
+          uses: thereisnotime/action-nikto@master
+          with:
+            url: "https://hml-tcc-password-manager.vercel.app/"
+            additional_args: "-Option FAILURES=0 -o $FILE_PATH -Format json"
 
-      - name: Upload Nikto Report to Action
-        uses: actions/upload-artifact@v4
-        with:
-          name: nikto-report
-          path: ${{ runner.temp }}/nikto_out.json
-      
-      - name: Save Nikto Report
-        if: always()
-        run: |
-          git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
-          cd ${{secrets.NAME_REPO_GIT}}
-          git checkout develop
-          current_date=$(date +%Y-%m-%d)
-          rm -rf reports/nikto/${current_date} && mkdir -p reports/nikto/${current_date}
-          cp -R ${{github.workspace}}/nikto_out.json reports/nikto/${current_date}/
-          git add .
-          git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
-          git push origin develop
+        - name: Upload Nikto Report to Action
+          uses: actions/upload-artifact@v4
+          with:
+            name: nikto-report
+            path: ${{ runner.temp }}/nikto_out.json
+        
+        - name: Save Nikto Report
+          if: always()
+          run: |
+            git clone "https://x-access-token:${{secrets.TOKEN_GIT}}@github.com/tcc-lucas-dafne/${{secrets.NAME_REPO_GIT}}" ${{secrets.NAME_REPO_GIT}}
+            cd ${{secrets.NAME_REPO_GIT}}
+            git checkout develop
+            current_date=$(date +%Y-%m-%d)
+            rm -rf reports/nikto/${current_date} && mkdir -p reports/nikto/${current_date}
+            cp -R ${{github.workspace}}/nikto_out.json reports/nikto/${current_date}/
+            git add .
+            git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
+            git push origin develop
