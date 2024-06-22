@@ -38,11 +38,6 @@ jobs:
       - name: Deploy Project Artifacts
         run: |
           vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-  
-  dast:
-    needs: deploy_homolog
-    uses: actions/checkout@v2
-    uses: ./.github/workflows/dast.yaml
-    with:
-      token_git: "${{ secrets.TOKEN_GIT }}"
-      
+
+      - name: Run dast
+        uses: ./.github/workflows/dast.yaml
