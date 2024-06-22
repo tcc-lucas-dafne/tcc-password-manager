@@ -26,7 +26,7 @@ jobs:
     - name: Cache Git Config
       uses: actions/cache@v4
       with:
-        path: ~/.gitconfig
+        path: /home/runner/.gitconfig
         key: git-config
 
   zap_baseline:
@@ -72,7 +72,9 @@ jobs:
           git checkout develop
           current_date=$(date +%Y-%m-%d)
           rm -rf reports/zap_baseline_scan/${current_date} && mkdir -p reports/zap_baseline_scan/${current_date}
-          cp -R ${{github.workspace}}/report_json.json reports/zap_baseline_scan/${current_date}/
+          hour=$(date +'%Y-%m-%d_%H-%M-%S')
+          mv ${{github.workspace}}/report_json.json reports/zap_baseline_scan/${current_date}/report_json_${hour}.json
+          cp -R ${{github.workspace}}/report_json_${hour}.json reports/zap_baseline_scan/${current_date}/
           git add .
           git commit -m "Adicionando relatório no repositório ${{ github.event.repository.name }} ${{ github.ref_name }} [skip ci]"
           git push origin develop
