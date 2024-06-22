@@ -70,6 +70,8 @@ jobs:
           TOKEN_GIT: ${{ secrets.TOKEN_GIT }}
           NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
           TOOL_NAME: zap_baseline_scan
+          REPORT_NAME: report_json
+          REPORT_FORMAT: json
         run: |
           cd scripts
           chmod +x save_report.sh
@@ -117,6 +119,8 @@ jobs:
           TOKEN_GIT: ${{ secrets.TOKEN_GIT }}
           NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
           TOOL_NAME: zap_full_scan
+          REPORT_NAME: report_json
+          REPORT_FORMAT: json
         run: |
           cd scripts
           chmod +x save_report.sh
@@ -130,7 +134,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        
+
       - name: Restore Git Config
         uses: actions/cache@v4
         with:
@@ -168,6 +172,8 @@ jobs:
           TOKEN_GIT: ${{ secrets.TOKEN_GIT }}
           NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
           TOOL_NAME: nikto
+          REPORT_NAME: nikto_out
+          REPORT_FORMAT: json
         run: |
           cd scripts
           chmod +x save_report.sh

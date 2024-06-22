@@ -13,10 +13,10 @@ mkdir -p reports/$TOOL_NAME/$current_date
 
 export TZ=America/Sao_Paulo
 hour=$(date +'%d-%m-%Y_%H-%M-%S')
-mv $github_workspace/report_json.json $github_workspace/report_json_$hour.json
-cp $github_workspace/report_json_$hour.json reports/$TOOL_NAME/$current_date/
+mv $github_workspace/$REPORT_NAME.$REPORT_FORMAT $github_workspace/$REPORT_NAME_$hour.$REPORT_FORMAT
+cp $github_workspace/$REPORT_NAME_$hour.$REPORT_FORMAT reports/$TOOL_NAME/$current_date/
 
-git add reports/$TOOL_NAME/$current_date/report_json_$hour.json
+git add reports/$TOOL_NAME/$current_date/$REPORT_NAME_$hour.$REPORT_FORMAT
 git add .
 git commit -m "Adicionando relatório no repositório $repository_name $ref_name [skip ci]"
 git push origin develop
