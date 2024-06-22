@@ -12,7 +12,7 @@
 /build
 
 #dast reports
-/reports
+reports/
 
 # misc
 .DS_Store
