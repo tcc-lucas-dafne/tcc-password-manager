@@ -48,6 +48,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Cache Git Config
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/.gitconfig
+            /home/runner/package-lock.json
+          key: git-npm
+
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true
@@ -72,6 +80,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+      
+      - name: Cache Git Config
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/.gitconfig
+            /home/runner/package-lock.json
+          key: git-npm
 
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
