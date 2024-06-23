@@ -1,8 +1,8 @@
-name: Nikto
+name: "SqlMap"
 
 on:
   push:
-    branches: [8-testar-workflow-ci-cd]
+    branches: [develop]
 
 defaults:
   run:
@@ -11,7 +11,7 @@ defaults:
 jobs:
   scan_sqlmap:
     runs-on: ubuntu-latest
-    name: SQLMAP2
+    name: sqlmap
     steps:
       - name: Scan with sqlmap
         uses: thereisnotime/action-sqlmap@master
