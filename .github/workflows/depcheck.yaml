@@ -1,32 +1,61 @@
-name: SCA Tests
+name: Depcheck
 
 on:
   pull_request:
     branches: [develop]
 
 jobs:
-  sca_depcheck:
-    name: 'SCA'
+  config:
+    name: 'config'
     runs-on: ubuntu-latest
     permissions:
       security-events: write
+      pull-requests: write
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Config GitHub
         run: |
           git config --global user.email "${{secrets.GIT_USER_EMAIL}}"
           git config --global user.name "${{secrets.GIT_USER_NAME}}"
-
-      - name: install npm ci
+      
+      - name: Install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
-      # SCA
-      # SNYK
+      - name: Cache Git Config
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/.gitconfig
+            ./package-lock.json
+            ./node_modules/
+          key: git-npm
+
+  snyk:
+    name: 'snyk'
+    runs-on: ubuntu-latest
+    needs: config
+    permissions:
+      security-events: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Cache Git Config
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/.gitconfig
+            ./package-lock.json
+            ./node_modules/
+          key: git-npm
+
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true
@@ -40,8 +69,28 @@ jobs:
         with:
           sarif_file: snyk.sarif
           category: my-analysis-tool
+    
+  owasp_depcheck:
+    name: 'owasp_depcheck'
+    runs-on: ubuntu-latest
+    needs: config
+    permissions:
+      security-events: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
       
-      # OWASP DEPENDENCY CHECK
+      - name: Cache Git Config
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/.gitconfig
+            ./package-lock.json
+            ./node_modules/
+          key: git-npm
+
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
@@ -62,15 +111,5 @@ jobs:
       - name: Upload Test results
         uses: actions/upload-artifact@v4
         with:
-           name: Depcheck report
-           path:  ${{github.workspace}}/depcheck
-
-      - name: PR comment with file
-        uses: thollander/actions-comment-pull-request@v2
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-        with:
-          message: |
-            Hello World!
-          filePath: Depcheck report.zip
-          pr_number: $PR_NUMBER
+            name: Depcheck report
+            path:  ${{github.workspace}}/depcheck
