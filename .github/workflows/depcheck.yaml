@@ -6,7 +6,7 @@ on:
 
 jobs:
   sca_depcheck:
-    name: 'SCA'
+    name: 'git_config'
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -24,7 +24,7 @@ jobs:
       - name: install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
-        run: npm-ci
+        run: npm ci
       
       - name: install npm ci
         run: find . name npm-ci
@@ -38,7 +38,7 @@ jobs:
           key: git-npm
 
   snyk:
-    name: 'SCA'
+    name: 'snyk'
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -63,7 +63,7 @@ jobs:
           category: my-analysis-tool
     
   owasp_depcheck:
-    name: 'SCA'
+    name: 'owasp_depcheck'
     runs-on: ubuntu-latest
     permissions:
       security-events: write
