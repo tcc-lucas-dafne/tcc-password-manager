@@ -26,6 +26,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
 
+      - name: Find node_modules directory
+        run: find . -type d -name node_modules
+
       - name: Cache Git Config
         uses: actions/cache@v4
         with:
