@@ -71,10 +71,11 @@ jobs:
           NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
           TOOL_NAME: zap_baseline_scan
           REPORT_FORMAT: json
+          REPORT_NAME: report_json
         run: |
           cd scripts
           chmod +x save_report.sh
-          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}" "report_json"
+          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}"
 
   zap_full_scan:    
     name: 'zap_full_scan'
@@ -119,10 +120,11 @@ jobs:
           NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
           TOOL_NAME: zap_full_scan
           REPORT_FORMAT: json
+          REPORT_NAME: report_json
         run: |
           cd scripts
           chmod +x save_report.sh
-          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}" "report_json"
+          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}" 
     
   nikto:
     name: 'nikto'
@@ -171,8 +173,9 @@ jobs:
           NAME_REPO_GIT: ${{ secrets.NAME_REPO_GIT }}
           TOOL_NAME: nikto
           REPORT_FORMAT: json
+          REPORT_NAME: nikto_out
         run: |
           cd scripts
           chmod +x save_report.sh
-          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}" "nikto_out"
+          ./save_report.sh $GITHUB_WORKSPACE "${{github.event.repository.name }}" "${{ github.ref_name }}"
     
