@@ -34,7 +34,7 @@ jobs:
         with:
           path: |
             /home/runner/.gitconfig
-            /home/runner/package-lock.json
+            ./package-lock.json
             ./node_modules/
           key: git-npm
 
@@ -55,7 +55,7 @@ jobs:
         with:
           path: |
             /home/runner/.gitconfig
-            /home/runner/package-lock.json
+            ./package-lock.json
             ./node_modules/
           key: git-npm
 
@@ -90,7 +90,7 @@ jobs:
         with:
           path: |
             /home/runner/.gitconfig
-            /home/runner/package-lock.json
+            ./package-lock.json
             ./node_modules/
           key: git-npm
 
