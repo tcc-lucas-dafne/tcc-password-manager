@@ -1,12 +1,12 @@
-name: SCA Tests
+name: Depcheck
 
 on:
-  push:
-    branches: [results]
+  pull_request:
+    branches: [develop]
 
 jobs:
   config_git:
-    name: 'git_config'
+    name: 'config_git'
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -21,13 +21,10 @@ jobs:
           git config --global user.email "${{secrets.GIT_USER_EMAIL}}"
           git config --global user.name "${{secrets.GIT_USER_NAME}}"
       
-      - name: install npm ci
+      - name: Install npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: npm ci
-
-      - name: Find node_modules directory
-        run: find . -type d -name node_modules
 
       - name: Cache Git Config
         uses: actions/cache@v4
@@ -116,13 +113,3 @@ jobs:
         with:
             name: Depcheck report
             path:  ${{github.workspace}}/depcheck
-
-      - name: PR comment with file
-        uses: thollander/actions-comment-pull-request@v2
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-        with:
-          message: |
-            Hello World!
-          filePath: depcheck
-          pr_number: $PR_NUMBER

@@ -19,7 +19,7 @@ jobs:
              requires_status_checks
           upload_code_scanning: true
     
-      - name: "Upload SARIF as Code Scanning Results"
+      - name: Upload SARIF as Code Scanning Results
         if: ${{ inputs.upload_code_scanning == 'true' }}
         continue-on-error: true
         uses: github/codeql-action/upload-sarif@v3
