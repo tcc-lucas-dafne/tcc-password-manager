@@ -57,6 +57,8 @@ const AppProvider = ({ children }: { children: any }) => {
           }
         } catch (err) {
           console.error(err);
+          setUser(null);
+          localStorage.clear();
         }
       } else {
         setUser(null);
