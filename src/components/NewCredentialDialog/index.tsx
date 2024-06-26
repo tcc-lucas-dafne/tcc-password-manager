@@ -12,7 +12,7 @@ import { useAppContext } from '../../context';
 import { Button } from '@mui/material';
 import { CredentialFormContainer } from './style';
 import { toast } from 'react-toastify';
-import { useMatch } from 'react-router';
+import { Navigate, useMatch } from 'react-router';
 
 const NewCredentialDialog = () => {
   const match = useMatch("/:id");
@@ -20,7 +20,9 @@ const NewCredentialDialog = () => {
   const { user, isNewCredentialDialogOpen, handleCloseDialog, getCredentials } = useAppContext();
 
   const [credentialsForm, setCredentialsForm] = useState<SiteCredentials>({});
-
+  
+  if (!user) return <Navigate to="/login" replace />;
+  
   const handleCredentialsForm = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCredentialsForm(currState => {
       return { ...currState, [event.target.name]: event.target.value };
