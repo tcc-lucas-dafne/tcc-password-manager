@@ -1,8 +1,8 @@
 import { API } from "./index";
 
-function getSiteCredentials(id: string) {
+function getSiteCredentials() {
   try {
-    return API.get(`/credential/${id}`)
+    return API.get(`/credential/`)
   } catch (err) {
     console.error("getSiteCredentials: ", err);
     throw err;

@@ -12,7 +12,7 @@ type AppContext = {
   logout: () => void;
   handleOpenDialog: () => void;
   handleCloseDialog: () => void;
-  getCredentials: (id: string) => void;
+  getCredentials: () => void;
 }
 
 const UserContext = React.createContext({} as AppContext);
@@ -31,9 +31,9 @@ const AppProvider = ({ children }: { children: any }) => {
     localStorage.clear();
   }
 
-  const getCredentials = async (id: string) => {
+  const getCredentials = async () => {
     try {
-      const response = await ManagerServices.getSiteCredentials(id);
+      const response = await ManagerServices.getSiteCredentials();
       if (response.status === 200) {
         setCredentials(response.data);
       }
