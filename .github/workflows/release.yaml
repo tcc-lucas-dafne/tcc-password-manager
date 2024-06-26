@@ -27,4 +27,4 @@ jobs:
             echo RELEASE_PATCH=${{ contains(github.event.pull_request.labels.*.name, 'PATCH RELEASE') }} >> ./scripts/.env
 
       - name: Create Release
-        run: cd scripts && npm install && node release.js
+        run: cd scripts && yarn install && node release.js
