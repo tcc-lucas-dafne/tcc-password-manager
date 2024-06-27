@@ -11,3 +11,14 @@ API.interceptors.request.use((config) => {
 
   return config;
 })
+
+API.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (error?.response?.status === 401) {
+    localStorage.clear();
+    window.location.reload();
+  }
+
+  return Promise.reject(error);
+});

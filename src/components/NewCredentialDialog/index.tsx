@@ -51,9 +51,7 @@ const NewCredentialDialog = () => {
         setCredentialsForm({});
         handleCloseDialog();
 
-        if (match && match.params && match.params.id) {
-          getCredentials(match.params.id);
-        }
+        getCredentials();
       }
     } catch (e) {
       const error = e as AxiosError;
