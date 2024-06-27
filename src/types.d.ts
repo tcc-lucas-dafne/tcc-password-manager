@@ -33,3 +33,8 @@ type SiteCredential = {
   url?: string;
   username?: string;
 }
+
+type User = {
+  id: string;
+  email: string;
+}
