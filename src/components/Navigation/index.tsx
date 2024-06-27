@@ -2,20 +2,21 @@ import { Menu, MenuItem } from "@mui/material";
 import { useAppContext } from "../../context";
 import { Header, HeaderWrapper, NavigationButton, UserIcon } from "./style";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 
 const Navigation = () => {
-  const { user, logout, handleOpenDialog } = useAppContext();
-  
   const navigate = useNavigate();
+  const { user, logout, handleOpenDialog } = useAppContext();
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | SVGElement>(null);
   const open = Boolean(anchorEl);
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const goToCredentialsPage = () => navigate(`/${user.id}`);
   
-  const handleClick = (event: any) => setAnchorEl(event.currentTarget);
+  const handleClick = (event: React.MouseEvent<SVGElement>) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
   return (

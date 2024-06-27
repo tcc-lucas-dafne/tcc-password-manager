@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import UserService from '../services/user';
 import ManagerServices from '../services/manager';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
 type AppContext = {
-  user?: any;
+  user: User | null;
   loading: boolean;
   isNewCredentialDialogOpen: boolean;
   credentials: SiteCredential[];
@@ -17,8 +17,8 @@ type AppContext = {
 
 const UserContext = React.createContext({} as AppContext);
 
-const AppProvider = ({ children }: { children: any }) => {
-  const [user, setUser] = useState<any>();
+const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [credentials, setCredentials] = useState<SiteCredential[]>([]);
   const [isNewCredentialDialogOpen, setIsNewCredentialDialogOpen] = useState<boolean>(false);

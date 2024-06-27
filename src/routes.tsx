@@ -24,7 +24,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/:id" element={<Home />} />
-        <Route path="*" element={isAuthenticated ? <Navigate to={`/${user.id}`} /> : <Navigate to="/login" />} />
+        <Route path="*" element={(isAuthenticated && user) ? <Navigate to={`/${user.id}`} /> : <Navigate to="/login" />} />
       </Routes>
       <NewCredentialDialog />
     </div>
