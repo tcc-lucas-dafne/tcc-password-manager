@@ -162,11 +162,24 @@ jobs:
           additional_args: "-Option FAILURES=0 -o $FILE_PATH -Format json"
         continue-on-error: true
 
+      - name: Scan with nikto
+        uses: thereisnotime/action-nikto@master
+        with:
+          url: "https://hml-tcc-password-manager.vercel.app/"
+          additional_args: "-v ${{github.workspace}}:/tmp -Option FAILURES=0 -o /tmp/nikto_out.html -Format html"
+        continue-on-error: true
+
       - name: Upload Nikto Report to Action
         uses: actions/upload-artifact@v4
         with:
           name: nikto-report
           path: ${{ runner.temp }}/nikto_out.json
+
+      - name: Upload Nikto Report to Action
+        uses: actions/upload-artifact@v4
+        with:
+          name: nikto_out.html
+          path: nikto_out.html
       
       - name: Save Nikto Report
         if: always()
