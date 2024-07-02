@@ -36,4 +36,4 @@ A API pode ser acessada no repositório [API Gerenciador de Senhas](https://gith
 | Matricula | Nome | Github | E-mail |
 |-----------|------|--------|--------|
 |190026243|Dafne Moretti Moreira|[DafneM](https://github.com/DafneM)|moretti.dafne@gmail.com|
-||Lucas da Cunha Andrade|[nYCSTs](https://github.com/nYCSTs)|lucascandradex@protonmail.com|
+|180105256|Lucas da Cunha Andrade|[nYCSTs](https://github.com/nYCSTs)|lucascandradex@protonmail.com|
